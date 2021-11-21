@@ -1,4 +1,4 @@
-# Hello. Test for GWF HUB GIT REPO
+# Hello. GWF HUB GIT REPO
 ###
 # Web Tests
 ###
