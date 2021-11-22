@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Validator</h1>                           
+  </div>
+<form method= "POST" action="">
+    {% csrf_token %}
+    <div class="form-group">         
+        <label for="jsonCodeSections">
+           Workflow JSON Sections
+        </label>
+        <input type="text" class="form-control" name="jsonCodeSections" />
+        <label for="jsonCodeQuestions">
+            Workflow JSON Questions
+         </label>
+         <input type="text" class="form-control" name="jsonCodeQuestions" />
+    </div><br>   
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+</form>
+
+{% endblock content %}
