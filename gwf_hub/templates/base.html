@@ -19,27 +19,27 @@
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo"><a href="#" class="simple-text logo-normal">GWF Workspace</a></div>
+      <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal">GWF Workspace</a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">
-              <i class="material-icons">dashboard</i><p>Home</p>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'overview' %}">
+              <i class="material-icons">home</i><p>Home</p>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">dashboard</i><p>Workflow Hierarchy</p>
+            <a class="nav-link" href="{% url 'workflow-hierarchy' %}">
+              <i class="material-icons">mediation</i><p>Workflow Hierarchy</p>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">dashboard</i><p>GWF Database</p>
+            <a class="nav-link" href="{% url 'gwf-db' %}">
+              <i class="material-icons">view_agenda</i><p>GWF Database</p>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <i class="material-icons">dashboard</i><p>Help</p>
+            <a class="nav-link" href="https://w.amazon.com/bin/view/Guided_Workflow/Home">
+              <i class="material-icons">help</i><p>Help</p>
             </a>
           </li>
         </ul>

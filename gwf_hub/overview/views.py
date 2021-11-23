@@ -1,11 +1,15 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 # Create your views here.
 
 def overview(response):
-    name = "GWF App Dashboard"    
-    return render(response, "overview.html", {'name':name})
+    return render(response, "overview.html", {})
 
 def database(response):
-    return HttpResponse("<h1>this is GWF Database</h1>")
+    return render(response, "database.html", {})
+
+def validator(response):
+    return render(response, "validator.html", {})
+
+def hierarchy(response):
+    return render(response, "hierarchy.html", {})
