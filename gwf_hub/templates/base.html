@@ -13,8 +13,13 @@
 </head>
 <body class="dark-edition">
   <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-background-color="black" data-image="{% static '/imgs/sidebar-1.jpg' %}">
-      <div class="logo"><a href="http://www.creative-tim.com" class="simple-text logo-normal">GWF Workspace</a></div>
+    <div class="sidebar" data-color="azure" data-background-color="black" data-image="#">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+      <div class="logo"><a href="#" class="simple-text logo-normal">GWF Workspace</a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active">
@@ -22,17 +27,17 @@
               <i class="material-icons">dashboard</i><p>Home</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#">
               <i class="material-icons">dashboard</i><p>Workflow Hierarchy</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#">
               <i class="material-icons">dashboard</i><p>GWF Database</p>
             </a>
           </li>
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="#">
               <i class="material-icons">dashboard</i><p>Help</p>
             </a>
@@ -48,6 +53,10 @@
 <script src="{% static '/js/jquery.min.js' %}"></script>
 <script src="{% static '/js/popper.min.js' %}"></script>
 <script src="{% static '/js/bootstrap-material-design.min.js' %}"></script>
+<script src="https://unpkg.com/default-passive-events"></script>
+<script src="{% static '/js/perfect-scrollbar.jquery.min.js' %}"></script>
+<script src="{% static '/js/bootstrap-notify.js' %}"></script>
+<script src="{% static '/js/material-dashboard.js' %}"></script>
   </div>  
 </body>
 </html>
