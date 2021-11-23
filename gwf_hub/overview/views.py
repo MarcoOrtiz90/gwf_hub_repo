@@ -42,3 +42,8 @@ def validator_fun(response):
         issues_list.pop(len_of_elements)
         params = {"issues_to_print": issues_list}
         return render(request, 'validator_result.html', params)
+    return render(response, "database.html", {})
+
+
+def hierarchy(response):
+    return render(response, "hierarchy.html", {})

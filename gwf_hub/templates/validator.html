@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 <html lang="en">
 <head>
@@ -58,3 +59,43 @@
 </form>
 </body>
 </html>
+=======
+{% extends 'base.html' %} 
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+    <div class="content">
+        <h2>Validator</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <form method= "POST" action="">
+                        {% csrf_token %}
+                        <label for="sections">
+                            Workflow JSON Sections
+                        </label><br>
+                        <textarea id="sections" name="sections" rows="4" cols="50"></textarea><br>
+                        <label for="questions">
+                            Workflow JSON Questions
+                        </label><br>
+                        <textarea id="questions" name="questions" rows="4" cols="50"></textarea> <hr>                        
+                        <button type="submit" class="btn btn-primary">
+                            Validate !
+                        </button>
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    <p>Validator is a tool that will allow you to get a specific workflow analized to determine flaws in the hierarchy of questions & answers</p>
+                    <ol>
+                        <li>Copy both questions and sections JSON codes from the required workflows</li>
+                        <li>Paste the JSON in their respective field</li>
+                        <li>Specify your filters with the selectors</li>
+                        <li>Submit to Validate!</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+>>>>>>> main
