@@ -1,5 +1,5 @@
-# Hello. GWF HUB GIT REPO
+# Hello. This is the GWF HUB GIT REPO
 ###
-# Web Tests
+## This project id being developed using Django
 ###
-# Local Change
+
