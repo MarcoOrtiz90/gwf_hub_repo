@@ -6,23 +6,51 @@
         <h2>Validator</h2>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-4">
-                    <form method= "POST" action="">
+                <div class="col-md-6">
+                    <form method= "POST" action="errors">
                         {% csrf_token %}
                         <label for="sections">
-                            Workflow JSON Sections
+                            Workflow Sections JSON Code
                         </label><br>
-                        <textarea id="sections" name="sections" rows="4" cols="50"></textarea><br>
+                        <textarea name="section_json" placeholder="Enter Sections JSON code" rows="4" cols="70"></textarea><br>
                         <label for="questions">
-                            Workflow JSON Questions
+                            Workflow Questions JSON Code
                         </label><br>
-                        <textarea id="questions" name="questions" rows="4" cols="50"></textarea> <hr>                        
-                        <button type="submit" class="btn btn-primary">
-                            Validate !
-                        </button>
+                        <textarea name="question_json" placeholder="Enter Questions JSON code" rows="4" cols="70"></textarea><hr>
+                        <h3>Include</h3>
+                        <label class="switch">
+                            <input type="checkbox" name="auto_answers" id="autoanswers">
+                            <span class="slider round"></span>
+                        </label><label style="margin-left: 5px;">Auto-Answer Detection</label><br>
+
+                        <label class="switch">
+                            <input type="checkbox" id="duplicateid" name="duplicate_id">
+                            <span class="slider round"></span>
+                        </label><label style="margin-left: 5px;">Duplicate Answer Detection</label><br>
+
+                        <label class="switch">
+                            <input type="checkbox" id="jumps" name="jumps_check">
+                            <span class="slider round"></span>
+                        </label><label style="margin-left: 5px;">Answer Using Jumps</label><br>
+
+                        <label class="switch">
+                            <input type="checkbox" id="inactiveqgroup" name="inactive_q_group">
+                            <span class="slider round"></span>
+                        </label><label style="margin-left: 5px;">Inactive question groups</label><br>
+
+                        <label class="switch">
+                            <input type="checkbox"  id="mandatesnc" name="mandates_not_connected">
+                            <span class="slider round"></span>
+                        </label><label style="margin-left: 5px;">Mandates not connected</label><br>
+
+                        <label class="switch">
+                            <input type="checkbox" id="wrongjumps" name="wrong_jumps">
+                            <span class="slider round"></span>
+                        </label><label style="margin-left: 5px;">Wrong Jumps Used</label><br>
+                    <button type="submit" class="btn btn-primary">Validate !</button>
                     </form>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <p>Validator is a tool that will allow you to get a specific workflow analized to determine flaws in the hierarchy of questions & answers</p>
                     <ol>
                         <li>Copy both questions and sections JSON codes from the required workflows</li>
