@@ -51,16 +51,17 @@
                     </form>
                 </div>
                 <div class="col-md-6">
-                    <p>Validator is a tool that will allow you to get a specific workflow analized to determine flaws in the hierarchy of questions & answers</p>
+                    <p style="color: grey;"><strong>Validator</strong> is a tool used by GWF team to validate the functions/features requested by the Workflow specialist. It gives specific outputs in terms of which questions in the flow are using auto answers, which answers are using jumps, are those jumps correctly set, and much more.
+                    </p>
                     <ol>
-                        <li>Copy both questions and sections JSON codes from the required workflows</li>
-                        <li>Paste the JSON in their respective field</li>
-                        <li>Specify your filters with the selectors</li>
-                        <li>Submit to Validate!</li>
+                        <li style="color:grey;">Copy both questions and sections JSON codes from the required workflows</li>
+                        <li style="color:grey;">Paste the JSON in their respective field</li>
+                        <li style="color:grey;">Specify your filters with the selectors</li>
+                        <li style="color:grey;">Submit to Validate!</li>
                     </ol><br>
                     {% if issues_to_print %}
-                        <h3>Validator Result</h3>
-                        <p>Issues listed if any:</p>
+                        <h3 style="color:grey;">Validator Result</h3>
+                        <p style="color:grey;">Issues listed if any:</p>
                         <pre><textarea rows="6" cols="80">{{ issues_to_print }}</textarea></pre>
                     {% endif %}
                 </div>
