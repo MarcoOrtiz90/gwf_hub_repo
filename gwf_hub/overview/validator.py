@@ -12,13 +12,14 @@ def current_question_data(questions, sections, toggle_dict):
     print("Validator function is being called")
     c_questions = json.loads(questions)
     c_section = json.loads(sections)
-    issues_string = ''
+    issues_string = ""
     c_question_group_bucket_duplicate = []
     duplicated_answer_ids = []
     c_question_group_bucket = []
     sections_id_bucket = []
     mandates = []
     q_group_ids = []
+    wrong_answer_ids = []
 
     # Unpacking toggle values:
     auto_answers = toggle_dict["auto_answers"]
@@ -28,6 +29,7 @@ def current_question_data(questions, sections, toggle_dict):
     wrong_jumps = toggle_dict["wrong_jumps"]
     mandates_not_connected = toggle_dict["mandates_not_connected"]
 
+    print("auto_answers : " + auto_answers, "duplicate_id : " + duplicate_id)
     duplicated_question_group_id = []
     for values, data in c_questions.items():
         if values not in q_group_ids:
@@ -50,7 +52,7 @@ def current_question_data(questions, sections, toggle_dict):
     auto_answer = []
     jumps_used = []
     mandate_missing = []
-    wrong_jumps = []
+    wrong_jumps_used = []
     for c_group_id, c_data in c_questions.items():
         c_question_group_bucket.append(c_group_id)
         # else:
@@ -79,7 +81,7 @@ def current_question_data(questions, sections, toggle_dict):
                         jump = c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]["next_node_override"]
                         jumps_used.append(c_answer_ids)
                         if jump not in sections_id_bucket:
-                            wrong_jumps.append(c_answer_ids)
+                            wrong_jumps_used.append(c_answer_ids)
                 elif "checkbox_options" in c_data["workflow_questions"][x]["responses"][0]:
                     c_answer_ids = c_data["workflow_questions"][x]["responses"][0]["checkbox_options"][c_counter]["id"]
                 else:
@@ -105,45 +107,41 @@ def current_question_data(questions, sections, toggle_dict):
         if items not in follow_up_bucket and items != '':
             follow_up_bucket.append(items)
 
-    for items in follow_up_bucket:
-        if items not in c_question_group_bucket:
-            issues_string = issues_string + "Follow up " + items + " not linked to it's parent question.\n"
-
     for items in c_question_group_bucket_duplicate:
         if items not in follow_up_bucket:
             q_groups_with_no_parent.append(items)
-
-    if len(wrong_jumps) > 1:
-        issues_string = issues_string + "Answers using wrong jumps - ", str(wrong_jumps) + "\n"
 
     # Checking if mandates from sections.json are present in the questions.json file.
     for items in mandates:
         if items not in c_question_group_bucket:
             mandate_missing = mandate_missing.append(items)
 
-    wrong_answer_ids = []
-    for answers in c_answer_id_bucket:
-        if answers.startswith("Q-"):
-            wrong_answer_ids.append(answers)
-    if len(wrong_answer_ids) > 1:
-        issues_string = issues_string + "Answer ID that starts with Q- " + str(wrong_answer_ids) + "\n"
+    # for answers in c_answer_id_bucket:
+    #     if answers.startswith("Q-"):
+    #         wrong_answer_ids.append(answers)
+    # if len(wrong_answer_ids) > 0:
+    #     issues_string = issues_string + "Answer ID that starts with Q- " + str(wrong_answer_ids) + "\n"
 
     # Saving the answer outputs on str(issues_string) to return
 
+    if wrong_jumps == "on":
+        if len(wrong_jumps_used) > 0:
+            issues_string = issues_string + "Answers using wrong jumps - " + str(wrong_jumps) + "\n"
+
     if auto_answers == "on":
-        if len(auto_answer) > 1:
+        if len(auto_answer) > 0:
             issues_string = issues_string + "Questions using auto-answers : " + str(auto_answer) + "\n"
 
     if duplicate_id == "on":
-        if len(duplicated_answer_ids) > 1:
+        if len(duplicated_answer_ids) > 0:
             issues_string = issues_string + "Duplicate answer ids - " + str(duplicated_answer_ids) + "\n"
 
     if jumps == "on":
-        if len(jumps_used) > 1:
+        if len(jumps_used) > 0:
             issues_string = issues_string + "Answers using Jumps - " + str(jumps_used) + "\n"
 
     if inactive_q_group == "on":
-        if len(q_groups_with_no_parent) > 1:
+        if len(q_groups_with_no_parent) > 0:
             issues_string = issues_string + "Inactive question groups - " + str(q_groups_with_no_parent) + "\n"
 
     if mandates_not_connected == "on":

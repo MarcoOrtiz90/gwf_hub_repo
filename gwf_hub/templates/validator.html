@@ -7,16 +7,16 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <form method= "POST" action="errors">
+                    <form method= "POST" action="">
                         {% csrf_token %}
                         <label for="sections">
                             Workflow Sections JSON Code
                         </label><br>
-                        <textarea name="section_json" placeholder="Enter Sections JSON code" rows="4" cols="70"></textarea><br>
+                        <textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="70"></textarea><br>
                         <label for="questions">
                             Workflow Questions JSON Code
                         </label><br>
-                        <textarea name="question_json" placeholder="Enter Questions JSON code" rows="4" cols="70"></textarea><hr>
+                        <textarea name="questions_json" placeholder="Enter Questions JSON code" rows="4" cols="70"></textarea><hr>
                         <h3>Include</h3>
                         <label class="switch">
                             <input type="checkbox" name="auto_answers" id="autoanswers">
@@ -58,6 +58,18 @@
                         <li>Specify your filters with the selectors</li>
                         <li>Submit to Validate!</li>
                     </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {% if issues_to_print %}
+                        <h3>Validator Result</h3>
+                        <p>Issues listed if any:</p>
+                        <pre><textarea rows="4" cols="70">{{ issues_to_print }}</textarea></pre>
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+
                 </div>
             </div>
         </div>
