@@ -57,19 +57,12 @@
                         <li>Paste the JSON in their respective field</li>
                         <li>Specify your filters with the selectors</li>
                         <li>Submit to Validate!</li>
-                    </ol>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
+                    </ol><br>
                     {% if issues_to_print %}
                         <h3>Validator Result</h3>
                         <p>Issues listed if any:</p>
-                        <pre><textarea rows="4" cols="70">{{ issues_to_print }}</textarea></pre>
+                        <pre><textarea rows="6" cols="80">{{ issues_to_print }}</textarea></pre>
                     {% endif %}
-                </div>
-                <div class="col-md-6">
-
                 </div>
             </div>
         </div>
