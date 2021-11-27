@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'overview.apps.OverviewConfig'
+    'overview.apps.OverviewConfig',
+    'auto_answer_generator.apps.AutoAnswerGeneratorConfig',
 ]
 
 MIDDLEWARE = [
