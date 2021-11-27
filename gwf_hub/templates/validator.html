@@ -12,11 +12,21 @@
                         <label for="sections">
                             Workflow Sections JSON Code
                         </label><br>
-                        <textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="70"></textarea><br>
+                            {% if return_sections_data != "" %}
+                                <pre><textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="60">{{ return_sections_data }}</textarea></pre>
+                            {% else %}
+                                <pre><textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="60">{{ return_sections_data }}</textarea></pre>
+                            {% endif %}
+                        <br>
                         <label for="questions">
                             Workflow Questions JSON Code
                         </label><br>
-                        <textarea name="questions_json" placeholder="Enter Questions JSON code" rows="4" cols="70"></textarea><hr>
+                            {% if return_questions_data != "" %}
+                                <pre><textarea name="questions_json" rows="4" cols="60" placeholder="Enter Questions JSON code">{{ return_questions_data }}</textarea></pre>
+                            {% else %}
+                                <pre><textarea name="questions_json" placeholder="Enter Questions JSON code" rows="4" cols="60">{{ return_questions_data }}</textarea></pre>
+                            {% endif %}
+                        <hr>
                         <h3>Include</h3>
                         <label class="switch">
                             <input type="checkbox" name="auto_answers" id="autoanswers">
@@ -62,7 +72,7 @@
                     {% if issues_to_print %}
                         <h3 style="color:grey;">Validator Result</h3>
                         <p style="color:grey;">Issues listed if any:</p>
-                        <pre><textarea rows="6" cols="80">{{ issues_to_print }}</textarea></pre>
+                        <pre><textarea rows="6" cols="80" style="color:red">{{ issues_to_print }}</textarea></pre>
                     {% endif %}
                 </div>
             </div>
