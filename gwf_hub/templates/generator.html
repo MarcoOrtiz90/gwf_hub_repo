@@ -4,6 +4,23 @@
     {% include 'navbar.html' %}
     <div class="content">
         <h2>Auto-Answer Template Generator</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="POST" action="">
+                        <select name="question_ids" id="q-ids">
+                            {% for id on question_ids_table %}
+                            <option value="{%  %}"></option>
+                            {% endfor %}
+                        </select>
+                    </form>
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock content %}
