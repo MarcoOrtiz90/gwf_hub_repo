@@ -8,11 +8,17 @@
             <div class="row">
                 <div class="col-md-6">
                     <form method="POST" action="">
+                        <h4>Select question ids</h4>
                         <select name="question_ids" id="q-ids">
-                            {% for id on question_ids_table %}
-                            <option value="{%  %}"></option>
+                                <option value="no_selection" selected></option>
+                            {% for id in question_ids_table %}
+                                <option value="{{id.question_id}}">{{id.question_id}}</option>
                             {% endfor %}
-                        </select>
+                        </select><span class="material-icons">
+                            expand_more
+                            </span><button type="button" class="btn btn-sm">
+                                Add another Auto-Answer
+                            </button>
                     </form>
 
                 </div>
