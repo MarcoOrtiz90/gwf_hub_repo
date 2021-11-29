@@ -38,16 +38,20 @@ def validator_fun(request):
                 return render(request, 'validator.html', params)
             except ValueError:
                 issues_list = "Invalid/Incomplete JSON Codes entered. Please check the \ncodes and try again."
+                error_found = True
                 params = {"issues_to_print": issues_list,
                           "return_questions_data": questions_json,
-                          "return_sections_data": sections_json}
+                          "return_sections_data": sections_json,
+                          "error_found": error_found}
                 print(params["return_sections_data"])
                 return render(request, 'validator.html', params)
         else:
             issues_list = "Please insert JSON data in the textboxes and try again."
+            error_found = True
             params = {"issues_to_print": issues_list,
                       "return_questions_data": questions_json,
-                      "return_sections_data": sections_json}
+                      "return_sections_data": sections_json,
+                      "error_found": error_found}
             return render(request, 'validator.html', params)
 
     return render(request, 'validator.html', {})
