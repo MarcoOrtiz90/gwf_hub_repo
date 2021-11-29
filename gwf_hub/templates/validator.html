@@ -69,9 +69,9 @@
                         <li style="color:grey;">Specify your filters with the selectors</li>
                         <li style="color:grey;">Submit to Validate!</li>
                     </ol><br>
-                    {% if issues_to_print %}
+                    {% if issues_to_print != "" %}
                         <h3 style="color:grey;">Validator Result</h3>
-                        <p style="color:grey;">Issues listed if any:</p>
+                        <p style="color:grey;">Data collected if any:</p>
                         <pre><textarea rows="6" cols="80" style="color:red">{{ issues_to_print }}</textarea></pre>
                     {% endif %}
                 </div>
