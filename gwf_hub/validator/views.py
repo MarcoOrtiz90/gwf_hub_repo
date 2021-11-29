@@ -27,6 +27,8 @@ def validator_fun(request):
         issues = validator.current_question_data(questions_json, sections_json, toggle_dictionary)
         issues_list = issues.split('\n')
         # print(issues_list)
+        if issues == "":
+            issues = "No data collected"
         len_of_elements = len(issues_list) - 1
         issues_list.pop(len_of_elements)
         params = {"issues_to_print": issues_list}
