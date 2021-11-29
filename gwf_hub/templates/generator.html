@@ -10,15 +10,14 @@
                     <form method="POST" action="">
                         <h4>Select question ids</h4>
                         <select name="question_ids" id="q-ids">
-                                <option value="no_selection" selected></option>
+                            <option value="no_selection" selected>Select a question id   </option>
                             {% for id in question_ids_table %}
                                 <option value="{{id.question_id}}">{{id.question_id}}</option>
-                            {% endfor %}
-                        </select><span class="material-icons">
-                            expand_more
-                            </span><button type="button" class="btn btn-sm">
-                                Add another Auto-Answer
-                            </button>
+                            {% endfor %}                             
+                        </select><span>   </span>
+                        <button type="submit" class="btn btn-sm" name="new-id" value="new-id">Add another Auto-Answer</button>
+                        <br><br>
+                        <button type="submit" class="btn btn-sm" name="request" value="request"></button>
                     </form>
 
                 </div>

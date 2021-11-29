@@ -6,6 +6,7 @@ from django.db.models.deletion import CASCADE
 class AutoAnswerQuestionTable(models.Model):
     question_id = models.CharField(max_length=50)
     ruleset = models.CharField(max_length=50)
+    question_category = models.CharField(max_length=8, null=True)
     question_label = models.TextField()
 
     def __str__(self):
