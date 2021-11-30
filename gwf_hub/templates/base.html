@@ -9,15 +9,15 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static '/css/material-dashboard.css' %}"/>
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
     <title>GWF Workspace</title>
 </head>
 <body class="dark-edition">
   <div class="wrapper">
     <div class="sidebar" data-color="azure" data-background-color="black" data-image="#">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+      
+        <!-- Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger" -->
 
-<<<<<<< HEAD
 <body>
     <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">GWF Workspace</a>
@@ -69,34 +69,6 @@
             {% endblock content %}
           </main>
         </div>
-=======
-        Tip 2: you can also add an image using data-image tag
-    -->
-      <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal">GWF Workspace</a></div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'overview' %}">
-              <i class="material-icons">home</i><p>Home</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'workflow-hierarchy' %}">
-              <i class="material-icons">mediation</i><p>Workflow Hierarchy</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gwf-db' %}">
-              <i class="material-icons">view_agenda</i><p>GWF Database</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://w.amazon.com/bin/view/Guided_Workflow/Home">
-              <i class="material-icons">help</i><p>Help</p>
-            </a>
-          </li>
-        </ul>
->>>>>>> main
       </div>
     </div>
 
