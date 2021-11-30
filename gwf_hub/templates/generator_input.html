@@ -1,0 +1,6 @@
+    <select style="margin-right: 15px;" name="question_ids" id="q-ids">
+        {% for id in question_ids_table %}
+            <option value="{{id.question_id}}">{{id.question_id}}</option>
+        {% endfor %}
+    </select>
+<hr>

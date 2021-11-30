@@ -1,0 +1,9 @@
+<form method="POST" action="" hx-post='' hx-swap='outerHTML'>
+    {% csrf_token %}
+    <h4>Question IDs</h4> 
+    <ol id="form-generator">
+        <li id='q-id-1'>{% include 'generator_input.html' %}</li>
+    </ol>
+     <button type="submit" class="btn btn-sm" name="request" value="request">Request</button>
+    <button type="button" class="btn btn-sm" name="new-id" value="new-id" id="new-q-id">Add another Auto-Answer</button> 
+</form>
