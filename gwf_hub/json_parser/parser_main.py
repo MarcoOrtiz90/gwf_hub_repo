@@ -3,6 +3,7 @@ import os
 import openpyxl
 from pathlib import Path
 import openpyxl as xl
+import getpass
 from openpyxl.styles import PatternFill
 import time
 # from web_automation import data_store_dict, workflow_ids
@@ -13,11 +14,7 @@ c_answer_id_bucket = []
 data_store_dict = {}
 workflow_ids = []
 
-
-def web_automated_data(data_dict, wf_ids):
-    global data_store_dict, workflow_ids
-    data_store_dict = data_dict
-    workflow_ids = wf_ids
+# C:\Users\pratuhin\Desktop>
 
 
 def color_fixer(x, y, code):
@@ -25,7 +22,10 @@ def color_fixer(x, y, code):
     global sheet, worksheet_name
     color_fill = sheet.cell(x, y)
     color_fill.fill = PatternFill(fill_type='solid', start_color=code, end_color=code)
-    wb.save(worksheet_name)
+    try:
+        wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
+    except PermissionError:
+        print("Error trying to access the file from color_fixer().")
 
 # color_fixer(i, 9, 'A9D08E')
 
@@ -141,7 +141,7 @@ def extracting_mandate_questions():
                     color_fixer(row_counter, 13, 'F8CBAD')
                 row_counter += 1
                 #print(row_counter)
-        wb.save(worksheet_name)
+        wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
         row_counter += 1
     row_counter -= 1
     # Call a function for follow-ups and then return to fetching the next section
@@ -264,7 +264,7 @@ def extracting_follow_up():
                         color_fixer(row_counter, 13, 'F8CBAD')
 
                     row_counter += 1
-        wb.save(worksheet_name)
+        wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
         row_counter += 1
     row_counter += 1
     follow_up_list = []
@@ -446,7 +446,7 @@ def identify_starting_section():
             sheet.cell(row_counter, 2).value = widget_text
             color_fixer(row_counter, 2, 'BF8F00')
             widget_text = ''
-            wb.save(worksheet_name)
+            wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
             wb.close()
             other_sheets()
             print("Working")
@@ -528,9 +528,9 @@ def identify_starting_section():
             extracting_mandate_questions()
             mandate_questions = []
         else:
-            wb.save(worksheet_name)
+            wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
         # row_counter += 1
-    wb.save(worksheet_name)
+    wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
 
 
 def current_question_data():
@@ -664,12 +664,13 @@ def current_question_data():
 
 
 def other_sheets():
+    # Loads the remaining essential sheets from the 'Sample.xlsx'
     global worksheet_name
     source_file = xl.load_workbook('Sample.xlsm')
     source_sheet1 = source_file.worksheets[0]
     source_sheet2 = source_file.worksheets[1]
     source_sheet3 = source_file.worksheets[2]
-    destination_file = xl.load_workbook(worksheet_name)
+    destination_file = xl.load_workbook('C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
     final_sheet1 = destination_file.create_sheet('widget ids')
     final_sheet2 = destination_file.create_sheet('answer_type')
     final_sheet3 = destination_file.create_sheet('info')
@@ -701,28 +702,38 @@ def other_sheets():
     final_sheet3.merge_cells('D1:F2')
     final_sheet3.merge_cells('A3:C4')
     final_sheet3.merge_cells('D3:F4')
-    destination_file.save(worksheet_name)
+    destination_file.save('C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
 
 
-for workflow_id in workflow_ids:
-    worksheet_name = workflow_id + ".xlsx"
-    tic = time.perf_counter()
-    mandate_questions = []
-    follow_up_list = []
-    wb = openpyxl.Workbook()
-    sheet = wb.active
-    sheet.title = "master sheet"
-    sheet_name = sheet.title
-    wb.save(worksheet_name)
-    row_counter = 2
-    workflow_section = "sections_" + workflow_id
-    workflow_question = "questions_" + workflow_id
-    question_file = data_store_dict[workflow_question]
-    section_file = data_store_dict[workflow_section]
-    question_json = json.loads(question_file)
-    fup_string = ''
+def web_automated_data(data_dict, wf_ids):
+    # Making variables global
+    global data_store_dict, workflow_ids, tic, mandate_questions, \
+        follow_up_list, wb, sheet, sheet_name, row_counter, section_file, \
+        question_json, fup_string, worksheet_name, workflow_id, \
+        workflow_section, workflow_question
+    data_store_dict = data_dict
+    workflow_ids = wf_ids
 
-    current_question_data()
+    for w_id in workflow_ids:
+        workflow_id = w_id
+        worksheet_name = workflow_id + ".xlsx"
+        tic = time.perf_counter()
+        mandate_questions = []
+        follow_up_list = []
+        wb = openpyxl.Workbook()
+        sheet = wb.active
+        sheet.title = "master sheet"
+        sheet_name = sheet.title
+        wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\' + worksheet_name)
+        print("Parser collected the workflows IDs - ", workflow_id)
+        row_counter = 2
+        workflow_section = "sections_" + workflow_id
+        workflow_question = "questions_" + workflow_id
+        question_file = data_store_dict[workflow_question]
+        section_file = data_store_dict[workflow_section]
+        question_json = json.loads(question_file)
+        fup_string = ''
 
-    identify_starting_section()
+        current_question_data()
 
+        identify_starting_section()

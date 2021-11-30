@@ -27,11 +27,12 @@ def wf_id_data(wf_ids, reg):
     workflow_ids = wf_ids
     workflow_ids = workflow_ids.split(',')
     region = reg
-    browser = default_browser()
-    driver = path(browser)
+    # browser = default_browser()
+    driver = path('Firefox')
     data_dict = web_manipulation(driver)
     from . import parser_main
     parser_main.web_automated_data(data_dict, workflow_ids)
+    return "Done"
 
 
 def default_browser():
@@ -75,7 +76,7 @@ def load_cookie(driver, path):
 
 
 def web_manipulation(driver):
-    global questions_data, sections_data, workflow_ids, data_store_dict, first_section
+    global questions_data, sections_data, workflow_ids, data_store_dict, first_section, region
     try:
         global question_file_list, section_file_list
         if region == "NA":
