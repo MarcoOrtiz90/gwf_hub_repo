@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="3ff758fb-9cd4-40d8-8780-bfb7702fa414" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="f8beb107-2138-42f2-8a25-1536a057e05f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gwf_hub/templates/validator.html" beforeDir="false" afterPath="$PROJECT_DIR$/gwf_hub/templates/validator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gwf_hub/validator/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gwf_hub/validator/views.py" afterDir="false" />
+    </list>
+>>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+<<<<<<< HEAD
+        <option value="Python Script" />
+=======
+>>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+<<<<<<< HEAD
+  <component name="ProjectId" id="21KMfVIb8qR4VE7b4xMPATQtBtY" />
+=======
+  <component name="ProjectId" id="21SyIgJEdEtfCpOWWu43ywgm5Er" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+>>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../web_app" />
+=======
+>>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+      <changelist id="3ff758fb-9cd4-40d8-8780-bfb7702fa414" name="Default Changelist" comment="" />
+      <created>1637685429497</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637685429497</updated>
+    </task>
+    <servers />
+  </component>
+=======
+      <changelist id="f8beb107-2138-42f2-8a25-1536a057e05f" name="Default Changelist" comment="" />
+      <created>1637948704970</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637948704970</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+>>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
+</project>
