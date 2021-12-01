@@ -5,12 +5,22 @@ from .models import AutoAnswerQuestionTable, AutoAnswersTable
 def aaGenerator(request):
     question_ids_table = AutoAnswerQuestionTable.objects.all()
     if request.method == "POST":
-        context2 = request.POST.getlist('question_ids', '')
+        contextTwo = request.POST.getlist('question_ids', '')
         content = {
                 'question_ids_table': question_ids_table,
-                'prevSelect': context2
+                'prevSelect': contextTwo
         }
-        print(content)
+        for id in question_ids_table:
+            print(id.question_id)
+            print(id.question_category)
+
+        fups = []
+        for input in contextTwo:
+            for id in question_ids_table:
+                if input == id and id.question_ids_table == "fup":
+                    print("hello")
+        
+        # print(context2)
         print("second")
         return render(request, 'generator.html', content)
 

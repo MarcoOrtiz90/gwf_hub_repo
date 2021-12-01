@@ -2,14 +2,33 @@
     {% csrf_token %}
     <h4>Question IDs</h4>        
         <ol id="form-generator">
-            {% if content %}
-                {% for idx, itm in content %}
-                <li id='q-id-{{idx}}'>{% include 'generator_input.html' %}</li>
+            {% if prevSelect %}
+                {% for itm in prevSelect %}                                
+                <li id='q-id-list-{{ forloop.counter }}'>
+                    <select style="margin-right: 15px;" name="question_ids" id="q-id-select-{{forloop.counter}}">
+                        {% for id in question_ids_table %}
+                            {% if itm == id.question_id %}
+                                <option value="{{id.question_id}}" selected>{{id.question_id}}</option>
+                            {% else %}
+                                <option value="{{id.question_id}}">{{id.question_id}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </li><br>
                 {% endfor %}
             {% else %}
-            <li id='q-id-1'>{% include 'generator_input.html' %}</li>
+            <li id='q-id-1'>
+                <select style="margin-right: 15px;" name="question_ids" id="q-id-select-1">
+                    {% for id in question_ids_table %}
+                        <option value="{{id.question_id}}">{{id.question_id}}</option>
+                    {% endfor %}
+                </select>
+            </li>
             {% endif %}
         </ol>
-     <button type="submit" class="btn btn-sm" name="request" value="request">Request</button>
+    <button type="submit" class="btn btn-sm" name="request" value="request">Request</button>
     <button type="button" class="btn btn-sm" onclick="requestIDs()" name="new-id" value="new-id" id="new-q-id">Add another Auto-Answer</button> 
 </form>
+
+
+
