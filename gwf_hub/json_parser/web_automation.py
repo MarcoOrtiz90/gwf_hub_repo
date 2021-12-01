@@ -1,4 +1,6 @@
 import json
+import os
+import pickle
 import platform
 import time
 from winreg import HKEY_CURRENT_USER, OpenKey, QueryValueEx
@@ -23,13 +25,14 @@ workflow_ids = ''
 region = ''
 
 
-def wf_id_data(wf_ids, reg):
+def wf_id_data(wf_ids, reg, browser_used):
     global workflow_ids, region
+    browser_string = browser_used
     workflow_ids = wf_ids
     workflow_ids = workflow_ids.split(',')
     region = reg
     browser = default_browser()
-    driver = path(browser)
+    driver = path(browser_string)
     data_dict = web_manipulation(driver)
     from . import parser_main
     parser_main.web_automated_data(data_dict, workflow_ids)
@@ -51,7 +54,6 @@ def default_browser():
 
 
 def path(browser_string):
-    browser_string = 'Firefox'
     if browser_string.startswith('Chrome') is True:
         options = webdriver.ChromeOptions()
         PATH = "chromedriver.exe"
@@ -64,6 +66,14 @@ def path(browser_string):
         options.binary_location = r"C:\Program Files\Mozilla Firefox\firefox.exe"
         PATH = "geckodriver.exe"
         driver = webdriver.Firefox(options=options, executable_path=PATH)
+
+    # var
+    # options = new
+    # ChromeOptions();
+    # options.AddExtension(Path.GetFullPath("local/path/to/extension.crx"));
+    # var
+    # driver = new
+    # ChromeDriver(options);
 
     return driver
 
@@ -98,7 +108,7 @@ def web_manipulation(driver):
             except:
                 print("Issue in try-except for browser name")
 
-        time.sleep(25)
+        time.sleep(30)
         for workflow_id in workflow_ids:
             file_name_questions = "questions_" + workflow_id + ".txt"
             file_name_sections = "sections_" + workflow_id + ".txt"
