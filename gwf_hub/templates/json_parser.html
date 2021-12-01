@@ -3,7 +3,7 @@
 <div class="main-panel">
     {% include 'navbar.html' %}
     <br><br>
-    <form method="post" action="parsed_files/">
+    <form method="post" action="">
         {% csrf_token %}
         <div class="form-group mt-5">
             <label class="col-sm-10 col-form-label"><h3>Please enter the workflow ID(s)</h3>
@@ -12,19 +12,27 @@
             <div class="col-sm-7 ml-4 mt-2">
                 <input type="text" name="workflows" class="form-control" placeholder="Workflows" width="40%">
                 <label class="switch mt-5">
-                            <input type="checkbox" name="region_na" id="regionna">
-                            <span class="slider round"></span>
-                        </label><label style="margin-left: 5px;">NA</label><br>
+                    <input type="checkbox" name="region_na" id="regionna">
+                    <span class="slider round"></span>
+                </label><label style="margin-left: 5px;">NA</label><br>
                 <label class="switch">
-                            <input type="checkbox" name="region_eu" id="regioneu">
-                            <span class="slider round"></span>
-                        </label><label style="margin-left: 5px;">EU</label><br>
+                    <input type="checkbox" name="region_eu" id="regioneu">
+                    <span class="slider round"></span>
+                </label><label style="margin-left: 5px;">EU</label><br>
                 <label class="switch">
-                            <input type="checkbox" name="region_fe" id="regionfe">
-                            <span class="slider round"></span>
-                        </label><label style="margin-left: 5px;">FE</label><br>
+                    <input type="checkbox" name="region_fe" id="regionfe">
+                    <span class="slider round"></span>
+                </label><label style="margin-left: 5px;">FE</label><br>
                 <br>
                 <button type="submit" class="btn btn-secondary btn-sm mt-3 ">Generate!</button>
+                <br>
+                {% if error != "" %}
+                <p style="color:red;">{{ error }}</p>
+                {% endif %}
+
+                {% if message_to_display != "" %}
+                <p style="color:grey;">{{ message_to_display }}</p>
+                {% endif%}
             </div>
         </div>
     </form>
