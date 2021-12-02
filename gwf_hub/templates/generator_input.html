@@ -1,27 +1,17 @@
-    {% if prevSelect %}
-        <!-- <select style="margin-right: 15px;" name="question_ids" id="q-ids">
-            {% for id_select in prevSelect %}
-                    <option value="{{id_select}}" selected>{{id_select}}</option>
-            {% endfor %}            
-        </select> -->
-    {% else %}
-    <select style="margin-right: 15px;" name="question_ids" id="q-ids">
-        {% for id in question_ids_table %}
-            <option value="{{id.question_id}}">{{id.question_id}}</option>
-        {% endfor %}
-    </select>
+<form action="" method="POST">
+    {% if mandates %}
+        {% for mandate in mandates%}
+            <label for="label-order-{{mandate}}">{{mandate}} Order</label><br>
+            <input type="number" name="order-input-{{mandate}}" id="order-input-{{mandate}}" placeholder="Order">
+            <hr>
+        {% endfor%}
     {% endif %}
-<hr>
-
-
-{% if prevSelect %}
-    <select name="question_ids" id="q-ids">
-    {% for select in prevSelect %}
-            {% if select == ids %}
-                <option value="{{select}}" selected>{{select}}</option>
-            {% else %}
-                <option value="{{ids.question_id}}">{{ids.question_id}}</option>
-            {% endif %}
-    {% endfor %}
-    </select>
-{% endif %}
+    {% if fups %}
+        {% for fup in fups %}
+            <label for="label-expression-{{fup}}">{{fup}} showExpression & Order</label><br>
+            <input type="text" name="expression-input-{{fup}}" id="expression-input-{{fup}}" placeholder="showExpression"><input type="number" name="order-input-{{fup}}" id="order-input-{{fup}}" style="margin-left: 10px;" placeholder="Order">
+            <hr>                                    
+        {% endfor%}
+    {% endif %}
+    <button type="submit" class="btn btn-sm btn-info" name="generate" value="request">Generate</button>
+</form>

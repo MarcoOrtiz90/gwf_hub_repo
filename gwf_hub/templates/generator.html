@@ -24,9 +24,7 @@
                 <div class="col-md-12">
                     {% if prevSelect %}
                         <h3>Additional Inputs</h3>
-                        {% for inputs in prevSelect %}
-                            <label for="input-label-{{forloop.counter}}">{{inputs}}</label>
-                        {% endfor %}
+                        {% include 'generator_input.html' %}
                     {% endif %}
                 </div>
             </div>

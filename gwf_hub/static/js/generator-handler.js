@@ -10,3 +10,20 @@ function requestIDs(event){
     formCopyTarget.append(emptyFormEle)
 }
 
+function removeID(event){
+    if(event){
+        event.preventDefault()
+    }
+    
+    const formCopyTarget = document.getElementById('form-generator')
+    ids_length = $("#form-generator").children().length
+    if (ids_length > 1) {
+        let removeItm = document.getElementById(`q-id-${ids_length}`)
+        console.log(formCopyTarget)
+        formCopyTarget.removeChild(removeItm)
+    } else {
+        alert("No more IDs to remove")
+    }
+
+}
+

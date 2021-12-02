@@ -1,6 +1,6 @@
 <form method="POST" action="">
     {% csrf_token %}
-    <h4>Question IDs</h4>        
+    <h3>Question IDs</h3>        
         <ol id="form-generator">
             {% if prevSelect %}
                 {% for itm in prevSelect %}                                
@@ -26,8 +26,9 @@
             </li>
             {% endif %}
         </ol>
-    <button type="submit" class="btn btn-sm" name="request" value="request">Request</button>
-    <button type="button" class="btn btn-sm" onclick="requestIDs()" name="new-id" value="new-id" id="new-q-id">Add another Auto-Answer</button> 
+    <button type="submit" class="btn btn-sm btn-success" name="request" value="request">Request</button>
+    <button type="button" class="btn btn-sm btn-primary" onclick="requestIDs()" name="new-id" value="new-id" id="new-q-id">Add another Auto-Answer</button>
+    <button type="button" class="btn btn-sm btn-warning" onclick="removeID()" name="remove-id" value="remove-id" id="remove-q-id">Remove Auto-Answer</button>
 </form>
 
 
