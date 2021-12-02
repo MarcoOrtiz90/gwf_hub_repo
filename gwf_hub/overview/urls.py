@@ -7,4 +7,5 @@ urlpatterns = [
     path('auto-answer-generator/', include('auto_answer_generator.urls')),
     path("gwf-db/", views.database, name="gwf-db"),
     path("workflow-hierarchy/", views.hierarchy, name="workflow-hierarchy"),
+    path("albacorizer/", include('albacorizer.urls')),
  ]

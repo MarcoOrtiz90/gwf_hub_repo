@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+  <br><br><br>
+  <div style="margin-left:20px;">
+  <p style="margin-left:5px; color:grey;">Sections JSON Code</p>
+  {% if sections_json != "" %}
+  <textarea name="sections_json" style="margin-left:10px;" rows="5" cols="70">{{ sections_json }}</textarea><br>
+  {% endif %}
+  <br><br>
+  {% if questions_json != "" %}
+  <p style="margin-left:5px; color:grey;">Questions JSON Code</p>
+  <textarea name="sections_json" style="margin-left:10px;" rows="7" cols="70">{{ questions_json }}</textarea><br>
+  {% endif %}
+    </div>
+</div>
+{% endblock content %}
