@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.8 (gwf_hub_repo)" project-jdk-type="Python SDK" />
+=======
+>>>>>>> b305ae0a93f02bb2c7ebcdaa255a621f5f66f636
   <component name="PyCharmProfessionalAdvertiser">
     <option name="shown" value="true" />
   </component>

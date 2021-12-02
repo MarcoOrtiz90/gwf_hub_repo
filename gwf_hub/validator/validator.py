@@ -23,6 +23,7 @@ def current_question_data(questions, sections, toggle_dict):
 
     # This is a newer version of validator
     # Unpacking toggle values:
+    # adding one more comment
     # Trying a new comment!
     auto_answers = toggle_dict["auto_answers"]
     duplicate_id = toggle_dict["duplicate_id"]
