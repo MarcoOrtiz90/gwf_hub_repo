@@ -75,13 +75,6 @@
                         <li style="color:grey;">Submit to Validate!</li>
                     </ol>
                     <br>
-                    {% if issues_to_print %}
-                    <h3 style="color:grey;">Validator Result</h3>
-                    <p style="color:grey;">Issues listed if any:</p>
-                    <pre><textarea rows="6" cols="80">{{ issues_to_print }}</textarea></pre>
-                    {% else %}
-                    <h3 style="color:grey;">No issues to output</h3>
-                    <br>
                     {% if error_found %}
                         <h3 style="color:grey;">Validator Result</h3>
                         <p style="color:grey;">Data collected if any:</p>
