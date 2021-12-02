@@ -28,6 +28,5 @@ function removeID(event){
     } else {
         alert("No more IDs to remove")
     }
-
 }
 
