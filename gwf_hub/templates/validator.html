@@ -9,16 +9,23 @@
                 <div class="col-md-6">
                     <form method="POST" action="">
                         {% csrf_token %}
-                        <label for="sections">
+                        <label>
                             Workflow Sections JSON Code
                         </label><br>
-                        <textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4"
-                                  cols="70"></textarea><br>
-                        <label for="questions">
+                            {% if return_sections_data != "" %}
+                                <pre><textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="60">{{ return_sections_data }}</textarea></pre>
+                            {% else %}
+                                <pre><textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="60">{{ return_sections_data }}</textarea></pre>
+                            {% endif %}
+                        <br>
+                        <label>
                             Workflow Questions JSON Code
                         </label><br>
-                        <textarea name="questions_json" placeholder="Enter Questions JSON code" rows="4"
-                                  cols="70"></textarea>
+                            {% if return_questions_data != "" %}
+                                <pre><textarea name="questions_json" rows="4" cols="60" placeholder="Enter Questions JSON code">{{ return_questions_data }}</textarea></pre>
+                            {% else %}
+                                <pre><textarea name="questions_json" placeholder="Enter Questions JSON code" rows="4" cols="60">{{ return_questions_data }}</textarea></pre>
+                            {% endif %}
                         <hr>
                         <h3>Include</h3>
                         <label class="switch">
@@ -74,6 +81,15 @@
                     <pre><textarea rows="6" cols="80">{{ issues_to_print }}</textarea></pre>
                     {% else %}
                     <h3 style="color:grey;">No issues to output</h3>
+                    <br>
+                    {% if error_found %}
+                        <h3 style="color:grey;">Validator Result</h3>
+                        <p style="color:grey;">Data collected if any:</p>
+                        <pre><textarea rows="6" cols="80" style="color:red">{{ issues_to_print }}</textarea></pre>
+                    {% else %}
+                        <h3 style="color:grey;">Validator Result</h3>
+                        <p style="color:grey;">Data collected if any:</p>
+                        <pre><textarea rows="6" cols="80" style="color:grey">{{ issues_to_print }}</textarea></pre>
                     {% endif %}
                 </div>
             </div>

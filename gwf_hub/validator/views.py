@@ -33,15 +33,27 @@ def validator_fun(request):
                 # print(issues_list)
                 len_of_elements = len(issues_list) - 1
                 issues_list.pop(len_of_elements)
-                params = {"issues_to_print": issues_list}
+                params = {"issues_to_print": issues_list,
+                          "return_questions_data": questions_json,
+                          "return_sections_data": sections_json}
+                print(params["return_sections_data"])
                 return render(request, 'validator.html', params)
             except ValueError:
-                issues_list = "Invalid/Incomplete JSON Codes entered. Please check the codes and try again."
-                params = {"issues_to_print": issues_list}
+                issues_list = "Invalid/Incomplete JSON Codes entered. Please check the \ncodes and try again."
+                error_found = True
+                params = {"issues_to_print": issues_list,
+                          "return_questions_data": questions_json,
+                          "return_sections_data": sections_json,
+                          "error_found": error_found}
+                print(params["return_sections_data"])
                 return render(request, 'validator.html', params)
         else:
             issues_list = "Please insert JSON data in the textboxes and try again."
-            params = {"issues_to_print": issues_list}
+            error_found = True
+            params = {"issues_to_print": issues_list,
+                      "return_questions_data": questions_json,
+                      "return_sections_data": sections_json,
+                      "error_found": error_found}
             return render(request, 'validator.html', params)
 
     return render(request, 'validator.html', {})
