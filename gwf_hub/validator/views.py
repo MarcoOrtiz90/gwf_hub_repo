@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from . import validator
 
 # Create your views here.
+
+
 def validator_fun(request):
     if request.method == 'POST':
         sections_json = request.POST.get('sections_json')
