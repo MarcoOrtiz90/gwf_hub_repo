@@ -4,7 +4,7 @@
         <ol id="form-generator">
             {% if prevSelect %}
                 {% for itm in prevSelect %}                                
-                <li id='q-id-list-{{ forloop.counter }}'>
+                <li id='q-id-{{ forloop.counter }}'>
                     <select style="margin-right: 15px;" name="question_ids" id="q-id-select-{{forloop.counter}}">
                         {% for id in question_ids_table %}
                             {% if itm == id.question_id %}
@@ -22,7 +22,7 @@
                     {% for id in question_ids_table %}
                         <option value="{{id.question_id}}">{{id.question_id}}</option>
                     {% endfor %}
-                </select>
+                </select><br>
             </li>
             {% endif %}
         </ol>

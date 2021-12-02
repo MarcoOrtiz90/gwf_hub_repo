@@ -16,9 +16,13 @@ function removeID(event){
     }
     
     const formCopyTarget = document.getElementById('form-generator')
-    ids_length = $("#form-generator").children().length
+    console.log(formCopyTarget)
+    ids_length = formCopyTarget.getElementsByTagName("li").length
+    console.log(ids_length)
     if (ids_length > 1) {
+        console.log("entered if")
         let removeItm = document.getElementById(`q-id-${ids_length}`)
+        console.log(removeItm)
         console.log(formCopyTarget)
         formCopyTarget.removeChild(removeItm)
     } else {
