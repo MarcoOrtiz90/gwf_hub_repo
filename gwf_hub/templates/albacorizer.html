@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+    <br><br>
+    <form method="post" action="jsoncodes/" enctype="multipart/form-data" >
+        {% csrf_token %}
+    <div class="file-loading mt-5 ">
+        <input id="input-b7" name="sourcefile" type="file" class="file"
+                required="required" style="margin-left: 45px;">
+    </div>
+    <br>
+    <button type="submit" value="Upload" class="btn btn-primary btn-sm" style="margin-left: 45px;">Albacorize</button>
+</form>
+</div>
+
+{% endblock %}
