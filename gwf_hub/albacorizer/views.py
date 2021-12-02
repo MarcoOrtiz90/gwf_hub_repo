@@ -11,12 +11,15 @@ def load_albacorizer(request):
 
 def jsoncodes(request):
     if request.method == 'POST':
-        source_file = request.FILES["sourcefile"]
-        # wb = openpyxl.load_workbook(source_file)
-        data_dict = albacorizer_main.new_ms_albacorize(source_file)
-        # df_ms_questions = pd.read_excel(wb, sheet_name='master sheet')
-        # questions_json = functions.question_answer_build(df_ms_questions)
-        # df_ms_sections = pd.read_excel(wb, sheet_name='master sheet')
-        # df_wid = pd.read_excel(wb, sheet_name='widget ids')
-        # sections_json = functions.section_build(df_ms_sections, df_wid)
-        return render(request, 'albacorizer_output.html', data_dict)
+        try:
+            source_file = request.FILES["sourcefile"]
+            source_file_name = str(request.FILES["sourcefile"].name)
+            print(source_file_name)
+            if source_file_name.endswith('.xlsx') or source_file_name.endswith('.xlsm'):
+                data_dict = albacorizer_main.new_ms_albacorize(source_file)
+                return render(request, 'albacorizer_output.html', data_dict)
+            else:
+                data_dict = {"Error": "Incorrect file type, please upload .xlsx or xlsm files."}
+                return render(request, 'albacorizer.html', data_dict)
+        except Exception as ve:
+            print("Value Error noted as - ", ve)

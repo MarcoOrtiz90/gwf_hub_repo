@@ -7,10 +7,13 @@
         {% csrf_token %}
     <div class="file-loading mt-5 ">
         <input id="input-b7" name="sourcefile" type="file" class="file"
-                required="required" style="margin-left: 45px;">
+                required="required" style="margin-left: 45px;" >
     </div>
     <br>
     <button type="submit" value="Upload" class="btn btn-primary btn-sm" style="margin-left: 45px;">Albacorize</button>
+        {% if Error %}
+        <p style="margin-left: 45px; margin-top: 10px; color:red;"> {{Error}} </p>
+        {% endif %}
 </form>
 </div>
 
