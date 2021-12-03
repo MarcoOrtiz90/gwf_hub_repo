@@ -33,8 +33,16 @@ def aaGenerator(request):
             return render(request, 'generator.html', second_context)
 
         if request.POST.get('generate'):
+            # order_inputs = request.POST.get('')
+            # expression_inputs = request.POST.get('')
+            # 
+            key_name = 'expression-input-'            
             input_ids_generate = request.POST
-            print(type(input_ids_generate))
+            for key in input_ids_generate:
+                if key.startswith(key_name) == True:
+                    option = key.split('input-', 1)[1] 
+                    print(option)
+            print(input_ids_generate)
 
 
     first_context = {'question_ids_table': question_ids_table}

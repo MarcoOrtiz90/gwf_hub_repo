@@ -1,80 +1,29 @@
 <form action="" method="POST">
     {% csrf_token %}
     {% if mandates %}
-        {% for mandate in mandates%}
-            <label for="label-order-{{mandate}}"><strong>{{mandate}}</strong> Order</label><br>
-            <input type="number" name="order-input-{{mandate}}" id="order-input-{{mandate}}" placeholder="Order" min="0" style="width: 70px;">
-            <hr>
-        {% endfor%}
+        <ul id='mandates-order-list'></ul>
+            {% for mandate in mandates %}        
+                <li id='mandates-list-item-{{forloop.counter}}'>
+                    <label for="label-order-{{mandate}}"><strong>{{mandate}}</strong> Order</label><br>
+                    <input type="number" name="order-input-{{mandate}}" id="order-input-{{mandate}}"          placeholder="Order" min="0" style="width: 70px;">
+                    <hr>
+                </li>        
+            {% endfor%}
+        </ul>
     {% endif %}
     {% if fups %}
-        {% for fup in fups %}
-            <label for="label-expression-{{fup}}"><strong>{{fup}}</strong> showExpression & Order</label><br>
-            <input type="text" name="expression-input-{{fup}}" id="expression-input-{{fup}}" placeholder="showExpression" size="30"><input type="number" name="order-input-{{fup}}" id="order-input-{{fup}}" style="margin-left: 10px; width: 70px; " placeholder="Order" min="0">
-            <hr>                                    
-        {% endfor%}
+        <ul id='fups-order-list' name='fups-order-list'></ul>
+            {% for fup in fups %}        
+                <li id='fups-list-item-{{forloop.counter}}'>
+                    <label for="label-expression-{{fup}}"><strong>{{fup}}</strong> showExpression & Order</label><br>
+                    <input type="text" name="expression-input-{{fup}}" id="expression-input-{{fup}}" placeholder="showExpression" size="30"><input type="number" name="order-input-{{fup}}" id="order-input-{{fup}}" style="margin-left: 10px; width: 70px; " placeholder="Order" min="0">
+                    <hr>
+                </li>                                           
+            {% endfor%}
+        </ul> 
     {% endif %}
     <label for="dynamic-key-name-label"> <strong>Dynamic Keys Label</strong></label>
     <input type="text" name="dynamic-key-name" id="dynamic-key-name" placeholder="Dynamic Keys Name" style="margin-left: 10px;" size="17">
     <button type="submit" class="btn btn-sm btn-info" name="generate" value="generate">Generate</button>
-</form>
-
-{% if mandates %}
-{% for mandate in mandates%}
-    <label for="label-order-{{mandate}}"><strong>{{mandate}}</strong> Order</label><br>
-    <input type="number" name="order-input-{{mandate}}" id="order-input-{{mandate}}" placeholder="Order" min="0" style="width: 70px;">
-    <hr>
-{% endfor%}
-{% endif %}
-{% if fups %}
-{% for fup in fups %}
-    <label for="label-expression-{{fup}}"><strong>{{fup}}</strong> showExpression & Order</label><br>
-    <input type="text" name="expression-input-{{fup}}" id="expression-input-{{fup}}" placeholder="showExpression" size="30"><input type="number" name="order-input-{{fup}}" id="order-input-{{fup}}" style="margin-left: 10px; width: 70px; " placeholder="Order" min="0">
-    <hr>                                    
-{% endfor%}
-{% endif %}
-<label for="dynamic-key-name-label"> <strong>Dynamic Keys Label</strong></label>
-<input type="text" name="dynamic-key-name" id="dynamic-key-name" placeholder="Dynamic Keys Name" style="margin-left: 10px;" size="17">
-<button type="submit" class="btn btn-sm btn-info" name="generate" value="generate">Generate</button>
-
-=====================
-TEST FORM
-
-<form action="" method="POST">
-    <div class="row">
-        <div class="col-md-12">
-            {% csrf_token %}
-            <h3>Question IDs</h3>        
-                <ol id="form-generator">
-                    {% if prevSelect %}
-                        {% for itm in prevSelect %}                                
-                        <li id='q-id-{{ forloop.counter }}'>
-                            <select style="margin-right: 15px;" name="question_ids" id="q-id-select-{{forloop.counter}}">
-                                {% for id in question_ids_table %}
-                                    {% if itm == id.question_id %}
-                                        <option value="{{id.question_id}}" selected>{{id.question_id}}</option>
-                                    {% else %}
-                                        <option value="{{id.question_id}}">{{id.question_id}}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            </select>
-                        </li><br>
-                        {% endfor %}
-                    {% else %}
-                    <li id='q-id-1'>
-                        <select style="margin-right: 15px;" name="question_ids" id="q-id-select-1">
-                            {% for id in question_ids_table %}
-                                <option value="{{id.question_id}}">{{id.question_id}}</option>
-                            {% endfor %}
-                        </select><br>
-                    </li>
-                    {% endif %}
-                </ol>
-            <button type="submit" class="btn btn-sm btn-success" name="request" value="request">Request</button>
-            <button type="button" class="btn btn-sm btn-primary" onclick="requestIDs()" name="new-id" value="new-id" id="new-q-id">Add another Auto-Answer</button>
-            <button type="button" class="btn btn-sm btn-warning" onclick="removeID()" name="remove-id" value="remove-id" id="remove-q-id">Remove Auto-Answer</button>
-        </div>
-    </div>
-
 </form>
 
