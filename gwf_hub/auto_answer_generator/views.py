@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import AutoAnswerQuestionTable, AutoAnswersTable
+from . import generator
 
 # Create your views here.
 def aaGenerator(request):
@@ -32,17 +33,11 @@ def aaGenerator(request):
             }
             return render(request, 'generator.html', second_context)
 
-        if request.POST.get('generate'):
-            # order_inputs = request.POST.get('')
-            # expression_inputs = request.POST.get('')
-            # 
-            key_name = 'expression-input-'            
+        if request.POST.get('generate'):            
             input_ids_generate = request.POST
-            for key in input_ids_generate:
-                if key.startswith(key_name) == True:
-                    option = key.split('input-', 1)[1] 
-                    print(option)
-            print(input_ids_generate)
+            template = generator.dataAnalysis(input_ids_generate)
+            return render(request, 'generator.html', {})
+            
 
 
     first_context = {'question_ids_table': question_ids_table}

@@ -5,7 +5,7 @@
             {% for mandate in mandates %}        
                 <li id='mandates-list-item-{{forloop.counter}}'>
                     <label for="label-order-{{mandate}}"><strong>{{mandate}}</strong> Order</label><br>
-                    <input type="number" name="order-input-{{mandate}}" id="order-input-{{mandate}}"          placeholder="Order" min="0" style="width: 70px;">
+                    <input type="number" name="order-input-{{mandate}}" id="order-input-{{mandate}}" placeholder="Order" min="0" style="width: 70px;">
                     <hr>
                 </li>        
             {% endfor%}
