@@ -21,16 +21,13 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     {% if prevSelect %}
                         <h3>Additional Inputs</h3>
                         {% include 'generator_input.html' %}
-                    {% endif %}
-                </div>
-                <div class="col-md-6">
-                    {% if generated %}
+                    {% elif generated %}
                         <h3>Auto Generated Template</h3>
-                        <textarea name="generated-template" id="" cols="30" rows="10"></textarea>
+                        <textarea name="generated-template" id="" cols="70" rows="10">{{generated}}</textarea>
                     {% endif %}
                 </div>
             </div>

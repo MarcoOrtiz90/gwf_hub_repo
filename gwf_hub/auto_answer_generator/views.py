@@ -9,10 +9,6 @@ def aaGenerator(request):
     if request.method == "POST":
         if request.POST.get('request'):
             input_ids = request.POST.getlist('question_ids', '')
-            # for id in question_ids_table:
-            #     print(id.question_id)
-            #     print(id.question_category)
-
             fups = []
             mandates = []
             order = len(input_ids)
@@ -36,7 +32,14 @@ def aaGenerator(request):
         if request.POST.get('generate'):            
             input_ids_generate = request.POST
             template = generator.dataAnalysis(input_ids_generate)
-            return render(request, 'generator.html', {})
+            print("===FINAL TEMPLATE==")
+            print(template)
+            print(type(template))
+            third_context = {
+                'prevSelect': [],
+                'generated': template
+            }
+            return render(request, 'generator.html', third_context)
             
 
 
