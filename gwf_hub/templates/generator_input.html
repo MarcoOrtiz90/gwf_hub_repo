@@ -1,14 +1,29 @@
-    {% if content %}
-        <select style="margin-right: 15px;" name="question_ids" id="q-ids">
-            {% for id in content %}
-                <option value="{{id}}">{{id}}</option>
-            {% endfor %}
-        </select>
-    {% else %}
-    <select style="margin-right: 15px;" name="question_ids" id="q-ids">
-        {% for id in question_ids_table %}
-            <option value="{{id.question_id}}">{{id.question_id}}</option>
-        {% endfor %}
-    </select>
+<form action="" method="POST">
+    {% csrf_token %}
+    {% if mandates %}
+        <ul id='mandates-order-list'></ul>
+            {% for mandate in mandates %}        
+                <li id='mandates-list-item-{{forloop.counter}}'>
+                    <label for="label-order-{{mandate}}"><strong>{{mandate}}</strong> Order</label><br>
+                    <input type="number" name="order-input-{{mandate}}" id="order-input-{{mandate}}" placeholder="Order" min="0" style="width: 70px;">
+                    <hr>
+                </li>        
+            {% endfor%}
+        </ul>
     {% endif %}
-<hr>
+    {% if fups %}
+        <ul id='fups-order-list' name='fups-order-list'></ul>
+            {% for fup in fups %}        
+                <li id='fups-list-item-{{forloop.counter}}'>
+                    <label for="label-expression-{{fup}}"><strong>{{fup}}</strong> showExpression & Order</label><br>
+                    <input type="text" name="expression-input-{{fup}}" id="expression-input-{{fup}}" placeholder="showExpression" size="30"><input type="number" name="order-input-{{fup}}" id="order-input-{{fup}}" style="margin-left: 10px; width: 70px; " placeholder="Order" min="0">
+                    <hr>
+                </li>                                           
+            {% endfor%}
+        </ul> 
+    {% endif %}
+    <label for="dynamic-key-name-label"> <strong>Dynamic Keys Label</strong></label>
+    <input type="text" name="dynamic-key-name" id="dynamic-key-name" placeholder="Dynamic Keys Name" style="margin-left: 10px;" size="17">
+    <button type="submit" class="btn btn-sm btn-info" name="generate" value="generate">Generate</button>
+</form>
+
