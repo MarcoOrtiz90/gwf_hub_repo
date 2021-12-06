@@ -16,7 +16,7 @@
                         <li style="color:grey;">Click the dropdown menu to select the question id</li>
                         <li style="color:grey;">If more than one question is needed, click the "Add Another Auto-Answer" button to add more</li>
                         <li style="color:grey;">Click "Request" and the Generator will ask you for the show expression, if needed, and the order of the question in the Paramount Flows </li>
-                        <li style="color:grey;">When all fields are filled, click Generate to create a template that is ready to be used in Paramount.</li>
+                        <li style="color:grey;">When all fields are filled, click Generate to create a template that is Paramount ready.</li>
                     </ol>
                 </div>
             </div>
@@ -30,9 +30,10 @@
                 </div>
                 <div class="col-md-6">
                     {% if generated %}
-                        <div>
-                        <h3 style="display: inline-block;">Auto Generated Template</h3> <button class="btn btn-sm btn-info" type="button" style="float: right;">Copy to clipboard</button>
-                        <textarea name="generated-template" id="" cols="80" rows="40">{{generated}}</textarea>
+                        <div class="container-fluid">
+                        <h3>Auto Generated Template</h3> 
+                        <button onclick="copyToClipboard()"  class="btn btn-sm btn-info" type="button">Copy to clipboard</button>
+                        <textarea name="generated-template" id="template" cols="80" rows="40">{{generated}}</textarea>
                         </div>
                     {% endif %}
                     <hr>

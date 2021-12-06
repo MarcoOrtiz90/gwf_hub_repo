@@ -30,3 +30,10 @@ function removeID(event){
     }
 }
 
+function copyToClipboard(){
+    let textarea = document.getElementById('template')
+    textarea.select();
+    document.execCommand('copy')
+    console.log("executed copy")
+}
+
