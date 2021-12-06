@@ -9,7 +9,7 @@
                 <div class="col-md-6">
                     <form method="POST" action="">
                         {% csrf_token %}
-                        <label for="sections">
+                        <label>
                             Workflow Sections JSON Code
                         </label><br>
                             {% if return_sections_data != "" %}
@@ -18,7 +18,7 @@
                                 <pre><textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="60">{{ return_sections_data }}</textarea></pre>
                             {% endif %}
                         <br>
-                        <label for="questions">
+                        <label>
                             Workflow Questions JSON Code
                         </label><br>
                             {% if return_questions_data != "" %}
@@ -73,17 +73,9 @@
                         <li style="color:grey;">Paste the JSON in their respective field</li>
                         <li style="color:grey;">Specify your filters with the selectors</li>
                         <li style="color:grey;">Submit to Validate!</li>
-<<<<<<< HEAD
+
                     </ol>
                     <br>
-                    {% if issues_to_print %}
-                    <h3 style="color:grey;">Validator Result</h3>
-                    <p style="color:grey;">Issues listed if any:</p>
-                    <pre><textarea rows="6" cols="80">{{ issues_to_print }}</textarea></pre>
-                    {% else %}
-                    <h3 style="color:grey;">No issues to output</h3>
-=======
-                    </ol><br>
                     {% if error_found %}
                         <h3 style="color:grey;">Validator Result</h3>
                         <p style="color:grey;">Data collected if any:</p>
@@ -92,7 +84,7 @@
                         <h3 style="color:grey;">Validator Result</h3>
                         <p style="color:grey;">Data collected if any:</p>
                         <pre><textarea rows="6" cols="80" style="color:grey">{{ issues_to_print }}</textarea></pre>
->>>>>>> 4fc503546a67d6615c6c6b277ec6e40df1f61025
+
                     {% endif %}
                 </div>
             </div>

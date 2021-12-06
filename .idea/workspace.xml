@@ -6,8 +6,12 @@
 =======
     <list default="true" id="f8beb107-2138-42f2-8a25-1536a057e05f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/gwf_hub/geckodriver.log" beforeDir="false" afterPath="$PROJECT_DIR$/gwf_hub/geckodriver.log" afterDir="false" />
+=======
       <change beforePath="$PROJECT_DIR$/gwf_hub/templates/validator.html" beforeDir="false" afterPath="$PROJECT_DIR$/gwf_hub/templates/validator.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gwf_hub/validator/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/gwf_hub/validator/views.py" afterDir="false" />
+>>>>>>> b305ae0a93f02bb2c7ebcdaa255a621f5f66f636
     </list>
 >>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +40,10 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
+<<<<<<< HEAD
+=======
 >>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
+>>>>>>> b305ae0a93f02bb2c7ebcdaa255a621f5f66f636
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />

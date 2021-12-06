@@ -1,88 +1,78 @@
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <meta name="viewport"
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static '/css/material-dashboard.css' %}"/>
     <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <script src="https://kit.fontawesome.com/876a366f24.js" crossorigin="anonymous"></script>
     <title>GWF Workspace</title>
 </head>
 <body class="dark-edition">
-  <div class="wrapper">
+<div class="wrapper">
     <div class="sidebar" data-color="azure" data-background-color="black" data-image="#">
-      
-        <!-- Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger" -->
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-<body>
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">GWF Workspace</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>        
-        <div class="navbar-nav">
-          <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="#">Sign out</a>
-          </div>
+          Tip 2: you can also add an image using data-image tag
+      -->
+        <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal">GWF Workspace</a></div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'overview' %}">
+                        <i class="material-icons">home</i>
+                        <p>Home</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'workflow-hierarchy' %}">
+                        <i class="material-icons">mediation</i>
+                        <p>Workflow Hierarchy</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gwf-db' %}">
+                        <i class="material-icons">view_agenda</i>
+                        <p>GWF Database</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://w.amazon.com/bin/view/Guided_Workflow/Home">
+                        <i class="material-icons">help</i>
+                        <p>Help</p>
+                    </a>
+                </li>
+            </ul>
         </div>
-    </header>
-      <div class="container-fluid">
-        <div class="row">
-          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-            <div class="position-sticky pt-3">
-              <ul class="nav flex-column">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'overview' %}">
-                    <span data-feather="home"></span>
-                    Home
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="file"></span>
-                    Workflow Hierarchy
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart"></span>
-                    GWF Database
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">
-                    <span data-feather="users"></span>
-                    Help
-                  </a>
-                </li>                
-              </ul>
-            </div>
-          </nav>
-      
-          <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 main">
-            {% block content %}
-
-            {% endblock content %}
-          </main>
-        </div>
-      </div>
     </div>
 
     {% block content %}
 
     {% endblock content %}
 
-<script src="{% static '/js/jquery.min.js' %}"></script>
-<script src="{% static '/js/popper.min.js' %}"></script>
-<script src="{% static '/js/bootstrap-material-design.min.js' %}"></script>
-<script src="https://unpkg.com/default-passive-events"></script>
-<script src="{% static '/js/perfect-scrollbar.jquery.min.js' %}"></script>
-<script src="{% static '/js/bootstrap-notify.js' %}"></script>
-<script src="{% static '/js/material-dashboard.js' %}"></script>
-  </div>  
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/popper.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap-material-design.min.js' %}"></script>
+    <script src="https://unpkg.com/default-passive-events"></script>
+    <script src="{% static '/js/perfect-scrollbar.jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap-notify.js' %}"></script>
+    <script src="{% static '/js/material-dashboard.js' %}"></script>
+    <script src="{% static '/js/generator-handler.js' %}"></script>
+
+</div>
 </body>
 </html>

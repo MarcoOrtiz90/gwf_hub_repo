@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 gwf_hub/gwf_hub/__pycache__/*.pyc
 gwf_hub/overview/__pycache__/*.pyc
-=======
 gwf_hub/gwf_hub/__pycache__/
 gwf_hub/overview/__pycache__/
->>>>>>> e5de081b388ee480cb542958fbb21fd08562494f
+*/__pycache__/*

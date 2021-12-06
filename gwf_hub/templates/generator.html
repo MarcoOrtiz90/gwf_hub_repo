@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+    <div class="content">
+        <h2>Auto-Answer Template Generator</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    {% include 'generator-form.html' %}
+                </div>
+                <div class="col-md-8">
+                    <p style="color: grey;"><strong>The Generator</strong> is a tool that allows the user to create a JavaScript template ready to use on a Paramount flow.The output code will be used to manage auto-answers.</p>
+                    <p style="color: grey;">How to:</p>
+                    <ol>
+                        <li style="color:grey;">Click the dropdown menu to select the question id</li>
+                        <li style="color:grey;">If more than one question is needed, click the "Add Another Auto-Answer" button to add more</li>
+                        <li style="color:grey;">Click "Request" and the Generator will ask you for the show expression, if needed, and the order of the question in the Paramount Flows </li>
+                        <li style="color:grey;">When all fields are filled, click Generate to create a template that is ready to be used in Paramount.</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
