@@ -10,6 +10,15 @@ function requestIDs(event){
     formCopyTarget.append(emptyFormEle)
 }
 
+
+function copyToClipboard(){
+    let textarea = document.getElementById('template')
+    textarea.select();
+    document.execCommand('copy')
+    console.log("executed copy")
+}
+
+
 function removeID(event){
     if(event){
         event.preventDefault()
@@ -28,12 +37,5 @@ function removeID(event){
     } else {
         alert("No more IDs to remove")
     }
-}
-
-function copyToClipboard(){
-    let textarea = document.getElementById('template')
-    textarea.select();
-    document.execCommand('copy')
-    console.log("executed copy")
 }
 
