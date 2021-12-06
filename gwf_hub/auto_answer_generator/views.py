@@ -31,13 +31,20 @@ def aaGenerator(request):
 
         if request.POST.get('generate'):            
             input_ids_generate = request.POST
-            template = generator.dataAnalysis(input_ids_generate)
+            template_dict = generator.dataAnalysis(input_ids_generate)
+            template = template_dict['text']
+            requested_ids = template_dict['ids']
+            mandates = template_dict['mandates']
+            fups = template_dict['fups']
             print("===FINAL TEMPLATE==")
             print(template)
             print(type(template))
             third_context = {
-                'prevSelect': [],
-                'generated': template
+                'prevSelect': requested_ids,
+                'question_ids_table': question_ids_table,
+                'generated': template,
+                'mandates': mandates,
+                'fups': fups
             }
             return render(request, 'generator.html', third_context)
             

@@ -112,6 +112,8 @@ def dataAnalysis(postInputs):
     ids_to_call = []
     showExpressions = []
     order = []
+    mandates = []
+    fups = []
     dynamic_key_name = postInputs['dynamic-key-name']      
     for keyOrder in postInputs:
         if keyOrder.startswith(key_name_order) == True:
@@ -125,17 +127,23 @@ def dataAnalysis(postInputs):
                 print("--IDs")
                 print(ids)
                 if qID.question_category == 'fup':
+                    fups.append(qID)
                     for inputs in postInputs:
                         if inputs.startswith(key_name_expression):
                             verifVal = inputs.split('input-', 1)[1]
                             if verifVal == ids:                                
                                 showExpressions.append(postInputs[inputs])
                 else:
+                    mandates.append(qID)
                     showExpressions.append("noExpression")
-    print("--showExpression list--")
-    print(showExpressions)
     question_list_template = genQuestionList(ids_to_call, showExpressions, order)
     labels_list = labels(ids_to_call)
     answers_list = answersGroup(ids_to_call)
-    template = templateCreator(question_list_template, labels_list, answers_list, dynamic_key_name)
+    template_text = templateCreator(question_list_template, labels_list, answers_list, dynamic_key_name)
+    template = {
+        'text': template_text,
+        'ids':ids_to_call,
+        'mandates': mandates,
+        'fups': fups
+    }
     return(template)               
