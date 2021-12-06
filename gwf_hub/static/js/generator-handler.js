@@ -16,6 +16,7 @@ function copyToClipboard(){
     textarea.select();
     document.execCommand('copy')
     console.log("executed copy")
+    alert('Template Copied to Clipboard')
 }
 
 
