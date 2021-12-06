@@ -1,7 +1,6 @@
 import pandas as pd
 import openpyxl as xl
 from . import gwf_modules as gwf
-from PyQt5.QtWidgets import QMessageBox
 import os
 
 
@@ -12,12 +11,7 @@ def question_answer_build(ms):
             df_ms = pd.read_excel(ms, sheet_name='master sheet')
 
         except:
-            msg_mst = QMessageBox()
-            msg_mst.setWindowTitle("Workbook Error")
-            msg_mst.setText("Workbook does not have sheet named 'master sheet'")
-            msg_mst.setIcon(QMessageBox.Warning)
-            x = msg_mst.exec_()
-            break
+            print("No master sheet file")
 
         current_q_g_id = 'none'
         current_q_id = 'none'
