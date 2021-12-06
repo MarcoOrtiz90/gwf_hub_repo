@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 
 # Create your views here.
 
 
 def overview(response):
-    return render(response, "overview.html", {})
+    if response.user.is_authenticated:
+        return render(response, "overview.html", {})
+    else:
+        return redirect('login')
 
 
 def database(response):

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+    <div class="content">
+        <h3 style="text-align: center;">Welcome to the <strong>GWF App</strong> login screen</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">                    
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-info">
+                            <h2 style="text-align: center;">Specialist Login</h2>
+                        </div>
+                        <div class="card-body">
+                            <form action="" method="POST">
+                                {% csrf_token %}
+                                {% if error %}
+                                <p style="color: red;" >{{error}}</p>
+                                {% endif %}
+                                <div>
+                                    <label>Username</label><br>
+                                    <input type="text" name="username">
+                                </div>
+                                <div>
+                                    <label>Password</label><br>
+                                    <input type="password" name="password">
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-info" name="login" value="login">Login</button>
+                            </form>
+                        </div>                     
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
