@@ -28,12 +28,21 @@
         <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal">GWF Workspace</a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
+                {% if overview %}               
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'overview' %}">
+                        <i class="material-icons">home</i>
+                        <p>Apps Dashboard</p>
+                    </a>
+                </li>
+                {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'overview' %}">
                         <i class="material-icons">home</i>
-                        <p>Home</p>
+                        <p>Apps Dashboard</p>
                     </a>
                 </li>
+                {% endif %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'workflow-hierarchy' %}">
                         <i class="material-icons">mediation</i>
