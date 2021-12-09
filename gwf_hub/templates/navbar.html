@@ -17,6 +17,9 @@
           </div>
         </form> -->
         <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+          <p style="color: white;">Welcome {{user}}</p>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="account_dd" data-toggle="dropdown">
               <i class="material-icons">person</i>
