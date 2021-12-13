@@ -6,19 +6,18 @@
         <h3 style="text-align: center;">Welcome to the <strong>GWF App</strong> user registration screen</h3> 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
 
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="card card-chart">
                         <div class="card-header card-header-success">
                             <h2 style="text-align: center;">Specialist Registration</h2>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="text-align: center;">
                             <form method="POST">
                                 {% csrf_token %}
-                                {{form.as_p}}
-                            
+                                {{form.as_p}}                            
                             <hr>
                             <div style="text-align: center;">                        
                                 <button type="submit" class="btn btn-sm btn-info" name="register" value="register">Register</button>
@@ -28,7 +27,7 @@
                     </div>
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
 
                 </div>
             </div>

@@ -16,7 +16,8 @@
                         <div class="card-body">
                             <form action="" method="POST">
                                 {% csrf_token %}
-                                {% if error %}
+                                {{form.as_p}}
+                                <!-- {% if error %}
                                 <p style="color: red;" >{{error}}</p>
                                 {% endif %}
                                 <div>
@@ -26,7 +27,7 @@
                                 <div>
                                     <label>Password</label><br>
                                     <input type="password" name="password">
-                                </div>
+                                </div> -->
                                 <button type="submit" class="btn btn-sm btn-info" name="login" value="login">Login</button>
                                 <a href="{% url 'register' %}" class="btn btn-sm btn-info">Register</a>
                             </form>
