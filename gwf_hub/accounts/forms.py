@@ -1,13 +1,26 @@
 from django import forms
-from django.db.models import fields
-from .models import GWFUser
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
-class NewUserForm(forms.ModelForm):
+
+class NewUserForm(UserCreationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs.update({
+            'placeholder': 'Login',
+
+        })
+        self.fields['email'].widget.attrs.update({
+            'placeholder': '@amazon.com'
+        })
+        
     class Meta:
-        model = GWFUser
+        model = User
         fields = [
-            'name',
-            'login',
-            'email',
-            'password'
+            'username',
+            'first_name',
+            'last_name',            
+            'email',            
+            'password1',
+            'password2'
         ]

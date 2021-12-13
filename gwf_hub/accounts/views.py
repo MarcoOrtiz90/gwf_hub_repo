@@ -43,3 +43,6 @@ def register_view(request):
     #     return redirect('login')
     # context = {'form': form}
     # return render(request, "register.html", context)
+
+def profile(request):
+    return render(request, "account.html", {})
