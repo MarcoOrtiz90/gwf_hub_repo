@@ -6,19 +6,17 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def overview(response):
-    if response.user.is_authenticated:
-        context = {
-            "overview": True
-        }
-        return render(response, "overview.html", context)
+    return render(response, 'overview.html', {})
 
-@login_required
 def database(response):
-    return render (response, 'database.html', {})
+    if response.user.is_authenticated:
+        return render (response, 'database.html', {})
+    else:
+        return redirect('login')
 
-@login_required
 def hierarchy(response):
     if response.user.is_authenticated:
         return render(response, "hierarchy.html", {})
     else:
         return redirect('login')
+

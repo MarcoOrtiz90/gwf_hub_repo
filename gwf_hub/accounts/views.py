@@ -1,7 +1,11 @@
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .forms import NewUserForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def login_view(request):    
@@ -23,6 +27,7 @@ def login_view(request):
     
     return render(request, "login.html", context)
 
+@login_required
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
@@ -44,5 +49,23 @@ def register_view(request):
     # context = {'form': form}
     # return render(request, "register.html", context)
 
+
+@login_required
+def passwordChange(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your Password was succesfully updated!')
+            return redirect('password-change')
+        else:
+            messages.error(request, 'Please correct below')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'password-change.html', {'form':form})
+    
+
+#@login_required
 def profile(request):
     return render(request, "account.html", {})
