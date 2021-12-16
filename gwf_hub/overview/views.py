@@ -1,3 +1,4 @@
+from typing import ContextManager
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -6,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def overview(response):
-    return render(response, 'overview.html', {})
+    context = {'main': "main"}
+    return render(response, 'overview.html', context)
 
 def database(response):
     if response.user.is_authenticated:

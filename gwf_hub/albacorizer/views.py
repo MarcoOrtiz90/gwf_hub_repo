@@ -17,7 +17,7 @@ def jsoncodes(request):
             print(source_file_name)
             if source_file_name.endswith('.xlsx') or source_file_name.endswith('.xlsm'):
                 data_dict = albacorizer_main.new_ms_albacorize(source_file)
-                return render(request, 'albacorizer_output.html', data_dict)
+                return render(request, 'albacorizer.html', data_dict)
             else:
                 data_dict = {"Error": "Incorrect file type, please upload .xlsx or xlsm files."}
                 return render(request, 'albacorizer.html', data_dict)
