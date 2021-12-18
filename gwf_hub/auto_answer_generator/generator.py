@@ -32,17 +32,17 @@ def genQuestionList(ids, expressions, order):
             main_q_list = main_q_list[:-1]
         finalOutput = 'var auto_answer_question_list = ' + '[\n' + main_q_list +'] \n'        
     else: 
-        current = '{' + f'var: "{ids}", '
+        current = '{' + f'var: "{ids[0]}", '
         for questions in question_ids_table:
-            if ids == questions.question_id:
-                current = current + f'category: "{questions.question_category}", '
+            if ids[0] == questions.question_id:                
+                current = current + f'category: "{questions.question_category}", '                
                 if questions.question_category == 'fup':
                     current = current + f'showExpression: "{expressions}", '
                 else:
                     current = current + f'showExpression: False, '
-                current = current + f'order: {order}' + '}'
-        current = '[\n' + current + '\n]'
-        finalOutput = 'var auto_answer_question_list = ' + current
+                current = current + f'order: {order[0]}' + '}'
+        #current = '[\n' + current + '\n]'
+        finalOutput = 'var auto_answer_question_list = ' + '[\n' + current + '\n]\n'
     return(finalOutput)
 
 def labels(questions):

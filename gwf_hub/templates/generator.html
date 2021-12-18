@@ -1,45 +1,111 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div class="main-panel">
-    {% include 'navbar.html' %}
+    {% include 'navbar.html' %} 
     <div class="content">
-        <h2>Auto-Answer Template Generator</h2>
+        <h2 class="amazon-main-opaque">Auto-Answer Template Generator</h2>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    {% include 'generator-form.html' %}
+                    <!-- {% include 'generator-form.html' %} -->
+                    <div class="card card-stats">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <img src="{% static '/imgs/aa_small.png' %}" alt="Auto Answers Template Generator">
+                            </div>        
+                        </div>
+                        <div class="card-body" style="text-align: left;">
+                            {% include 'generator-form.html' %}
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-8">
-                    <p style="color: grey;"><strong>The Generator</strong> is a tool that allows the user to create a JavaScript template ready to use on a Paramount flow.The output code will be used to manage auto-answers.</p>
-                    <p style="color: grey;">How to:</p>
-                    <ol>
-                        <li style="color:grey;">Click the dropdown menu to select the question id</li>
-                        <li style="color:grey;">If more than one question is needed, click the "Add Another Auto-Answer" button to add more</li>
-                        <li style="color:grey;">Click "Request" and the Generator will ask you for the show expression, if needed, and the order of the question in the Paramount Flows </li>
-                        <li style="color:grey;">When all fields are filled, click Generate to create a template that is Paramount ready.</li>
-                    </ol>
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                            <p style="color: grey;">The <strong class="neo-tint">Generator</strong> is a tool that allows the user to create a JavaScript template ready to use on a Paramount flow.The output code will be used to manage auto-answers.</p>
+                            <p style="color: grey;">How to:</p>
+                            <ol>
+                                <li style="color:grey;">Click the dropdown menu to select the question id</li>
+                                <li style="color:grey;">If more than one question is needed, click the "Add Another Auto-Answer" button to add more</li>
+                                <li style="color:grey;">Click "Request" and the Generator will ask you for the show expression, if needed, and the order of the question in the Paramount Flows </li>
+                                <li style="color:grey;">When all fields are filled, click Generate to create a template that is Paramount ready.</li>
+                            </ol>       
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     {% if prevSelect %}
-                        <h3>Additional Inputs</h3>
-                        {% include 'generator_input.html' %}
-                    {% endif %}
-                    <hr>
-                </div>
-                <div class="col-md-6">
-                    {% if generated %}
-                        <div class="container-fluid">
-                        <h3>Auto Generated Template</h3> 
-                        <button onclick="copyToClipboard()"  class="btn btn-sm btn-info" type="button">Copy to clipboard</button>
-                        <textarea name="generated-template" id="template" cols="80" rows="40">{{generated}}</textarea>
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">                            
+                                <h3 class="neo-tint-opaque">Additional Inputs</h3>
+                                {% include 'generator_input.html' %}                            
+                            <hr>
                         </div>
+                    </div>
                     {% endif %}
-                    <hr>
+                </div>
+                <div class="col-md-8">
+                    {% if generated %}
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                            
+                            <div class="container-fluid">
+                                <h3 style="color: rgba(0,128,0, 0.5);">Auto Generated Template</h3> 
+                                <button onclick="copyToClipboard()"  class="btn btn-sm btn-info" type="button" style="float:left; margin-right: 10px">Copy to clipboard</button>
+                                <textarea name="generated-template" id="template" cols="80" rows="40" style="float: left; margin-top: 5px">{{generated}}</textarea>
+                            </div>
+                            
+                        <hr>        
+                        </div>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
 </div>
 {% endblock content %}
+
+<div class="card card-stats">
+    <div class="card-header card-header-primary card-header-icon">
+        <div class="card-icon">
+            <img src="{% static '/imgs/albacorizer2_small.png' %}" alt="Albacorizer">
+        </div>        
+    </div>
+    <div class="card-body" style="text-align: left;">
+        <form method="post" action="jsoncodes/" enctype="multipart/form-data" >
+            {% csrf_token %}
+            <div class="input-group mb-3 ">
+                    <input id="input-b7" name="sourcefile" type="file" class="form-control"
+                        required="required" style="margin-left: 45px;" >
+                        <label class="input-group-text" for="input-b7">Upload</label>                          
+            </div>
+        <hr>
+        <button type="submit" value="Upload" class="btn btn-primary btn-sm" style="margin-left: 45px;">Albacorize</button>
+            {% if Error %}
+            <p style="margin-left: 45px; margin-top: 10px; color:red;"> {{Error}} </p>
+            {% endif %}
+    </form>
+    </div>
+</div>
+
+<div class="card card-stats">
+    <div class="card-body" style="text-align: left;">
+        {% if sections_json %}
+        <div style="margin-left:20px; margin-top: 20px">
+            <p style="margin-left:5px; color:grey;">Sections JSON Code</p>
+            {% if sections_json != "" %}
+                <textarea name="sections_json" style="margin-left:10px;" rows="5" cols="70">{{ sections_json }}</textarea><br>
+            {% endif %}
+            <br><br>
+            {% if questions_json != "" %}
+                <p style="margin-left:5px; color:grey;">Questions JSON Code</p>
+                <textarea name="sections_json" style="margin-left:10px;" rows="7" cols="70">{{ questions_json }}</textarea><br>
+            {% endif %}
+        </div>
+    {% endif %}   
+    </div>
+</div>

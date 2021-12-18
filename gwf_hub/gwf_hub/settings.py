@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'overview.apps.OverviewConfig',
     'auto_answer_generator.apps.AutoAnswerGeneratorConfig',
+    'accounts.apps.AccountsConfig',
+    'albacorizer.apps.AlbacorizerConfig',
+    'json_parser.apps.JsonParserConfig',
+    'validator.apps.ValidatorConfig'
 ]
 
 MIDDLEWARE = [
@@ -55,6 +59,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'gwf_hub.urls'
+
+LOGIN_URL ='accounts/login'
 
 TEMPLATES = [
     {

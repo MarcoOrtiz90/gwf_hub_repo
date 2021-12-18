@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+    <div class="content">
+        <h3 style="text-align: center;">Welcome to the <strong>GWF App</strong> user registration screen</h3> 
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-success">
+                            <h2 style="text-align: center;">Specialist Registration</h2>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST">
+                                {% csrf_token %}
+                                {{form.as_p}}                            
+                            <hr>
+                            <div style="text-align: center;">                        
+                                <button type="submit" class="btn btn-sm btn-info" name="register" value="register">Register</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-3">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

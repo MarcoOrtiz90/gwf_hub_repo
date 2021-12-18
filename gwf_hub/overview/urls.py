@@ -1,4 +1,5 @@
 from django.urls import path, include
+
 from . import views
 
 urlpatterns = [
@@ -7,4 +8,7 @@ urlpatterns = [
     path('auto-answer-generator/', include('auto_answer_generator.urls')),
     path("gwf-db/", views.database, name="gwf-db"),
     path("workflow-hierarchy/", views.hierarchy, name="workflow-hierarchy"),
+    path("albacorizer/", include('albacorizer.urls')),
+    path('json_parser/', include('json_parser.urls')),
  ]
+

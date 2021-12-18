@@ -1,57 +1,104 @@
 {% load static %}
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <meta name="viewport"
+          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static '/css/material-dashboard.css' %}"/>
     <link rel="stylesheet" href="{% static '/css/main.css' %}">
     <script src="https://unpkg.com/htmx.org@1.6.1"></script>
     <script src="https://kit.fontawesome.com/876a366f24.js" crossorigin="anonymous"></script>
-    <title>GWF Workspace</title>
+    <title>GWF Neo</title>
 </head>
 <body class="dark-edition">
-  <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-background-color="black" data-image="#">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+<div class="wrapper">
+    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{% static '/imgs/background_5_cropped.png' %}">
+        <!--
+          Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
-        Tip 2: you can also add an image using data-image tag
-    -->
-      <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal">GWF Workspace</a></div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'overview' %}">
-              <i class="material-icons">home</i><p>Home</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'workflow-hierarchy' %}">
-              <i class="material-icons">mediation</i><p>Workflow Hierarchy</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gwf-db' %}">
-              <i class="material-icons">view_agenda</i><p>GWF Database</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://w.amazon.com/bin/view/Guided_Workflow/Home">
-              <i class="material-icons">help</i><p>Help</p>
-            </a>
-          </li>
-        </ul>
-      </div>
+          Tip 2: you can also add an image using data-image tag
+      -->
+        <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal"><strong class="neo-tint">GWF NEO</strong></a></div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                {% if main %}               
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'overview' %}">
+                        <i class="material-icons">home</i>
+                        <p>Apps Dashboard</p>
+                    </a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'overview' %}">
+                        <i class="material-icons">home</i>
+                        <p>Apps Dashboard</p>
+                    </a>
+                </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'workflow-hierarchy' %}">
+                        <i class="material-icons">mediation</i>
+                        <p>Workflow Hierarchy</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'gwf-db' %}">
+                        <i class="material-icons">view_agenda</i>
+                        <p>GWF Database</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://w.amazon.com/bin/view/Guided_Workflow/Home">
+                        <i class="material-icons">help</i>
+                        <p>Help</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
     {% block content %}
 
     {% endblock content %}
+    <div class="copyright float-right" style="margin-right: 20px; margin-bottom: 20px">
+        Developed by <a href="https://phonetool.amazon.com/users/mttrejos" target="_blank" >@mttrejos</a> & <a href="https://phonetool.amazon.com/users/pratuhin" target="_blank">@pratuhin</a>.
+    </div>
+    <div class="fixed-plugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown"><i class="fa fa-cog fa-2x"> </i></a>
+            <ul class="dropdown-menu">
+                <li class="header-title">Navigation Panel</li>
+                <li>
+                    <a title="Auto Answer Generator" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'auto-generator' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/aa_small.png' %}" alt="Generator">
+                    </a>
+                </li>
+                <li>
+                    <a title="Validator" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'validator' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/validator_small.png' %}" alt="Validator">
+                    </a>
+                </li>
+                <li>
+                    <a title="JSON Parser" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'json_parser' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/parser2_small.png' %}" alt="Parser">
+                    </a>
+                </li>
+                <li>
+                    <a title="Albacorizer" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'albacorizer' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/albacorizer2_small.png' %}" alt="Albacorizer">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 <script
     src="https://code.jquery.com/jquery-3.6.0.js"
@@ -66,6 +113,6 @@
 <script src="{% static '/js/material-dashboard.js' %}"></script>
 <script src="{% static '/js/generator-handler.js' %}"></script>
 
-  </div>  
+</div>
 </body>
 </html>
