@@ -1,47 +1,67 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div class="main-panel">
     {% include 'navbar.html' %}
     <div class="content">
-        <h2>Albacorizer</h2>   
+        <h2 class="amazon-main-opaque">Albacorizer</h2>   
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">                   
-                    <form method="post" action="jsoncodes/" enctype="multipart/form-data" >
-                        {% csrf_token %}
-                        <div class="input-group mb-3 ">
-                                <input id="input-b7" name="sourcefile" type="file" class="form-control"
-                                    required="required" style="margin-left: 45px;" >
-                                    <label class="input-group-text" for="input-b7">Upload</label>                          
+                    <div class="card card-stats">
+                        <div class="card-header card-header-danger card-header-icon">
+                            <div class="card-icon">
+                                <img src="{% static '/imgs/albacorizer2_small.png' %}" alt="Albacorizer">
+                            </div>        
                         </div>
-                    <hr>
-                    <button type="submit" value="Upload" class="btn btn-primary btn-sm" style="margin-left: 45px;">Albacorize</button>
-                        {% if Error %}
-                        <p style="margin-left: 45px; margin-top: 10px; color:red;"> {{Error}} </p>
-                        {% endif %}
-                </form>                
+                        <div class="card-body" style="text-align: left;">
+                            <form method="post" action="jsoncodes/" enctype="multipart/form-data" >
+                                {% csrf_token %}
+                                <div class="input-group mb-3 ">
+                                        <input id="input-b7" name="sourcefile" type="file" class="form-control"
+                                            required="required" style="margin-left: 45px;" >
+                                            <label class="input-group-text" for="input-b7">Upload</label>                          
+                                </div>
+                            <hr>
+                            <button type="submit" value="Upload" class="btn btn-success btn-sm" style="margin-left: 45px;">Albacorize</button>
+                                {% if Error %}
+                                <p style="margin-left: 45px; margin-top: 10px; color:red;"> {{Error}} </p>
+                                {% endif %}
+                        </form>
+                        </div>
+                    </div>                
                 </div>
-                <div class="col-md-4">
-                    <p style="color: grey;"><strong>Albacorizer</strong> is a tool that will allow you to upload a Source File and convert it into JSON codes ready to use in Albacore. Simply click the empty field to select the file and click on the Albacorize button</p>
+                <div class="col-md-8">
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                            <p style="color: grey;"><strong class="neo-tint">Albacorizer</strong> is a tool that will allow you to upload a Source File and convert it into JSON codes ready to use in Albacore. Simply click the empty field to select the file from your computer and click on the Albacorize button, the app will provide the results below the requested file.</p>     
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
 
-                </div>
+                </div> -->
             </div>
             <div class="row">
                 <div class="col-md-6">
                     {% if sections_json %}
-                        <div style="margin-left:20px; margin-top: 20px">
-                            <p style="margin-left:5px; color:grey;">Sections JSON Code</p>
-                            {% if sections_json != "" %}
-                                <textarea name="sections_json" style="margin-left:10px;" rows="5" cols="70">{{ sections_json }}</textarea><br>
-                            {% endif %}
-                            <br><br>
-                            {% if questions_json != "" %}
-                                <p style="margin-left:5px; color:grey;">Questions JSON Code</p>
-                                <textarea name="sections_json" style="margin-left:10px;" rows="7" cols="70">{{ questions_json }}</textarea><br>
-                            {% endif %}
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                        
+                            <div style="margin-left:20px; margin-top: 20px">
+                                <p style="margin-left:5px; color:grey;">Sections JSON Code</p>
+                                {% if sections_json != "" %}
+                                    <textarea name="sections_json" style="margin-left:10px;" rows="5" cols="70">{{ sections_json }}</textarea><br>
+                                {% endif %}
+                                <br><br>
+                                {% if questions_json != "" %}
+                                    <p style="margin-left:5px; color:grey;">Questions JSON Code</p>
+                                    <textarea name="sections_json" style="margin-left:10px;" rows="7" cols="70">{{ questions_json }}</textarea><br>
+                                {% endif %}
+                            </div>
+                           
                         </div>
+                    </div>
                     {% endif %}
                 </div>
                 <div class="col-md-6">
@@ -52,3 +72,4 @@
     </div>
 </div>
 {% endblock %}
+
