@@ -71,6 +71,34 @@
     <div class="copyright float-right" style="margin-right: 20px; margin-bottom: 20px">
         Developed by <a href="https://phonetool.amazon.com/users/mttrejos" target="_blank" >@mttrejos</a> & <a href="https://phonetool.amazon.com/users/pratuhin" target="_blank">@pratuhin</a>.
     </div>
+    <div class="fixed-plugin">
+        <div class="dropdown show-dropdown">
+            <a href="#" data-toggle="dropdown"><i class="fa fa-cog fa-2x"> </i></a>
+            <ul class="dropdown-menu">
+                <li class="header-title">Navigation Panel</li>
+                <li>
+                    <a title="Auto Answer Generator" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'auto-generator' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/aa_small.png' %}" alt="Generator">
+                    </a>
+                </li>
+                <li>
+                    <a title="Validator" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'validator' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/validator_small.png' %}" alt="Validator">
+                    </a>
+                </li>
+                <li>
+                    <a title="JSON Parser" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'json_parser' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/parser2_small.png' %}" alt="Parser">
+                    </a>
+                </li>
+                <li>
+                    <a title="Albacorizer" class="img-holder switch-trigger" style="background-color: rgb(88, 88, 88);" href="{% url 'albacorizer' %}">
+                        <img style="width: 100%; height: 100%" src="{% static '/imgs/albacorizer2_small.png' %}" alt="Albacorizer">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 <script
     src="https://code.jquery.com/jquery-3.6.0.js"
