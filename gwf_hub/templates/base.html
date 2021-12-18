@@ -15,17 +15,17 @@
     <link rel="stylesheet" href="{% static '/css/main.css' %}">
     <script src="https://unpkg.com/htmx.org@1.6.1"></script>
     <script src="https://kit.fontawesome.com/876a366f24.js" crossorigin="anonymous"></script>
-    <title>GWF Workspace</title>
+    <title>GWF Neo</title>
 </head>
 <body class="dark-edition">
 <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-background-color="black" data-image="#">
+    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{% static '/imgs/background_5_cropped.png' %}">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
           Tip 2: you can also add an image using data-image tag
       -->
-        <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal">GWF Workspace</a></div>
+        <div class="logo"><a href="{% url 'overview' %}" class="simple-text logo-normal"><strong class="neo-tint">GWF NEO</strong></a></div>
         <div class="sidebar-wrapper">
             <ul class="nav">
                 {% if main %}               
@@ -68,6 +68,9 @@
     {% block content %}
 
     {% endblock content %}
+    <div class="copyright float-right" style="margin-right: 20px; margin-bottom: 20px">
+        Developed by <a href="https://phonetool.amazon.com/users/mttrejos" target="_blank" >@mttrejos</a> & <a href="https://phonetool.amazon.com/users/pratuhin" target="_blank">@pratuhin</a>.
+    </div>
 
 <script
     src="https://code.jquery.com/jquery-3.6.0.js"

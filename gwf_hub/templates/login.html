@@ -1,19 +1,21 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div class="main-panel">
     {% include 'navbar.html' %}
     <div class="content">
-        <h3 style="text-align: center;">Welcome to the <strong>GWF App</strong> login screen</h3>
+        <h3 style="text-align: center;">Welcome to <strong style="color: green;">Neo's</strong> login screen</h3>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">                    
                 </div>
-                <div class="col-md-4" style="text-align: center;">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-info">
-                            <h2 style="text-align: center;">Specialist Login</h2>
+                <div class="col-md-4">
+                    <div class="card card-chart" style="text-align: center;">
+                        <div class="card-header card-header-info" >
+                            <!-- <h2 style="text-align: center;">Specialist Login</h2> -->
+                            <img src="{% static '/imgs/login_small.png' %}" alt="Login">
                         </div>
-                        <div class="card-body">
+                        <div class="card-body">                            
                             <form action="" method="POST">
                                 {% csrf_token %}
                                 {{form.as_p}}

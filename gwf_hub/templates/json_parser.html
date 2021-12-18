@@ -3,11 +3,10 @@
 <div class="main-panel">
     {% include 'navbar.html' %}
     <div class="content">
-        <h2>JSON Parser</h2>
+        <h2 class="amazon-main-opaque">JSON Parser</h2>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
-                    
+                <div class="col-md-5">                    
                     <form method="post" action="">
                         {% csrf_token %}
                         <div class="form-group mt-5">                    
@@ -50,12 +49,15 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-6">
-                    <p style="color: grey;"><strong>The Parser</strong> tool allows the user to input the name of an existing flow in Albacore, so that the tool can fetch for the JSON codes and convert them into a format ready Source File.How to use the tool:</p>
+                <div class="col-md-7">
+                    <p style="color: grey;">The <strong class="neo-tint">Parser</strong> tool allows the user to input the name of an existing flow in Albacore, so that the tool can fetch for the JSON codes and convert them into a format ready Source File.How to use the tool:</p>
                     <ol>
-                        <li style="color: rgb(185, 174, 174);">Enter the workflow name in the empty field.</li>
-                        <li style="color: rgb(185, 174, 174);">Select the region in which the workflow is located.</li>
-                        <li style="color: rgb(185, 174, 174);">Select your default browser. This has to be the </li>
+                        <li style="color: grey;">Enter the workflow name in the empty field.</li>
+                        <li style="color: grey;">Select the region in which the workflow is located.</li>
+                        <li style="color: grey;">Select your default browser. The chosen browser has the be the regular used browser for accesing Amazon related websites.</li>
+                        <li style="color: grey;">Once settings are done, click the GENERATE! button to create the Source File based on the workflow id provided</li>
+                        <li style="color: grey;">The application will start the automated process of accesing Albacore, pulling the flow and its respective JSON codes to create the Source File.</li>
+                        <li style="color: grey;">Once finished a folder is created on the user's desktop with the requested Source File.</li>
                     </ol>
                 </div>
             </div>
