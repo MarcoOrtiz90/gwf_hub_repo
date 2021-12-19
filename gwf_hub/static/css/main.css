@@ -10,6 +10,10 @@
   color: rgba(255, 153, 0, 0.5);
 }
 
+.amazon-main {
+  color: rgb(255, 153,0)
+}
+
 .switch {
     position: relative;
     display: inline-block;
