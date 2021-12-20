@@ -19,7 +19,7 @@
 </head>
 <body class="dark-edition">
 <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{% static '/imgs/background_5_cropped.png' %}">
+    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{% static '/imgs/background_4_cropped.png' %}">
         <!--
           Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -71,6 +71,7 @@
     <div class="copyright float-right" style="margin-right: 20px; margin-bottom: 20px">
         Developed by <a href="https://phonetool.amazon.com/users/mttrejos" target="_blank" >@mttrejos</a> & <a href="https://phonetool.amazon.com/users/pratuhin" target="_blank">@pratuhin</a>.
     </div>
+    {% if user.is_authenticated %}
     <div class="fixed-plugin">
         <div class="dropdown show-dropdown">
             <a href="#" data-toggle="dropdown"><i class="fa fa-cog fa-2x"> </i></a>
@@ -99,6 +100,7 @@
             </ul>
         </div>
     </div>
+    {% endif %}
 
 <script
     src="https://code.jquery.com/jquery-3.6.0.js"
