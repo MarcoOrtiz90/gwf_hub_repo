@@ -71,6 +71,7 @@
     <div class="copyright float-right" style="margin-right: 20px; margin-bottom: 20px">
         Developed by <a href="https://phonetool.amazon.com/users/mttrejos" target="_blank" >@mttrejos</a> & <a href="https://phonetool.amazon.com/users/pratuhin" target="_blank">@pratuhin</a>.
     </div>
+    {% if user.is_authenticated %}
     <div class="fixed-plugin">
         <div class="dropdown show-dropdown">
             <a href="#" data-toggle="dropdown"><i class="fa fa-cog fa-2x"> </i></a>
@@ -99,6 +100,7 @@
             </ul>
         </div>
     </div>
+    {% endif %}
 
 <script
     src="https://code.jquery.com/jquery-3.6.0.js"

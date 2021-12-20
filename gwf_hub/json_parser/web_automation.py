@@ -12,6 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import Select
+from . import parser_main
 import getpass
 
 browser_name = ''
@@ -31,26 +32,25 @@ def wf_id_data(wf_ids, reg, browser_used):
     workflow_ids = wf_ids
     workflow_ids = workflow_ids.split(',')
     region = reg
-    browser = default_browser()
+    # browser = default_browser()
     driver = path(browser_string)
-    data_dict = web_manipulation(driver)
-    from . import parser_main
+    data_dict = web_manipulation(driver)    
     parser_main.web_automated_data(data_dict, workflow_ids)
     return "Done"
 
 
-def default_browser():
-    osPlatform = platform.system()
+# def default_browser():
+#     osPlatform = platform.system()
 
-    if osPlatform == 'Windows':
-        try:
-            with OpenKey(HKEY_CURRENT_USER,
-                         r'SOFTWARE\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice') as regkey:
-                browser_choice = QueryValueEx(regkey, 'ProgId')[0]
-                return browser_choice
+#     if osPlatform == 'Windows':
+#         try:
+#             with OpenKey(HKEY_CURRENT_USER,
+#                          r'SOFTWARE\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice') as regkey:
+#                 browser_choice = QueryValueEx(regkey, 'ProgId')[0]
+#                 return browser_choice
 
-        except Exception as n:
-            print('Failed to look up default browser in system registry. Using fallback value.', n)
+#         except Exception as n:
+#             print('Failed to look up default browser in system registry. Using fallback value.', n)
 
 
 def path(browser_string):

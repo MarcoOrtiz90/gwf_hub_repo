@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+from . import web_automation
 
 # Create your views here.
 
@@ -53,7 +54,7 @@ def call_parser(request):
                 error_msg = {"error": error_generated}
                 return render(request, 'json_parser.html', error_msg)
 
-            from . import web_automation
+            
             web_automation.wf_id_data(workflow_id, region, browser_used)
             completion_message = "Your source files have successfully been created for the flows - " + str(workflow_id)
             returning_msg = {'message_to_display': completion_message}
