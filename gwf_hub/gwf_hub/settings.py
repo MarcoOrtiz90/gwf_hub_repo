@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'albacorizer.apps.AlbacorizerConfig',
     'json_parser.apps.JsonParserConfig',
-    'validator.apps.ValidatorConfig'
+    'validator.apps.ValidatorConfig',
 ]
 
 MIDDLEWARE = [
@@ -140,3 +140,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

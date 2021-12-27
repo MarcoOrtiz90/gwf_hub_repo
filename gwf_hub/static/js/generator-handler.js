@@ -39,3 +39,17 @@ function removeID(event){
     }
 }
 
+$('#parse').click(()=>{
+    console.log("clicked")
+    $.ajax({
+        url: '',
+        type: 'get',
+        data: {
+            button_text: $(this).text()
+        },
+        success: ((response)=>{
+            $('parser-progress').width("50px")
+        })
+    })
+});
+

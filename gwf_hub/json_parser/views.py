@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+from django.http import JsonResponse
 from . import web_automation
 
 # Create your views here.
@@ -54,7 +55,6 @@ def call_parser(request):
                 error_msg = {"error": error_generated}
                 return render(request, 'json_parser.html', error_msg)
 
-            
             web_automation.wf_id_data(workflow_id, region, browser_used)
             completion_message = "Your source files have successfully been created for the flows - " + str(workflow_id)
             returning_msg = {'message_to_display': completion_message}
@@ -64,5 +64,8 @@ def call_parser(request):
         error_generated = "Exception generated - " + e
         error_msg = {"error": error_generated}
         return render(request, 'json_parser.html', error_msg)
-    return render(request, 'json_parser.html')
 
+    if request.is_ajax():
+        return JsonResponse({'process': 'number'}, status=200)
+        
+    return render(request, 'json_parser.html')
