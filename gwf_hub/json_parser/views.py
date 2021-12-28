@@ -65,3 +65,5 @@ def call_parser(request):
         return render(request, 'json_parser.html', error_msg)
     return render(request, 'json_parser.html')
 
+
+

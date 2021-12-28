@@ -15,8 +15,6 @@ c_answer_id_bucket = []
 data_store_dict = {}
 workflow_ids = []
 
-# C:\Users\pratuhin\Desktop>
-
 
 def color_fixer(x, y, code):
     global wb
@@ -159,6 +157,7 @@ def extracting_follow_up():
     row_counter += 1
     for fups in follow_up_list:
         if fups not in c_question_group_bucket:
+            row_counter -= 1
             break
         if fups in question_json:
             number_of_questions = len(question_json[fups]["workflow_questions"])
@@ -711,7 +710,7 @@ def web_automated_data(data_dict, wf_ids):
     global data_store_dict, workflow_ids, tic, mandate_questions, \
         follow_up_list, wb, sheet, sheet_name, row_counter, section_file, \
         question_json, fup_string, worksheet_name, workflow_id, \
-        workflow_section, workflow_question
+        workflow_section, workflow_question, complete
     data_store_dict = data_dict
     workflow_ids = wf_ids
 
