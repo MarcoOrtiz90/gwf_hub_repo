@@ -39,17 +39,43 @@ function removeID(event){
     }
 }
 
-$('#parse').click(()=>{
-    console.log("clicked")
+// $('#parse').click(()=>{
+//     console.log("clicked")
+//     $.ajax({
+//         url: '',
+//         type: 'get',
+//         data: {
+//             button_text: $(this).text()
+//         },
+//         success: ((response)=>{
+//             $('parser-progress').width("50px")
+//         })
+//     })
+// });
+
+$('#parse').click(function(){
     $.ajax({
-        url: '',
+        url:'',
         type: 'get',
         data: {
-            button_text: $(this).text()
+            button_request: $(this).text()
         },
-        success: ((response)=>{
-            $('parser-progress').width("50px")
-        })
+        success: function(response){
+            $('#parser-progress').width('50%')
+        }
     })
-});
+})
+
+// let parse_status = setTimeout(()=>{
+//     $.ajax({
+//         url: '',
+//         type: 'get',
+//         data: {
+//             process: 'process-request'
+//         },
+//         success:
+//     })
+// },5000);
+
+
 

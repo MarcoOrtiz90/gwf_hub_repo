@@ -7,6 +7,13 @@ from . import web_automation
 
 
 def call_parser(request):
+    ######### Test for AJAX Call 
+    # text = request.GET.get('button_request')
+    # progress = ''
+    # print()
+    # print(text)
+    # print()
+    ##########
     status = ''
     try:
         if request.method == 'POST':
@@ -63,9 +70,6 @@ def call_parser(request):
         e = str(e)
         error_generated = "Exception generated - " + e
         error_msg = {"error": error_generated}
-        return render(request, 'json_parser.html', error_msg)
+        return render(request, 'json_parser.html', error_msg)   
 
-    if request.is_ajax():
-        return JsonResponse({'process': 'number'}, status=200)
-        
     return render(request, 'json_parser.html')
