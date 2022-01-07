@@ -50,8 +50,12 @@
                                         {% endif %}
                         
                                         {% if message_to_display != "" %}
-                                        <p style="color:grey;">{{ message_to_display }}</p>
+                                        <p style="color:grey;">{{ message_to_display }}</p>                                        
                                         {% endif%}
+                                        <div class="progress">
+                                            <p style="color:grey;">Workflows are being processed</p>
+                                            <div class="loader"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
