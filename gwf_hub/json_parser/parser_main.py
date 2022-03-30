@@ -14,6 +14,8 @@ c_question_group_bucket = []
 c_answer_id_bucket = []
 data_store_dict = {}
 workflow_ids = []
+progress = 0
+number_of_workflows = 0
 
 
 def color_fixer(x, y, code):
@@ -30,8 +32,14 @@ def color_fixer(x, y, code):
 
 
 def extracting_mandate_questions():
+
     global wb, sheet, sheet_name, question_json, fup_string, worksheet_name
-    global mandate_questions, follow_up_list, row_counter, p_question_group_bucket
+    global mandate_questions, follow_up_list, row_counter, p_question_group_bucket, extracting_mandate_questions_called
+    # Function extracting_mandate_questions_called
+
+    if not extracting_mandate_questions_called:
+        progress_check()
+        extracting_mandate_questions_called = True
 
     # Question Group ID
     for item in mandate_questions:
@@ -151,9 +159,17 @@ def extracting_mandate_questions():
 
 
 def extracting_follow_up():
+
+    # Function extracting_follow_up_called
+
     global wb, sheet, sheet_name, question_json, fup_string, worksheet_name
-    global mandate_questions, follow_up_list, row_counter, c_question_group_bucket
+    global mandate_questions, follow_up_list, row_counter, c_question_group_bucket, extracting_follow_up_called
     # print(follow_up_list)
+
+    if not extracting_follow_up_called:
+        progress_check()
+        extracting_follow_up_called = True
+
     row_counter += 1
     for fups in follow_up_list:
         if fups not in c_question_group_bucket:
@@ -271,9 +287,14 @@ def extracting_follow_up():
 
 
 def identify_starting_section():
+
     global wb, sheet, sheet_name, worksheet_name
-    global mandate_questions, row_counter, workflow_section, workflow_question
+    global mandate_questions, row_counter, workflow_section, workflow_question, identify_starting_section_called
     section_file = data_store_dict[workflow_section]
+
+    if not identify_starting_section_called:
+        progress_check()
+        identify_starting_section_called = True
 
     section_json = json.loads(section_file)
     mandate_question_string = ''
@@ -707,10 +728,13 @@ def other_sheets():
 
 def web_automated_data(data_dict, wf_ids):
     # Making variables global
+    current_f = ''
     global data_store_dict, workflow_ids, tic, mandate_questions, \
         follow_up_list, wb, sheet, sheet_name, row_counter, section_file, \
         question_json, fup_string, worksheet_name, workflow_id, \
-        workflow_section, workflow_question, complete
+        workflow_section, workflow_question, extracting_mandate_questions_called, \
+        extracting_follow_up_called, identify_starting_section_called
+    global workflow_ids
     data_store_dict = data_dict
     workflow_ids = wf_ids
 
@@ -726,25 +750,46 @@ def web_automated_data(data_dict, wf_ids):
         print("Folder already present")
 
     for w_id in workflow_ids:
-        workflow_id = w_id
-        worksheet_name = workflow_id + ".xlsx"
-        tic = time.perf_counter()
-        mandate_questions = []
-        follow_up_list = []
-        wb = openpyxl.Workbook()
-        sheet = wb.active
-        sheet.title = "master sheet"
-        sheet_name = sheet.title
-        wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\Source files\\' + worksheet_name)
-        print("Parser collected the workflows IDs - ", workflow_id)
-        row_counter = 2
-        workflow_section = "sections_" + workflow_id
-        workflow_question = "questions_" + workflow_id
-        question_file = data_store_dict[workflow_question]
-        section_file = data_store_dict[workflow_section]
-        question_json = json.loads(question_file)
-        fup_string = ''
+        try:
+            web_automated_data_called = False
+            extracting_mandate_questions_called = False
+            extracting_follow_up_called = False
+            identify_starting_section_called = False
+            current_f = w_id
+            if not web_automated_data_called:
+                progress_check()
+                web_automated_data_called = True
+            workflow_id = w_id
+            worksheet_name = workflow_id + ".xlsx"
+            tic = time.perf_counter()
+            mandate_questions = []
+            follow_up_list = []
+            wb = openpyxl.Workbook()
+            sheet = wb.active
+            sheet.title = "master sheet"
+            sheet_name = sheet.title
+            wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\Source files\\' + worksheet_name)
+            print("Parser collected the workflows IDs - ", workflow_id)
+            row_counter = 2
+            workflow_section = "sections_" + workflow_id
+            workflow_question = "questions_" + workflow_id
+            question_file = data_store_dict[workflow_question]
+            section_file = data_store_dict[workflow_section]
+            question_json = json.loads(question_file)
+            fup_string = ''
 
-        current_question_data()
+            current_question_data()
 
-        identify_starting_section()
+            identify_starting_section()
+
+        except Exception as e:
+            print("Workflow unstable : ", current_f)
+            print("Error noted : ", e)
+            continue
+
+
+def progress_check():
+    global progress, workflow_ids
+    progress += 0.25
+    number_of_workflows = len(workflow_ids)
+

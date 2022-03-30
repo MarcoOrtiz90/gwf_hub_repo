@@ -4,6 +4,8 @@ import json
 import os
 from collections import Counter
 import operator as op
+
+
 # c_section = json.loads(input("Insert the Sections JSON Code - "))
 # c_questions = json.loads(input("Insert the Questions JSON Code - "))
 
@@ -75,13 +77,19 @@ def current_question_data(questions, sections, toggle_dict):
             for i in range(0, c_length_of_answers):
                 if "radio_options" in c_data["workflow_questions"][x]["responses"][0]:
                     c_answer_ids = c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]["id"]
-                    if "followup_question_group_ids" in c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]:
-                        length_of_followups = len(c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]["followup_question_group_ids"])
+                    if "followup_question_group_ids" in \
+                            c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]:
+                        length_of_followups = len(
+                            c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter][
+                                "followup_question_group_ids"])
                         for t in range(0, length_of_followups):
-                            follow_ups = c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]["followup_question_group_ids"][t]
+                            follow_ups = c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter][
+                                "followup_question_group_ids"][t]
                             follow_up_bucket.append(follow_ups)
-                    if "next_node_override" in c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]:
-                        jump = c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter]["next_node_override"]
+                    if "next_node_override" in c_data["workflow_questions"][x]["responses"][0]["radio_options"][
+                        c_counter]:
+                        jump = c_data["workflow_questions"][x]["responses"][0]["radio_options"][c_counter][
+                            "next_node_override"]
                         jumps_used.append(c_answer_ids)
                         if jump not in sections_id_bucket:
                             wrong_jumps_used.append(c_answer_ids)
@@ -117,7 +125,8 @@ def current_question_data(questions, sections, toggle_dict):
     # Checking if mandates from sections.json are present in the questions.json file.
     for items in mandates:
         if items not in c_question_group_bucket:
-            mandate_missing = mandate_missing.append(items)
+            if items is not None:
+                mandate_missing.append(items)
 
     # for answers in c_answer_id_bucket:
     #     if answers.startswith("Q-"):
