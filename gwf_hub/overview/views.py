@@ -1,11 +1,11 @@
 from typing import ContextManager
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.contrib.auth.decorators import login_required
+##from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-@login_required
+##@login_required
 def overview(response):
     context = {'main': "main"}
     return render(response, 'overview.html', context)

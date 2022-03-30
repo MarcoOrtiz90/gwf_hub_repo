@@ -30,6 +30,27 @@
                 </div>
                 <div class="col-xl-3 col-lg-12">
                     <div class="card card-chart">
+                        <div class="card-header card-header-warning">
+                            <div class="ct-chart" id="task_extractor" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/data-copy.png' %}" alt="Task Extractor">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Paramount Task Extractor</h4>
+                            <p class="card-category">An app that will allow you to copy individual tasks from one Paramount flow to another.</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="nav-tabs-wrapper">
+                                <a href="{% url 'task-extractor' %}" class="btn btn-secondary btn-sm">
+                                    Access Task Extractor
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-12">
+                    <div class="card card-chart">
                         <div class="card-header card-header-primary">
                             <div class="ct-chart" id="validator" style="text-align: center;">
                                 <img src="{% static '/imgs/validator.png' %}" alt="Validator">
@@ -52,7 +73,7 @@
                     <div class="card card-chart">
                         <div class="card-header card-header-warning">
                             <div class="ct-chart" id="parser" style="text-align: center;">
-                                <img src="{% static '/imgs/parser2.png' %}" alt="Validator">
+                                <img src="{% static '/imgs/parser2.png' %}" alt="Parser">
                             </div>
                         </div>
                         <div class="card-body">
@@ -73,7 +94,7 @@
                         <div class="card-header card-header-danger">
                             <div class="ct-chart" id="albacorizer" style="text-align: center;">
                                 <!-- <h1 style="text-align: center;">IMG</h1> -->
-                                <img src="{% static '/imgs/albacorizer2.png' %}" alt="">
+                                <img src="{% static '/imgs/albacorizer2.png' %}" alt="Albacorizer">
                             </div>
                         </div>
                         <div class="card-body">

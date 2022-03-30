@@ -11,11 +11,19 @@ function requestIDs(event){
 }
 
 
-function copyToClipboard(){
-    let textarea = document.getElementById('template')
-    textarea.select();
-    document.execCommand('copy')
-    alert("Template Copied to Clipboard")
+function copyToClipboard(id){
+    if(id == 'autoAnswer'){
+        let textarea = document.getElementById('template')
+        textarea.select();
+        document.execCommand('copy')
+        alert("Template Copied to Clipboard")
+    }else{
+        let textarea = document.getElementById('bpmnResult')
+        textarea.select();
+        document.execCommand('copy')
+        alert("BPMN Code Copied to Clipboard")
+    }
+    
 }
 
 
