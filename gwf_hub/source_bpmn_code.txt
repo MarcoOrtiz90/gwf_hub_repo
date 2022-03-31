@@ -20,7 +20,7 @@
 <bpmn:outgoing>
 SequenceFlow_1syq7lr</bpmn:outgoing>
 </bpmn:startEvent>
-<bpmn:userTask id=\"Task_1gctu4n\" name=\"Customer Information&#10;_VIP\" implementation=\"##unspecified\">
+<bpmn:userTask id=\"Task_1gctu4n\" name=\"Customer Information&#10;\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:properties>
 <camunda:property name=\"subType\" value=\"dev-task\" />
@@ -95,7 +95,7 @@ SequenceFlow_1edp6xr</bpmn:incoming>
 <bpmn:outgoing>
 SequenceFlow_04u8c1t</bpmn:outgoing>
 </bpmn:userTask>
-<bpmn:userTask id=\"Task_0hm6lg1\" name=\"GSI_VIP\" implementation=\"##unspecified\">
+<bpmn:userTask id=\"Task_0hm6lg1\" name=\"GSI\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
 <camunda:formField id=\"diagState\" label=\"Customer information has been reviewed.\" type=\"formProperty\" />
@@ -167,7 +167,7 @@ SequenceFlow_04u8c1t</bpmn:incoming>
 <bpmn:outgoing>
 SequenceFlow_0c5nwnd</bpmn:outgoing>
 </bpmn:userTask>
-<bpmn:userTask id=\"Task_1gbogcp\" name=\"Payment_VIP\" implementation=\"##unspecified\">
+<bpmn:userTask id=\"Task_1gbogcp\" name=\"Payment\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
 <camunda:formField id=\"diagState\" label=\"We have reviewed the GSI section and not found ATO scenario.\" type=\"formProperty\" />
@@ -294,7 +294,7 @@ SequenceFlow_0c5nwnd</bpmn:incoming>
 <bpmn:outgoing>
 SequenceFlow_1730n8t</bpmn:outgoing>
 </bpmn:userTask>
-<bpmn:userTask id=\"Task_0vj2had\" name=\"Additional Annotations&#10;_VIP\" implementation=\"##unspecified\">
+<bpmn:userTask id=\"Task_0vj2had\" name=\"Additional Annotations&#10;\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
 <camunda:formField id=\"diagState\" label=\"This is the end of the investigation, please write additional annotations if any.\" type=\"formProperty\" />
@@ -346,9 +346,6 @@ SequenceFlow_0aht6t8</bpmn:outgoing>
 <bpmn:userTask id=\"Task_0r9vhui\" name=\"Customer Data_NC&#10;\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
-<camunda:formField id=\"diagState\" label=\"We have familiarized with past actions in this account and reviewed previous annotations.\" type=\"formProperty\" />
-<camunda:formField id=\"summary\" label=\"Is the customer VC in cross-org? {{cross_org_status}}, Is it a dormant customer? {{cus_dormant}}, Is the customer verified in Souq? {{cus_verified_souq}}, Is there CB/BD noted on the account? {{cui_cb_bd_status}}, Are there any attributes match between CUI and cross-org VC account? {{crossorg_attribute_match}}, Is the email/moa verified? {{nc_email_moa}}, Provide IV link or RC CID {{iv_link_rc_cid}}, Select test account attribute that matches {{test_account_attributes}}, Are you ready to take a pass action? {{pass_action_cus_data}}, Please provide IV link if an e-profile found {{eprof_iv_link}}\" type=\"formProperty\" />
-<camunda:formField id=\"instructions\" label=\"We will now focus on the customer data widget to review with the customer attributes and look for any signs in cross org ATO\" type=\"formProperty\" />
 <camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
 <camunda:properties />
 </camunda:formField>
@@ -507,9 +504,7 @@ SequenceFlow_0aht6t8</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"(^[0-9]*$)|(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]|[a-zA-Z0-9]{1,}\\.com)\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please insert only link or CID, no additional annotations supported!\" />
-<camunda:constraint name=\"maxBoundary\" config=\"100\" />
+<camunda:constraint name=\"maxBoundary\" config=\"150\" />
 <camunda:constraint name=\"minBoundary\" config=\"2\" />
 </camunda:validation>
 </camunda:formField>
@@ -558,25 +553,10 @@ SequenceFlow_0aht6t8</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]|[a-zA-Z0-9]{1,}\\.com)\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please insert only link, no additional annotations supported!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"150\" />
 <camunda:constraint name=\"minBoundary\" config=\"2\" />
 <camunda:constraint name=\"optional\" config=\"true\" />
 </camunda:validation>
-</camunda:formField>
-<camunda:formField id=\"cb_bd_unresolved_action\" label=\"Do you want to Hold/Fraud the account?\" type=\"YES_NO_QUESTION\">
-<camunda:properties>
-<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
-<camunda:property name=\"conditionalShowExpression\" value=\"eval(cui_cb_bd_status) === &#34;cb_bd_unresolved&#34;\" />
-<camunda:property name=\"toggle\" value=\"false\" />
-<camunda:property name=\"ordering\" value=\"15\" />
-<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
-<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
-<camunda:property name=\"optionsType\" value=\"manual\" />
-<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
-<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
-</camunda:properties>
 </camunda:formField>
 </camunda:formData>
 </bpmn:extensionElements>
@@ -588,9 +568,6 @@ SequenceFlow_10z2o5h</bpmn:outgoing>
 <bpmn:userTask id=\"Task_04xp797\" name=\"GSI\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
-<camunda:formField id=\"diagState\" label=\"The payment method used in the current order has been reviewed\" type=\"formProperty\" />
-<camunda:formField id=\"summary\" label=\"Is the OIP captured in GSI as per order date? {{oip_order_date}}, Are there any changes in GSI attributes? {{recent_signins_gsi}}, Are there any impactful relations? {{nc_impactful_rels}}, How are the relations in GSI? {{gsi_relations}}, Please provide CID of the impactful relation {{impactful_rel_cid}}, Does it match any of the following scenarios? {{gsi_account_scenario}}, Are you ready to sanitize the account? {{account_to_san}}, Are you ready to enforce the account? {{account_to_enforce}}, Did you check for cross org sign-ins? {{cross_org_signin}}\" type=\"formProperty\" />
-<camunda:formField id=\"instructions\" label=\"Evaluate the recent sign-ins to notice any suspicious or legit pattern\" type=\"formProperty\" />
 <camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
 <camunda:properties />
 </camunda:formField>
@@ -635,7 +612,7 @@ SequenceFlow_10z2o5h</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 </camunda:formField>
-<camunda:formField id=\"gsi_relations\" label=\"How are the relations in GSI?\" type=\"SELECT_ONE\">
+<camunda:formField id=\"gsi_relations\" label=\"How are the relations in GSI?\" type=\"SELECT_BUTTON\">
 <camunda:properties>
 <camunda:property name=\"autoInsertBlurb\" value=\"false\" />
 <camunda:property name=\"conditionalShowExpression\" value=\"eval(oip_order_dateoip_order_date) === &#39;False&#39; || eval(nc_impactful_relsnc_impactful_rels) === &#39;True&#39;\" />
@@ -665,8 +642,6 @@ SequenceFlow_10z2o5h</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"^[0-9]+$\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please insert only CID, manual annotations are restricted!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"20\" />
 <camunda:constraint name=\"minBoundary\" config=\"1\" />
 </camunda:validation>
@@ -918,9 +893,6 @@ SequenceFlow_00jv94o</bpmn:outgoing>
 <bpmn:userTask id=\"Task_1ctmqtr\" name=\"Customer Data_VC&#10;\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
-<camunda:formField id=\"diagState\" label=\"We have familiarized with past actions in this account and reviewed previous annotations.\" type=\"formProperty\" />
-<camunda:formField id=\"summary\" label=\"Is the customer dormant? {{cust_dormant}}, Are there any signs of VCGB or Sleeper MO? {{vcgs_sleeper_mo}}, Is there CB/BD noted on the account? {{cb_bd_vc}}, Are you ready to hold/cancel the order? {{hold_cancel_order}}, Is the customer verified in souq? {{cus_verified_souq}}, Please enter souq profile link {{souq_profile_link}}\" type=\"formProperty\" />
-<camunda:formField id=\"instructions\" label=\"We will now focus on the customer data widget to review with the customer attributes and look for any signs in cross org ATO\" type=\"formProperty\" />
 <camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
 <camunda:properties />
 </camunda:formField>
@@ -1012,8 +984,6 @@ SequenceFlow_00jv94o</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]|[a-zA-Z0-9]{1,}\\.com)\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please insert only links, no additional annotations supported!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"150\" />
 <camunda:constraint name=\"minBoundary\" config=\"1\" />
 </camunda:validation>
@@ -1111,7 +1081,7 @@ SequenceFlow_108ayjq</bpmn:outgoing>
 <camunda:formField id=\"ivlink_rc_cid\" label=\"Please provide the IV link/RC cid\" type=\"STRING\">
 <camunda:properties>
 <camunda:property name=\"autoInsertBlurb\" value=\"false\" />
-<camunda:property name=\"conditionalShowExpression\" value=\"eval(recp_val_ivrecp_val_iv) === &#39;True&#39;\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(recp_val_ivrecp_val_iv) === &#39; True&#39;\" />
 <camunda:property name=\"toggle\" value=\"false\" />
 <camunda:property name=\"ordering\" value=\"5\" />
 <camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
@@ -1121,8 +1091,6 @@ SequenceFlow_108ayjq</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"(^[0-9]*$)|(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]|[a-zA-Z0-9]{1,}\\.com)\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please provide link/CID only, mannual annotations are restricted!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"150\" />
 <camunda:constraint name=\"minBoundary\" config=\"1\" />
 </camunda:validation>
@@ -1171,8 +1139,6 @@ SequenceFlow_108ayjq</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"^[0-9]+$\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please insert only CID, manual annotations are restricted!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"20\" />
 <camunda:constraint name=\"minBoundary\" config=\"1\" />
 </camunda:validation>
@@ -1201,7 +1167,7 @@ SequenceFlow_108ayjq</bpmn:outgoing>
 <camunda:formField id=\"rc_cid_link\" label=\"Please provide the RC CID/IV Link\" type=\"STRING\">
 <camunda:properties>
 <camunda:property name=\"autoInsertBlurb\" value=\"false\" />
-<camunda:property name=\"conditionalShowExpression\" value=\"eval(order_vel_accn) === &#34;justified_by_rc&#34; || eval(order_vel_accn) === &#34;justified_by_iv&#34;\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(order_vel_accn) === &#34;justified_by_rc&#34;\" />
 <camunda:property name=\"toggle\" value=\"false\" />
 <camunda:property name=\"ordering\" value=\"10\" />
 <camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
@@ -1211,8 +1177,6 @@ SequenceFlow_108ayjq</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"(^[0-9]*$)|(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]|[a-zA-Z0-9]{1,}\\.com)\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please provide link/CID only, mannual annotations are restricted!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"150\" />
 <camunda:constraint name=\"minBoundary\" config=\"1\" />
 </camunda:validation>
@@ -1227,9 +1191,6 @@ SequenceFlow_1ffcf66</bpmn:outgoing>
 <bpmn:userTask id=\"Task_0k9ijgo\" name=\"Related Customers\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
-<camunda:formField id=\"diagState\" label=\"Customer information and account details have been analyzed.\" type=\"formProperty\" />
-<camunda:formField id=\"summary\" label=\"How are the relations in RC? (Chose the most impactful relation) {{rc_rels}}, Provide RC CID {{cid_txt}}, What kind of impactful relation is it? {{impactful_rel_type}}, Is the CB/BD resolved? {{cb_bd_rc_status}}, Is it the legit customer coming back with a new account? {{legit_cus_coming}}, Is the VCAC action correct in related account? {{vcac_action_rc}}, Do you want to take cancel/enforce action? {{cancel_enforce_action}}\" type=\"formProperty\" />
-<camunda:formField id=\"instructions\" label=\"Evaluate customer&#39;s relations and establish if there is a specific pattern present.\" type=\"formProperty\" />
 <camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
 <camunda:properties />
 </camunda:formField>
@@ -1237,7 +1198,7 @@ SequenceFlow_1ffcf66</bpmn:outgoing>
 <camunda:properties />
 </camunda:formField>
 <camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
-<camunda:formField id=\"rc_rels\" label=\"How are the relations in RC? (Chose the most impactful relation)\" type=\"SELECT_ONE\">
+<camunda:formField id=\"rc_rels\" label=\"How are the relations in RC? (Chose the most impactful relation)\" type=\"SELECT_BUTTON\">
 <camunda:properties>
 <camunda:property name=\"autoInsertBlurb\" value=\"false\" />
 <camunda:property name=\"toggle\" value=\"false\" />
@@ -1266,8 +1227,6 @@ SequenceFlow_1ffcf66</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"^[0-9]$\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please insert only CID, manual annotations are restricted!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"20\" />
 <camunda:constraint name=\"minBoundary\" config=\"1\" />
 </camunda:validation>
@@ -1440,14 +1399,11 @@ SequenceFlow_1ffcf66</bpmn:outgoing>
 <bpmn:incoming>
 SequenceFlow_0st3dsl</bpmn:incoming>
 <bpmn:outgoing>
-SequenceFlow_067rs8d</bpmn:outgoing>
+SequenceFlow_18f35fy</bpmn:outgoing>
 </bpmn:userTask>
 <bpmn:userTask id=\"Task_1jjr9e7\" name=\"Calls\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
 <camunda:formData>
-<camunda:formField id=\"diagState\" label=\"The primary investigation process is complete. \" type=\"formProperty\" />
-<camunda:formField id=\"summary\" label=\"Is the bank call required? {{bank_call}}, Is Customer/CCH call required? {{cch_cus_call}}, Please provide the contact number {{contact_number}}, What was the outcome of call? {{outcome_of_call}}\" type=\"formProperty\" />
-<camunda:formField id=\"instructions\" label=\"If required, perform the corresponding calls to banks, customer or CCH to justify account&#39;s information\" type=\"formProperty\" />
 <camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
 <camunda:properties />
 </camunda:formField>
@@ -1602,8 +1558,6 @@ SequenceFlow_067rs8d</bpmn:outgoing>
 <camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
 </camunda:properties>
 <camunda:validation>
-<camunda:constraint name=\"pattern\" config=\"^[0-9]+$\" />
-<camunda:constraint name=\"patternInvalid\" config=\"Please insert only CID, manual annotations are restricted!\" />
 <camunda:constraint name=\"maxBoundary\" config=\"20\" />
 <camunda:constraint name=\"minBoundary\" config=\"1\" />
 </camunda:validation>
@@ -1626,23 +1580,10 @@ SequenceFlow_067rs8d</bpmn:outgoing>
 <camunda:property name=\"options.Denied to speak.5\" value=\"denied_to_speak\" />
 </camunda:properties>
 </camunda:formField>
-<camunda:formField id=\"cch_unauth_ato\" label=\"Do you want to sanitize the account?\" type=\"YES_NO_QUESTION\">
-<camunda:properties>
-<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
-<camunda:property name=\"conditionalShowExpression\" value=\"eval(outcome_of_call) === &#34;did_not_auth&#34;\" />
-<camunda:property name=\"toggle\" value=\"false\" />
-<camunda:property name=\"ordering\" value=\"13\" />
-<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
-<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
-<camunda:property name=\"optionsType\" value=\"manual\" />
-<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
-<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
-</camunda:properties>
-</camunda:formField>
 </camunda:formData>
 </bpmn:extensionElements>
 <bpmn:incoming>
-SequenceFlow_0sd6j8l</bpmn:incoming>
+SequenceFlow_1rkweor</bpmn:incoming>
 <bpmn:outgoing>
 SequenceFlow_0d465m6</bpmn:outgoing>
 </bpmn:userTask>
@@ -1697,10 +1638,6 @@ SequenceFlow_03z7kyl</bpmn:incoming>
 SequenceFlow_1crfkbn</bpmn:incoming>
 <bpmn:incoming>
 SequenceFlow_0v9li3f</bpmn:incoming>
-<bpmn:incoming>
-SequenceFlow_0pe4z2t</bpmn:incoming>
-<bpmn:incoming>
-SequenceFlow_1oyf5j8</bpmn:incoming>
 <bpmn:outgoing>
 SequenceFlow_1ode5o0</bpmn:outgoing>
 </bpmn:callActivity>
@@ -1730,7 +1667,7 @@ SequenceFlow_08kvsba</bpmn:outgoing>
 <bpmn:extensionElements>
 <camunda:formData>
 <camunda:formField id=\"diagState\" label=\"This is the beginning of the investigation. Carefully follow the indications and questions presented through this workflow\" type=\"formProperty\" />
-<camunda:formField id=\"summary\" label=\"RUNID : {{diag_run_id}}, What type of customer is this? {{status}}\" type=\"formProperty\" />
+<camunda:formField id=\"summary\" label=\"What type of customer is this? {{status}}\" type=\"formProperty\" />
 <camunda:formField id=\"instructions\" label=\"Review the **Customer Data** widget to determine the type of customer\" type=\"formProperty\" />
 <camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
 <camunda:properties />
@@ -1789,8 +1726,6 @@ SequenceFlow_0d465m6</bpmn:incoming>
 SequenceFlow_1tht2rk</bpmn:outgoing>
 <bpmn:outgoing>
 SequenceFlow_1b10b0g</bpmn:outgoing>
-<bpmn:outgoing>
-SequenceFlow_0g3yqfr</bpmn:outgoing>
 </bpmn:exclusiveGateway>
 <bpmn:sequenceFlow id=\"SequenceFlow_0d465m6\" sourceRef=\"Task_1jjr9e7\" targetRef=\"ExclusiveGateway_1xfq5un\" />
 <bpmn:sequenceFlow id=\"SequenceFlow_1tht2rk\" name=\"if UVCC applicable&#10;\" sourceRef=\"ExclusiveGateway_1xfq5un\" targetRef=\"Task_0cjcafi\">
@@ -1814,11 +1749,11 @@ SequenceFlow_0k26d3i</bpmn:outgoing>
 <camunda:inputOutput />
 </bpmn:extensionElements>
 <bpmn:incoming>
-SequenceFlow_0os8tht</bpmn:incoming>
+SequenceFlow_18f35fy</bpmn:incoming>
 <bpmn:incoming>
-SequenceFlow_0g3yqfr</bpmn:incoming>
+SequenceFlow_0os8tht</bpmn:incoming>
 <bpmn:outgoing>
-SequenceFlow_0pe4z2t</bpmn:outgoing>
+SequenceFlow_1rkweor</bpmn:outgoing>
 </bpmn:callActivity>
 <bpmn:sequenceFlow id=\"SequenceFlow_1rugw95\" sourceRef=\"Task_06ek1yf\" targetRef=\"ExclusiveGateway_199w3yz\" />
 <bpmn:exclusiveGateway id=\"ExclusiveGateway_199w3yz\" name=\"&#10;\">
@@ -1864,7 +1799,8 @@ SequenceFlow_1crfkbn</bpmn:outgoing>
 <bpmn:sequenceFlow id=\"SequenceFlow_1mt3urj\" sourceRef=\"ExclusiveGateway_05g5e6c\" targetRef=\"Task_0n69pry\" />
 <bpmn:sequenceFlow id=\"SequenceFlow_1crfkbn\" name=\"&#10;\" sourceRef=\"ExclusiveGateway_05g5e6c\" targetRef=\"Task_0lf6m5c\">
 <bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
-pass_action_cus_data === true || hold_cancel_order === true || cb_bd_unresolved_action === true</bpmn:conditionExpression>
+<![CDATA[pass_action_cus_data === 'True' || hold_cancel_order === 'True']]>
+</bpmn:conditionExpression>
 </bpmn:sequenceFlow>
 <bpmn:exclusiveGateway id=\"ExclusiveGateway_1sze2nz\">
 <bpmn:incoming>
@@ -1879,36 +1815,21 @@ SequenceFlow_0os8tht</bpmn:outgoing>
 <bpmn:sequenceFlow id=\"SequenceFlow_00jv94o\" sourceRef=\"Task_04xp797\" targetRef=\"ExclusiveGateway_1sze2nz\" />
 <bpmn:sequenceFlow id=\"SequenceFlow_0v9li3f\" name=\"&#10;\" sourceRef=\"ExclusiveGateway_1sze2nz\" targetRef=\"Task_0lf6m5c\">
 <bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
-account_to_enforce === true</bpmn:conditionExpression>
+<![CDATA[account_to_enforce === 'True']]>
+</bpmn:conditionExpression>
 </bpmn:sequenceFlow>
 <bpmn:sequenceFlow id=\"SequenceFlow_0st3dsl\" sourceRef=\"ExclusiveGateway_1sze2nz\" targetRef=\"Task_0k9ijgo\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_18f35fy\" sourceRef=\"Task_0k9ijgo\" targetRef=\"Task_0g93dei\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_1rkweor\" sourceRef=\"Task_0g93dei\" targetRef=\"Task_1jjr9e7\" />
 <bpmn:sequenceFlow id=\"SequenceFlow_0os8tht\" name=\"&#10;\" sourceRef=\"ExclusiveGateway_1sze2nz\" targetRef=\"Task_0g93dei\">
 <bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
-account_to_san === true</bpmn:conditionExpression>
+<![CDATA[account_to_san === 'True']]>
+</bpmn:conditionExpression>
 </bpmn:sequenceFlow>
 <bpmn:sequenceFlow id=\"SequenceFlow_04u8c1t\" sourceRef=\"Task_1gctu4n\" targetRef=\"Task_0hm6lg1\" />
 <bpmn:sequenceFlow id=\"SequenceFlow_0c5nwnd\" sourceRef=\"Task_0hm6lg1\" targetRef=\"Task_1gbogcp\" />
 <bpmn:sequenceFlow id=\"SequenceFlow_1730n8t\" sourceRef=\"Task_1gbogcp\" targetRef=\"Task_0vj2had\" />
 <bpmn:sequenceFlow id=\"SequenceFlow_0aht6t8\" sourceRef=\"Task_0vj2had\" targetRef=\"EndEvent_0jz6g6t\" />
-<bpmn:exclusiveGateway id=\"ExclusiveGateway_0dg1417\">
-<bpmn:incoming>
-SequenceFlow_067rs8d</bpmn:incoming>
-<bpmn:outgoing>
-SequenceFlow_0sd6j8l</bpmn:outgoing>
-<bpmn:outgoing>
-SequenceFlow_1oyf5j8</bpmn:outgoing>
-</bpmn:exclusiveGateway>
-<bpmn:sequenceFlow id=\"SequenceFlow_067rs8d\" sourceRef=\"Task_0k9ijgo\" targetRef=\"ExclusiveGateway_0dg1417\" />
-<bpmn:sequenceFlow id=\"SequenceFlow_0sd6j8l\" sourceRef=\"ExclusiveGateway_0dg1417\" targetRef=\"Task_1jjr9e7\" />
-<bpmn:sequenceFlow id=\"SequenceFlow_0pe4z2t\" sourceRef=\"Task_0g93dei\" targetRef=\"Task_0lf6m5c\" />
-<bpmn:sequenceFlow id=\"SequenceFlow_1oyf5j8\" name=\"if enforcement action&#10;\" sourceRef=\"ExclusiveGateway_0dg1417\" targetRef=\"Task_0lf6m5c\">
-<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
-cancel_enforce_action === true</bpmn:conditionExpression>
-</bpmn:sequenceFlow>
-<bpmn:sequenceFlow id=\"SequenceFlow_0g3yqfr\" name=\"if customer unauth order, taking san action&#10;\" sourceRef=\"ExclusiveGateway_1xfq5un\" targetRef=\"Task_0g93dei\">
-<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
-cch_unauth_ato === true</bpmn:conditionExpression>
-</bpmn:sequenceFlow>
 </bpmn:process>
 <bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">
 <bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">
@@ -1966,13 +1887,15 @@ cch_unauth_ato === true</bpmn:conditionExpression>
 </bpmndi:BPMNShape>
 <bpmndi:BPMNEdge id=\"SequenceFlow_03z7kyl_di\" bpmnElement=\"SequenceFlow_03z7kyl\">
 <di:waypoint xsi:type=\"dc:Point\" x=\"3129\" y=\"43\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3739\" y=\"43\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3235\" y=\"43\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3235\" y=\"43\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3312\" y=\"43\" />
 <bpmndi:BPMNLabel>
-<dc:Bounds x=\"3389\" y=\"22\" width=\"90\" height=\"12\" />
+<dc:Bounds x=\"3205\" y=\"37\" width=\"90\" height=\"12\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNEdge>
 <bpmndi:BPMNShape id=\"CallActivity_0f0lzo2_di\" bpmnElement=\"Task_0lf6m5c\" bioc:stroke=\"Orange\" bioc:fill=\"#FFEBCC\">
-<dc:Bounds x=\"3739\" y=\"3\" width=\"100\" height=\"80\" />
+<dc:Bounds x=\"3312\" y=\"3\" width=\"100\" height=\"80\" />
 </bpmndi:BPMNShape>
 <bpmndi:BPMNEdge id=\"SequenceFlow_0n49yai_di\" bpmnElement=\"SequenceFlow_0n49yai\">
 <di:waypoint xsi:type=\"dc:Point\" x=\"2735\" y=\"43\" />
@@ -1984,16 +1907,16 @@ cch_unauth_ato === true</bpmn:conditionExpression>
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNEdge>
 <bpmndi:BPMNShape id=\"EndEvent_1ez7zwo_di\" bpmnElement=\"EndEvent_1ez7zwo\">
-<dc:Bounds x=\"3995\" y=\"25\" width=\"36\" height=\"36\" />
+<dc:Bounds x=\"3568\" y=\"25\" width=\"36\" height=\"36\" />
 <bpmndi:BPMNLabel>
-<dc:Bounds x=\"3968\" y=\"65\" width=\"90\" height=\"12\" />
+<dc:Bounds x=\"3541\" y=\"65\" width=\"90\" height=\"12\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNShape>
 <bpmndi:BPMNEdge id=\"SequenceFlow_1ode5o0_di\" bpmnElement=\"SequenceFlow_1ode5o0\">
-<di:waypoint xsi:type=\"dc:Point\" x=\"3839\" y=\"43\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3995\" y=\"43\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3412\" y=\"43\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3568\" y=\"43\" />
 <bpmndi:BPMNLabel>
-<dc:Bounds x=\"3872\" y=\"22\" width=\"90\" height=\"12\" />
+<dc:Bounds x=\"3445\" y=\"22\" width=\"90\" height=\"12\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNEdge>
 <bpmndi:BPMNShape id=\"CallActivity_1azwemt_di\" bpmnElement=\"Task_00oa95c\" bioc:stroke=\"Orange\" bioc:fill=\"#FFEBCC\">
@@ -2092,7 +2015,7 @@ cch_unauth_ato === true</bpmn:conditionExpression>
 <dc:Bounds x=\"2346\" y=\"422\" width=\"100\" height=\"80\" />
 </bpmndi:BPMNShape>
 <bpmndi:BPMNShape id=\"CallActivity_1rs5gvp_di\" bpmnElement=\"Task_0g93dei\" bioc:stroke=\"Orange\" bioc:fill=\"#FFEBCC\">
-<dc:Bounds x=\"3328\" y=\"-110\" width=\"100\" height=\"80\" />
+<dc:Bounds x=\"2043\" y=\"-4\" width=\"100\" height=\"80\" />
 </bpmndi:BPMNShape>
 <bpmndi:BPMNEdge id=\"SequenceFlow_1rugw95_di\" bpmnElement=\"SequenceFlow_1rugw95\">
 <di:waypoint xsi:type=\"dc:Point\" x=\"-876\" y=\"36\" />
@@ -2177,10 +2100,10 @@ cch_unauth_ato === true</bpmn:conditionExpression>
 <bpmndi:BPMNEdge id=\"SequenceFlow_1crfkbn_di\" bpmnElement=\"SequenceFlow_1crfkbn\">
 <di:waypoint xsi:type=\"dc:Point\" x=\"520\" y=\"11\" />
 <di:waypoint xsi:type=\"dc:Point\" x=\"520\" y=\"-187\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"-187\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"3\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3362\" y=\"-187\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3362\" y=\"3\" />
 <bpmndi:BPMNLabel>
-<dc:Bounds x=\"2156\" y=\"-208\" width=\"0\" height=\"24\" />
+<dc:Bounds x=\"1941.5405096995055\" y=\"-208\" width=\"0\" height=\"24\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNEdge>
 <bpmndi:BPMNShape id=\"ExclusiveGateway_1sze2nz_di\" bpmnElement=\"ExclusiveGateway_1sze2nz\" isMarkerVisible=\"true\">
@@ -2199,10 +2122,10 @@ cch_unauth_ato === true</bpmn:conditionExpression>
 <bpmndi:BPMNEdge id=\"SequenceFlow_0v9li3f_di\" bpmnElement=\"SequenceFlow_0v9li3f\">
 <di:waypoint xsi:type=\"dc:Point\" x=\"1525\" y=\"11\" />
 <di:waypoint xsi:type=\"dc:Point\" x=\"1525\" y=\"-130\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"-130\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"3\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3362\" y=\"-130\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"3362\" y=\"3\" />
 <bpmndi:BPMNLabel>
-<dc:Bounds x=\"2657.616222101252\" y=\"-151\" width=\"0\" height=\"24\" />
+<dc:Bounds x=\"2444\" y=\"-151\" width=\"0\" height=\"24\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNEdge>
 <bpmndi:BPMNEdge id=\"SequenceFlow_0st3dsl_di\" bpmnElement=\"SequenceFlow_0st3dsl\">
@@ -2212,10 +2135,27 @@ cch_unauth_ato === true</bpmn:conditionExpression>
 <dc:Bounds x=\"1665.5\" y=\"15\" width=\"0\" height=\"12\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_18f35fy_di\" bpmnElement=\"SequenceFlow_18f35fy\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1881\" y=\"36\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2043\" y=\"36\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1962\" y=\"15\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1rkweor_di\" bpmnElement=\"SequenceFlow_1rkweor\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"2143\" y=\"36\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2232\" y=\"36\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2232\" y=\"36\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2346\" y=\"36\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"2247\" y=\"30\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
 <bpmndi:BPMNEdge id=\"SequenceFlow_0os8tht_di\" bpmnElement=\"SequenceFlow_0os8tht\">
 <di:waypoint xsi:type=\"dc:Point\" x=\"1525\" y=\"11\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"1525\" y=\"-70\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3328\" y=\"-70\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1525\" y=\"-128\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2093\" y=\"-128\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2093\" y=\"-4\" />
 <bpmndi:BPMNLabel>
 <dc:Bounds x=\"1810\" y=\"-149\" width=\"0\" height=\"24\" />
 </bpmndi:BPMNLabel>
@@ -2246,51 +2186,6 @@ cch_unauth_ato === true</bpmn:conditionExpression>
 <di:waypoint xsi:type=\"dc:Point\" x=\"367\" y=\"574\" />
 <bpmndi:BPMNLabel>
 <dc:Bounds x=\"313\" y=\"553\" width=\"0\" height=\"12\" />
-</bpmndi:BPMNLabel>
-</bpmndi:BPMNEdge>
-<bpmndi:BPMNShape id=\"ExclusiveGateway_0dg1417_di\" bpmnElement=\"ExclusiveGateway_0dg1417\" isMarkerVisible=\"true\">
-<dc:Bounds x=\"2064.9\" y=\"11\" width=\"50\" height=\"50\" />
-<bpmndi:BPMNLabel>
-<dc:Bounds x=\"2089.9\" y=\"65\" width=\"0\" height=\"12\" />
-</bpmndi:BPMNLabel>
-</bpmndi:BPMNShape>
-<bpmndi:BPMNEdge id=\"SequenceFlow_067rs8d_di\" bpmnElement=\"SequenceFlow_067rs8d\">
-<di:waypoint xsi:type=\"dc:Point\" x=\"1881\" y=\"36\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"2065\" y=\"36\" />
-<bpmndi:BPMNLabel>
-<dc:Bounds x=\"1973\" y=\"15\" width=\"0\" height=\"12\" />
-</bpmndi:BPMNLabel>
-</bpmndi:BPMNEdge>
-<bpmndi:BPMNEdge id=\"SequenceFlow_0sd6j8l_di\" bpmnElement=\"SequenceFlow_0sd6j8l\">
-<di:waypoint xsi:type=\"dc:Point\" x=\"2115\" y=\"36\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"2346\" y=\"36\" />
-<bpmndi:BPMNLabel>
-<dc:Bounds x=\"2230.5\" y=\"15\" width=\"0\" height=\"12\" />
-</bpmndi:BPMNLabel>
-</bpmndi:BPMNEdge>
-<bpmndi:BPMNEdge id=\"SequenceFlow_0pe4z2t_di\" bpmnElement=\"SequenceFlow_0pe4z2t\">
-<di:waypoint xsi:type=\"dc:Point\" x=\"3428\" y=\"-70\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"-70\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"3\" />
-<bpmndi:BPMNLabel>
-<dc:Bounds x=\"3608.5\" y=\"-91\" width=\"0\" height=\"12\" />
-</bpmndi:BPMNLabel>
-</bpmndi:BPMNEdge>
-<bpmndi:BPMNEdge id=\"SequenceFlow_1oyf5j8_di\" bpmnElement=\"SequenceFlow_1oyf5j8\">
-<di:waypoint xsi:type=\"dc:Point\" x=\"2090\" y=\"61\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"2090\" y=\"184\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"184\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3789\" y=\"83\" />
-<bpmndi:BPMNLabel>
-<dc:Bounds x=\"2096\" y=\"114\" width=\"73\" height=\"24\" />
-</bpmndi:BPMNLabel>
-</bpmndi:BPMNEdge>
-<bpmndi:BPMNEdge id=\"SequenceFlow_0g3yqfr_di\" bpmnElement=\"SequenceFlow_0g3yqfr\">
-<di:waypoint xsi:type=\"dc:Point\" x=\"2421\" y=\"256\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3378\" y=\"256\" />
-<di:waypoint xsi:type=\"dc:Point\" x=\"3378\" y=\"-30\" />
-<bpmndi:BPMNLabel>
-<dc:Bounds x=\"3250\" y=\"260\" width=\"84\" height=\"36\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNEdge>
 </bpmndi:BPMNPlane>
