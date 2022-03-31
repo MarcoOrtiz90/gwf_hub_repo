@@ -1,0 +1,14 @@
+<form method="POST" action="">
+    {% csrf_token %}
+    <h3 class="neo-tint-opaque">Paramount Workflow BPMN Codes</h3>
+    <label>From:</label><br>
+    <textarea name="origin_code" placeholder="Enter origin BPMN code" rows="4" cols="60"></textarea>
+    <br>
+    <label>To:</label><br>
+    <textarea name="destination_code" placeholder="Enter destination BPMN code" rows="4" cols="60"></textarea>
+    <br>
+    <label>Specify Tasks</label><br>
+    <input type="text" name="tasks_to_copy" id="tasks-to-copy" placeholder="Add task/s to copy separated with ','" size="25" style="width: 40%;">
+    <br><br>
+    <button type="submit" class="btn btn-sm btn-info" name="extract" value="extract-copy">Extract and Paste tasks</button>
+</form>

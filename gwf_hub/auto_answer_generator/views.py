@@ -52,5 +52,3 @@ def aaGenerator(request):
 
     first_context = {'question_ids_table': question_ids_table}
     return render(request, "generator.html", first_context)
-
-    
