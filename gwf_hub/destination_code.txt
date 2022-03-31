@@ -5,6 +5,40 @@
 <bpmn:outgoing>
 SequenceFlow_1tsayt0</bpmn:outgoing>
 </bpmn:startEvent>
+<bpmn:userTask id=\"Task_1ulwxvk\" name=\"NC/VC\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"This is the beginning of the investigation. Carefully follow the indications and questions presented through this workflow\" type=\"formProperty\" />
+<camunda:formField id=\"summary\" label=\"What type of customer is this? {{status}}\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"Review the **Customer Data** widget to determine the type of customer\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"status\" label=\"What type of customer is this?\" type=\"SELECT_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+<camunda:property name=\"options.NC.0\" value=\"status_nc\" />
+<camunda:property name=\"options.VC.1\" value=\"status_vc\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0e65cu9</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_12tahar</bpmn:outgoing>
+</bpmn:userTask>
 <bpmn:sequenceFlow id=\"SequenceFlow_1tsayt0\" sourceRef=\"StartEvent_1\" targetRef=\"Task_1gctu4n\" />
 <bpmn:userTask id=\"Task_1gctu4n\" name=\"Contact Info\" implementation=\"##unspecified\">
 <bpmn:extensionElements>
@@ -2172,7 +2206,10 @@ SequenceFlow_1l5vmmb</bpmn:incoming>
 <dc:Bounds x=\"-100\" y=\"138\" width=\"90\" height=\"20\" />
 </bpmndi:BPMNLabel>
 </bpmndi:BPMNShape>
-<bpmndi:BPMNShape id=\"StartEvent_1jhqdjk_di\" bpmnElement=\"StartEvent_1jhqdjk\">
+<bpmndi:BPMNShape id=\"UserTask_1xsw1r0_di\" bpmnElement=\"Task_1ulwxvk\" bioc:stroke=\"Blue\" bioc:fill=\"#87CEFA\">
+<dc:Bounds x=\"-438\" y=\"-4\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"StartEvent_1jhqdjk_di\">
 <dc:Bounds x=\"-1147\" y=\"18\" width=\"36\" height=\"36\" />
 <bpmndi:BPMNLabel>
 <dc:Bounds x=\"-1174\" y=\"58\" width=\"90\" height=\"12\" />

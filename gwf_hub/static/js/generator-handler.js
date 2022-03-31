@@ -12,13 +12,14 @@ function requestIDs(event){
 
 
 function copyToClipboard(id){
+    let textarea = ''
     if(id == 'autoAnswer'){
-        let textarea = document.getElementById('template')
+        textarea = document.getElementById('template')
         textarea.select();
         document.execCommand('copy')
         alert("Template Copied to Clipboard")
-    }else{
-        let textarea = document.getElementById('bpmnResult')
+    }else if (id == 'extractor'){
+        textarea = document.getElementById('bpmnResult')
         textarea.select();
         document.execCommand('copy')
         alert("BPMN Code Copied to Clipboard")
