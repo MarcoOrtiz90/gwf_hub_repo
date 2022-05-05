@@ -89,112 +89,28 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="amazon-main-opaque">Albacore Test Flows</h2>
-                    <p class="neo-tint">The following Dashboard provides current Data on Test Flows</p>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-info card-header-icon">
-                                        <div class="card-icon">
-                                            <img src="{% static '/imgs/testFlows_small.png' %}" alt="Test Flows">       
-                                        </div>
-                                        <p class="card-category" style="color: rgb(255, 153, 0);">Workflow Resquest Widget</p>
-                                            <h3 class="card-title">2 Flows currently locked to you</h3> 
-                                    </div>
-                                    <hr>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6" style="border-right: 0.5px solid rgb(253, 151, 34); text-align:center">
-                                                <h4>Request a New Workflow</h4>
-                                                <select name="requestFlow" id="requestFlow" style="width: 150px;">
-                                                    <option value="flow">Flows</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h4 style="text-align: center;">Available Backup Flows</h4>
-                                                <h2 style="text-align: center;">4</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="col-xl-3 col-lg-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-danger">
+                            <div class="ct-chart" id="payload" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/payloadBuilder.png' %}" alt="">
                             </div>
-                            <div class="col-md-6">
-                                <div class="card card-chart">
-                                    <div class="card-header card-header-info">
-                                        <h3 style="text-align: center;">Assigned Flows and Tasks</h3>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div id="card-749841">
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                             <a class="card-link collapsed" data-toggle="collapse" data-parent="#card-749841" href="#card-element-901460">mttrejos</a>
-                                                        </div>
-                                                        <div id="card-element-901460" class="collapse">
-                                                            <div class="card-body">
-                                                                <table class="table table-hover">
-                                                                    <thead style="text-align: center;">
-                                                                        <tr>
-                                                                            <th>Workflow ID</th>
-                                                                            <th>Task IDS</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody style="text-align: center;">
-                                                                        <tr>
-                                                                            <td>bri_gwf_us_vc</td>
-                                                                            <td>2000001111111</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>bri_gwf_us_nc</td>
-                                                                            <td>2000000222222</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="card">
-                                                        <div class="card-header">
-                                                             <a class="collapsed card-link" data-toggle="collapse" data-parent="#card-749841" href="#card-element-697935">pratuhin</a>
-                                                        </div>
-                                                        <div id="card-element-697935" class="collapse">
-                                                            <div class="card-body">
-                                                                <table class="table table-hover">
-                                                                    <thead style="text-align: center;">
-                                                                        <tr>
-                                                                            <th>Workflow ID</th>
-                                                                            <th>Task IDS</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody style="text-align: center;">
-                                                                        <tr>
-                                                                            <td>bri_gwf_us_vc</td>
-                                                                            <td>2000001111111</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td>bri_gwf_us_nc</td>
-                                                                            <td>2000000222222</td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                            
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Payload Builder</h4>
+                            <p class="card-category">This function is in development. Currently outputs XML for BPMN workflow inputs</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="nav-tabs-wrapper">
+                                    <a href="{% url 'payloadBuilder' %}" class="btn btn-secondary btn-sm">
+                                        Access Payload Builder
+                                    </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
 </div>
