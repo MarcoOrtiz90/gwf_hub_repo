@@ -6,17 +6,31 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-4">
-          <form method="post">
-            {% csrf_token %}
-            <div class="input-group mb-3">
-              <label for="builderIterations"
-                >Enter total amount of questions in workflow: </label
-              >
-              <input type="number" id="builderIterations" />
-            </div>
-          </form>
+            <div class="card card-stats">
+                <div class="card-header card-header-warning card-header-icon">
+                    <div class="card-icon">
+                        <img src="{% static '/imgs/payloadBuilder_small.png' %}" alt="Payload Builder">
+                    </div>
+                </div>
+                <div class="card-body" style="text-align: left;">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                          <label for="builderIterations"
+                            >Enter total amount of questions in workflow: </label
+                          >
+                          <input type="number" id="builderIterations" />
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-success" name="buildPayload" value="buildPayload">Build Payload</button>
+                      </form>
+                </div>                
+            </div>          
         </div>
         <div class="col-md-8"></div>
+      </div>
+      <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-8"></div>
       </div>
     </div>
   </div>
