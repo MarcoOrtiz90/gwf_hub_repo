@@ -4,7 +4,7 @@ import openpyxl as xl
 
 def buildPayload():    
     payload = '' # final payload output to return
-    dataFile = pd.read_excel('paramount_enforcement_api_data.xlsx', sheet_name='QuestionData')
+    dataFile = pd.read_excel('payment_risk_apay_in_api_data.xlsx', sheet_name='APAY IN')
     valStart = '${&#34;'
     valEnd = '&#34;}'
     camundaValString = '<camunda:in sourceExpression=\\"'
@@ -24,16 +24,22 @@ def buildPayload():
             targetS = f'\\" target=\\"question_stringId_0{idx}\\" />'
             targetP = f'\\" target=\\"question_stepId_0{idx}\\" />'
             targetA = f'\\" target=\\"question_answer_0{idx}\\" />'
+        
+        valueString = camundaValString+valStart+question+valEnd+targetS
+        valueStep = camundaValString+valStart+step+valEnd+targetP
+        valueAnswer = camundaValVar+answer+targetA
 
-        valStep = camundaValString+valStart+step+valEnd+targetP
-        valQuestion = camundaValString+valStart+question+valEnd+targetS
-        valAnswer = camundaValVar+answer+targetA
-        iterationString = valQuestion+valStep+valAnswer
+        iterationValue = valueString+valueStep+valueAnswer
+
+        # valStep = camundaValString+valStart+step+valEnd+targetP
+        # valQuestion = camundaValString+valStart+question+valEnd+targetS
+        # valAnswer = camundaValVar+answer+targetA
+        # iterationString = valQuestion+valStep+valAnswer
 
         if not payload:                                     
-            payload = iterationString
+            payload = iterationValue
         else:
-            payload = payload + iterationString
+            payload = payload + iterationValue
 
     print(payload)
 
