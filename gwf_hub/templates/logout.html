@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div class="main-panel">
     {% include 'navbar.html' %}
@@ -8,9 +9,9 @@
 
             </div>
             <div class="col-md-4">
-                <div class="card card-chart">
+                <div class="card card-chart" style="text-align: center;">
                     <div class="card-header card-header-warning">
-                        <h3 style="text-align: center;">Account Logout</h3>
+                        <img src="{% static '/imgs/logout_small.png' %}" alt="Logout">
                     </div>
                     <div class="card-body">
                         <form method="POST">

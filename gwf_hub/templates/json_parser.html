@@ -1,52 +1,82 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
 <div class="main-panel">
-    {% include 'navbar.html' %} 
-
-    <br><br>
-    <form method="post" action="">
-        {% csrf_token %}
-        <div class="form-group mt-5">
-            <label class="col-sm-10 col-form-label"><h3>Please enter the workflow ID(s)</h3>
-            </label>
-            <br><br><br><br>
-            <div class="col-sm-7 ml-4 mt-2">
-                <input type="text" name="workflows" class="form-control" placeholder="Workflows" width="40%">
-                <label class="switch mt-5">
-                    <input type="checkbox" name="region_na" id="regionna">
-                    <span class="slider round"></span>
-                </label><label style="margin-left: 5px;">NA</label><br>
-                <label class="switch">
-                    <input type="checkbox" name="region_eu" id="regioneu">
-                    <span class="slider round"></span>
-                </label><label style="margin-left: 5px;">EU</label><br>
-                <label class="switch">
-                    <input type="checkbox" name="region_fe" id="regionfe">
-                    <span class="slider round"></span>
-                </label><label style="margin-left: 5px;">FE</label><br><br>
-
-                <label class="switch">
-                    <input type="checkbox" name="chrome" id="chromebr">
-                    <span class="slider round"></span>
-                </label><label style="margin-left: 5px;">Chrome</label><br>
-
-                <label class="switch">
-                    <input type="checkbox" name="firefox" id="firefoxbr">
-                    <span class="slider round"></span>
-                </label><label style="margin-left: 5px;">Firefox</label><br>
-
-                <button type="submit" class="btn btn-secondary btn-sm mt-3 ">Generate!</button>
-                <br>
-                {% if error %}
-                <p style="color:red;">{{ error }}</p>
-                {% endif %}
-
-                {% if message_to_display != "" %}
-                <p style="color:grey;">{{ message_to_display }}</p>
-                {% endif%}
+    {% include 'navbar.html' %}
+    <div class="content">
+        <h2 class="amazon-main-opaque">JSON Parser</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">                    
+                    <div class="card card-stats">
+                        <div class="card-header card-header-warning card-header-icon">
+                            <div class="card-icon">
+                                <img src="{% static '/imgs/parser2_small.png' %}" alt="Auto Answers Template Generator">
+                            </div>        
+                        </div>
+                        <div class="card-body" style="text-align: left;">
+                            <form method="post" action="">
+                                {% csrf_token %}
+                                <div class="form-group mt-5">
+                                    <div class="col-sm-7 ml-4 mt-2">
+                                        <input type="text" name="workflows" class="form-control" placeholder="Workflows" width="70%">
+                                        <label class="switch mt-5">
+                                            <input type="checkbox" name="region_na" id="regionna">
+                                            <span class="slider round"></span>
+                                        </label><label style="margin-left: 5px;">NA</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" name="region_eu" id="regioneu">
+                                            <span class="slider round"></span>
+                                        </label><label style="margin-left: 5px;">EU</label><br>
+                                        <label class="switch">
+                                            <input type="checkbox" name="region_fe" id="regionfe">
+                                            <span class="slider round"></span>
+                                        </label><label style="margin-left: 5px;">FE</label><br><br>
+                        
+                                        <label class="switch">
+                                            <input type="checkbox" name="chrome" id="chromebr">
+                                            <span class="slider round"></span>
+                                        </label><label style="margin-left: 5px;">Chrome</label><br>
+                        
+                                        <label class="switch">
+                                            <input type="checkbox" name="firefox" id="firefoxbr">
+                                            <span class="slider round"></span>
+                                        </label><label style="margin-left: 5px;">Firefox</label><br>
+                        
+                                        <button type="submit" class="btn btn-success btn-sm mt-3 ">Generate!</button>
+                                        <br>
+                                        {% if error %}
+                                        <p style="color:red;">{{ error }}</p>
+                                        {% endif %}
+                        
+                                        {% if message_to_display != "" %}
+                                        <p style="color:grey;">{{ message_to_display }}</p>
+                                        {% endif%}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                            <p style="color: grey;">The <strong class="neo-tint">Parser</strong> tool allows the user to input the name of an existing flow in Albacore, so that the tool can fetch for the JSON codes and convert them into a format ready Source File.How to use the tool:</p>
+                            <ol>
+                                <li style="color: grey;">Enter the workflow name in the empty field.</li>
+                                <li style="color: grey;">Select the region in which the workflow is located.</li>
+                                <li style="color: grey;">Select your default browser. The chosen browser has the be the regular used browser for accesing Amazon related websites.</li>
+                                <li style="color: grey;">Once settings are done, click the GENERATE! button to create the Source File based on the workflow id provided</li>
+                                <li style="color: grey;">The application will start the automated process of accesing Albacore, pulling the flow and its respective JSON codes to create the Source File.</li>
+                                <li style="color: grey;">Once finished a folder is created on the user's desktop with the requested Source File.</li>
+                            </ol>      
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </form>
+        </div>        
+    </div>
 </div>
 
 {% endblock content %}
+

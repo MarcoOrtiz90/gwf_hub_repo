@@ -1,3 +1,19 @@
+.neo-tint {
+  color: rgb(0, 128, 0) !important
+}
+
+.neo-tint-opaque {
+  color: rgba(0, 128, 0, 0.5);
+}
+
+.amazon-main-opaque {
+  color: rgba(255, 153, 0, 0.5);
+}
+
+.amazon-main {
+  color: rgb(255, 153,0)
+}
+
 .switch {
     position: relative;
     display: inline-block;
