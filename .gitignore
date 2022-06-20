@@ -1,5 +1,7 @@
 gwf_hub/gwf_hub/__pycache__/*.pyc
 gwf_hub/overview/__pycache__/*.pyc
 gwf_hub/gwf_hub/__pycache__/
-gwf_hub/overview/__pycache__/
+gwf_hub/auto_answer_generator/__pycache__/
+gwf_hub/json_parser/__pycache__/
+gwf_hub/validator/__pycache__/
 */__pycache__/*
