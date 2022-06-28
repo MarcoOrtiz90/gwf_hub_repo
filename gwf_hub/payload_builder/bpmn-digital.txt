@@ -1,0 +1,4953 @@
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+
+\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bioc=\"http://bpmn.io/schema/bpmn/biocolor/1.0\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:camunda=\"http://camunda.org/schema/1.0/bpmn\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_024ijxk\" targetNamespace=\"http://bpmn.io/schema/bpmn\" exporter=\"Camunda Modeler\" exporterVersion=\"1.14.0\">
+
+<bpmn:process id=\"Process_1\" processType=\"None\" isClosed=\"false\" isExecutable=\"true\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties>
+
+<camunda:property name=\"status_component_title\" />
+
+<camunda:property name=\"master_blurb\" />
+
+<camunda:property name=\"bulk_email_button_label\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:ioSpecification>
+
+<bpmn:inputSet name=\"processInput\" />
+
+<bpmn:outputSet name=\"processOutput\" />
+
+</bpmn:ioSpecification>
+
+<bpmn:startEvent id=\"StartEvent_1\">
+
+<bpmn:outgoing>
+
+SequenceFlow_1tsayt0</bpmn:outgoing>
+
+</bpmn:startEvent>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1tsayt0\" sourceRef=\"StartEvent_1\" targetRef=\"Task_1gctu4n\" />
+
+<bpmn:userTask id=\"Task_1gctu4n\" name=\"Reinstates\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:properties>
+
+<camunda:property name=\"subType\" value=\"dev-task\" />
+
+</camunda:properties>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"An order placed by a New Customer is in the queue for review\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"Was this customer reinstated in the last 90 days? (Check cross-org too) {{customer_reinstated}}, What is the reason of the reinstate? {{reinstate_reason}}, Are there previous annotations? {{previous_annotations}}, \" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Review if the account has been recently reinstated\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"warmHandOffQueueOverride\" label=\"summary_sections\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"customer_reinstated\" label=\"Was this customer reinstated in the last 90 days? (Check cross-org too)\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"reinstate_reason\" label=\"What is the reason of the reinstate?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(customer_reinstatedcustomer_reinstated) === &#39;True&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Document verification.0\" value=\"doc_verification\" />
+
+<camunda:property name=\"options.IV found.1\" value=\"iv\" />
+
+<camunda:property name=\"options.Unjustified enforcement.2\" value=\"unjustified_enforcement\" />
+
+<camunda:property name=\"options.Bank Verification.3\" value=\"bank_verification\" />
+
+<camunda:property name=\"options.CCH Authorized.4\" value=\"cch_authorized\" />
+
+<camunda:property name=\"options.Additional information provided.5\" value=\"additional_info\" />
+
+<camunda:property name=\"options.CB resolved.6\" value=\"cb_resolved_reinst\" />
+
+<camunda:property name=\"options.RC relations.7\" value=\"rc_rels_reinstate\" />
+
+<camunda:property name=\"options.Other.8\" value=\"other_reinst\" />
+
+<camunda:property name=\"options.Unable to justify.9\" value=\"unable_justify\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"previous_annotations\" label=\"Are there previous annotations?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"key_info_contacts\" label=\"Check for any key information in contacts and previous annotationss\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(previous_annotationsprevious_annotations) === &#39;True&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"other_reinstate\" label=\"Provide the other reinstate reason\" type=\"STRING\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(reinstate_reason) === &#39;other&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"numberRows\" value=\"1\" />
+
+<camunda:property name=\"numberColumns\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+<camunda:validation>
+
+<camunda:constraint name=\"maxBoundary\" config=\"100\" />
+
+<camunda:constraint name=\"minBoundary\" config=\"1\" />
+
+</camunda:validation>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_1tsayt0</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_0npky5z</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:userTask id=\"Task_14fr0vj\" name=\"Customer Data\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"Previous reinstate and annotations check complete\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"Is the customer dormant? {{nc_dormant}}, Do you notice any below attributes? {{nc_attributes}}, Is the customer VC in cross org? {{x_org_vc}}, What is the email pattern? {{email_pattern}}, Does ACH name correspond to CCH? {{account_cch}}\" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Review customer data information\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"nc_dormant\" label=\"Is the customer dormant?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"nc_attributes\" label=\"Do you notice any below attributes?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Different origin and order market.0\" value=\"different_market\" />
+
+<camunda:property name=\"options.Address and payment are old.1\" value=\"old_address_pmt\" />
+
+<camunda:property name=\"options.GSI not recent and time zone not local.2\" value=\"gsi_tz_not_local\" />
+
+<camunda:property name=\"options.None of the above.3\" value=\"none\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"x_org_vc\" label=\"Is the customer VC in cross org?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(nc_attributes) === &#39;different_market&#39; || eval(nc_attributes) === &#39;old_address_pmt&#39; || eval(nc_attributes) === &#39;gsi_tz_not_local&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.No.0\" value=\"no_x_org\" />
+
+<camunda:property name=\"options.Yes (Select the attrubutes that match with VC).1\" value=\"yes_x_org\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"email_pattern\" label=\"What is the email pattern?\" type=\"SELECT_ONE\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(nc_attributes) === &#39;none&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.E-handle corresponds to ACH.0\" value=\"ehandle_corresponds\" />
+
+<camunda:property name=\"options.E-handle doesn&#39;t correspond to ACH.1\" value=\"ehandle_dnc\" />
+
+<camunda:property name=\"options.Disposable edom.2\" value=\"disposable\" />
+
+<camunda:property name=\"options.Risky/Suspicious edom.3\" value=\"suspicious_edom\" />
+
+<camunda:property name=\"options.Legit MO edom.4\" value=\"legit_edom\" />
+
+<camunda:property name=\"options.MOA.5\" value=\"moa\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"gsi\" label=\"GSI\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(x_org_vc) === &#39;yes_x_org&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"ordering_pattern\" label=\"Ordering Pattern\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(x_org_vc) === &#39;yes_x_org&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"payments\" label=\"Payments\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(x_org_vc) === &#39;yes_x_org&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"address\" label=\"Address\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(x_org_vc) === &#39;yes_x_org&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"no_match\" label=\"No match\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(x_org_vc) === &#39;yes_x_org&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"9\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"x_org_ato\" label=\"Is there ATO in cross org ATO? \" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(x_org_vc) === &#39;yes_x_org&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"10\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"x_org_sanitize\" label=\"Are you ready to sanitize the account?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(x_org_atox_org_ato) === &#39;True&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"11\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"account_cch\" label=\"Does ACH name correspond to CCH?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"12\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.ACH corr to CCH.0\" value=\"ach_corr\" />
+
+<camunda:property name=\"options.ACH/CCH have same family name.1\" value=\"family_name\" />
+
+<camunda:property name=\"options.ACH related with CCH by IV.2\" value=\"related_iv\" />
+
+<camunda:property name=\"options.ACH does not correspond to CCH.3\" value=\"ach_not_correspond\" />
+
+<camunda:property name=\"options.Not applicable.4\" value=\"Not applicable\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_0npky5z</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_1r177gn</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:userTask id=\"Task_16t33tb\" name=\"Order Details\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"Customer data have been reviewed\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"What is the nature of the items in the queued orders? {{orders_nature}}, What is the order value? {{order_value}}, Has the shipping address been verified? {{shipping_verification}},  Does the CUI has a pattern of sending to Locker Address? {{locker_pattern}}, Are there multiple different addresses noted on the account? {{multiple_addresses}}, Is there order velocity on account? {{order_velocity}}; Is there any MO observed? {{velocity_mo}}, Are you ready to Hold the account? {{vel_mo_action}}\" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Check the attributes of the order in current task\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"orders_nature\" label=\"What is the nature of the items in the queued orders?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Suspicious/Risky items.0\" value=\"suspicious\" />
+
+<camunda:property name=\"options.Non Suspicious/Risky items.1\" value=\"non_suspicious\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"order_value\" label=\"What is the order value?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.High Value.0\" value=\"high\" />
+
+<camunda:property name=\"options.Medium Value.1\" value=\"medium\" />
+
+<camunda:property name=\"options.Low Value.2\" value=\"low\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"order_velocity\" label=\"Is there order velocity on account?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Legit MO.0\" value=\"order_legit_mo\" />
+
+<camunda:property name=\"options.Item Combo.1\" value=\"combo\" />
+
+<camunda:property name=\"options.Similar order pattern in RC.2\" value=\"similar_rc\" />
+
+<camunda:property name=\"options.Justified by IV.3\" value=\"justified_iv\" />
+
+<camunda:property name=\"options.No order velocity.4\" value=\"no_velocity\" />
+
+<camunda:property name=\"options.Unjustified velocity.5\" value=\"unjustified_velocity\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"velocity_iv_rc\" label=\"Annotate the link or CID that justifies the velocity\" type=\"STRING\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"supplementalInfo\" value=\"If your link is longer than 200 characters use Tiny (http://tiny.amazon.com/)\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(order_velocity) === &#39;justified_iv&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"numberRows\" value=\"1\" />
+
+<camunda:property name=\"numberColumns\" value=\"0\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+<camunda:validation>
+
+<camunda:constraint name=\"maxBoundary\" config=\"200\" />
+
+<camunda:constraint name=\"maxBoundaryInvalid\" config=\"Max number of characters reached\" />
+
+<camunda:constraint name=\"minBoundary\" config=\"0\" />
+
+</camunda:validation>
+
+</camunda:formField>
+
+<camunda:formField id=\"velocity_mo\" label=\"Is there any MO observed?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(order_velocity) === &#39;unjustified_velocity&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Legit MO.0\" value=\"vel_legit_mo\" />
+
+<camunda:property name=\"options.Fraud MO.1\" value=\"vel_fraud_mo\" />
+
+<camunda:property name=\"options.None.2\" value=\"vel_none\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"vel_mo_action\" label=\"Are you ready to Hold the account?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(velocity_mo) === &#39;vel_fraud_mo&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"shipping_verification\" label=\"Has the shipping address been verified?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Verified by IV/RC.0\" value=\"iv_rc\" />
+
+<camunda:property name=\"options.Fraud/Sanitize relations with same address in RC.1\" value=\"fraud_sanitize_rc\" />
+
+<camunda:property name=\"options.Shipping address corresponds to CCH.2\" value=\"sa_corresponds_cch\" />
+
+<camunda:property name=\"options.Address is whishlist.3\" value=\"whishlist\" />
+
+<camunda:property name=\"options.Address is a locker.4\" value=\"locker\" />
+
+<camunda:property name=\"options.Addrres is a freight forwarder.5\" value=\"freight_forwarder\" />
+
+<camunda:property name=\"options.Address not verified.6\" value=\"not_verified\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"iv_rc_cid\" label=\"Annotate the IV link or CID on the relation\" type=\"STRING\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(shipping_verification) === &#39;iv_rc&#39; || eval(shipping_verification) === &#39;fraud_sanitize_rc&#39; \" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"numberRows\" value=\"1\" />
+
+<camunda:property name=\"numberColumns\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+<camunda:validation>
+
+<camunda:constraint name=\"maxBoundary\" config=\"20\" />
+
+<camunda:constraint name=\"maxBoundaryInvalid\" config=\"Max number of characters reached\" />
+
+<camunda:constraint name=\"minBoundary\" config=\"0\" />
+
+</camunda:validation>
+
+</camunda:formField>
+
+<camunda:formField id=\"locker_pattern\" label=\"Does the CUI has a pattern of sending to Locker Address?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(shipping_verification) === &#39;locker&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"9\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Yes (more than 60 days old).0\" value=\"yes_more\" />
+
+<camunda:property name=\"options.No (less than 60 days old).1\" value=\"no_less\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"multiple_addresses\" label=\"Are there multiple different addresses noted on the account? \" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"10\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_13m0okc</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_061izky</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:userTask id=\"Task_0ytgtuj\" name=\"Payment Method\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"Order details verification is complete\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"Is there CB/BD on self account or strongly related account? {{cb_bd_cui_relation}}, Is bank call required to verify the status of Bad debt? {{bank_bd_verification}}, What is the payment method used? {{payment_method}}, Whats the AVS on card? {{card_avs}}, Whats the DRS on E-check? {{echeck_drs}}, How is the GC source? {{gc_source}}, Is the payment Justified/Validated? {{payment_justified}}, Are there any relations through token? {{token_rels}}, What is the status of payment token relation? {{token_rel_status}}, Is the card expired in token VC relation? {{card_expired_vc}}, What is the CC Age in token rel? Select the attributes that match with relation {{cc_age_token}}, Is there payment velocity on account? {{payment_vel}}, Are you ready to enfoce the account? {{payment_vel_enfocement}}, Has any other payment method been used? {{other_payment}}\" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Revirew payment methods information\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"cb_bd_cui_relation\" label=\"Is there CB/BD on self account or strongly related account?\" type=\"SELECT_ONE\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Service/Prime CB.0\" value=\"service_prime\" />
+
+<camunda:property name=\"options.Fraud CB due to ATO.1\" value=\"ato_cb\" />
+
+<camunda:property name=\"options.Resolved CB .2\" value=\"cb_resolved\" />
+
+<camunda:property name=\"options.Unresolved CB.3\" value=\"cb_unresolved\" />
+
+<camunda:property name=\"options.Bad Debt cleared.4\" value=\"bd_cleared\" />
+
+<camunda:property name=\"options.Bad debt more than threshold.5\" value=\"bd_not_cleared\" />
+
+<camunda:property name=\"options.Not applicable/ No CB or BD.6\" value=\"no_cb_bd\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"bank_bd_verification\" label=\"Is bank call required to verify the status of Bad debt?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(cb_bd_cui_relation) === &#39;bd_strong_rel&#39; || eval(cb_bd_cui_relation) === &#39;bd_not_cleared&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"payment_method\" label=\"What is the payment method used?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Card.0\" value=\"card\" />
+
+<camunda:property name=\"options.E-check.1\" value=\"echeck\" />
+
+<camunda:property name=\"options.Pay Agent.2\" value=\"pay_agent\" />
+
+<camunda:property name=\"options.Gift Card.3\" value=\"gift_card\" />
+
+<camunda:property name=\"options.Other Payment.4\" value=\"other_pmt\" />
+
+<camunda:property name=\"options.Not applicable.5\" value=\"payment_na\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"payment_justified\" label=\"Is the payment Justified/Validated?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(payment_method) === &#39;card&#39; || eval(payment_method) === &#39;echeck&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Valid through IV.0\" value=\"iv_validation\" />
+
+<camunda:property name=\"options.Positive AVS/DRS.1\" value=\"positive_avs_drs\" />
+
+<camunda:property name=\"options.Valid through strong relations.2\" value=\"strong_relations\" />
+
+<camunda:property name=\"options.Payment not validated (bank call required).3\" value=\"not_validated\" />
+
+<camunda:property name=\"options.Not applicable.4\" value=\"not_applicable\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"card_avs\" label=\"Whats the AVS on card?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(payment_method) === &#39;card&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.AVS I1.0\" value=\"avs_1\" />
+
+<camunda:property name=\"options.AVS I2.1\" value=\"avs_2\" />
+
+<camunda:property name=\"options.AVS I3.2\" value=\"avs_3\" />
+
+<camunda:property name=\"options.AVS I4.3\" value=\"vs_4\" />
+
+<camunda:property name=\"options.AVS I5.4\" value=\"avs_5\" />
+
+<camunda:property name=\"options.AVS I6.5\" value=\"avs_6\" />
+
+<camunda:property name=\"options.AVS I7.6\" value=\"avs_7\" />
+
+<camunda:property name=\"options.AVS I8.7\" value=\"avs_8\" />
+
+<camunda:property name=\"options.Other AVS.8\" value=\"avs_other\" />
+
+<camunda:property name=\"options.AVS Not Captured.9\" value=\"avs_not_captured\" />
+
+<camunda:property name=\"options.Not applicable.10\" value=\"avs_na\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"echeck_drs\" label=\"Whats the DRS on E-check?\" type=\"SELECT_ONE\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(payment_method) === &#39;echeck&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.DRS-07.0\" value=\"drs_7\" />
+
+<camunda:property name=\"options.DRS-104.1\" value=\"drs_104\" />
+
+<camunda:property name=\"options.DRS-100.2\" value=\"drs_100\" />
+
+<camunda:property name=\"options.DRS-8.3\" value=\"drs_8\" />
+
+<camunda:property name=\"options.DRS-27.4\" value=\"drs_27\" />
+
+<camunda:property name=\"options.DRS-88.5\" value=\"drs_88\" />
+
+<camunda:property name=\"options.Other DRS.6\" value=\"other_drs\" />
+
+<camunda:property name=\"options.DRS not captured.7\" value=\"drs_not\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"echeck_token\" label=\"Are there token relations?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(payment_method) === &#39;echeck&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"token_rels\" label=\"Are there any relations through token?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(payment_method) === &#39;card&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"token_cid\" label=\"Provide impactful relation CID\" type=\"STRING\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(token_relstoken_rels) === &#39;True&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"9\" />
+
+<camunda:property name=\"numberRows\" value=\"1\" />
+
+<camunda:property name=\"numberColumns\" value=\"0\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+<camunda:validation>
+
+<camunda:constraint name=\"maxBoundary\" config=\"20\" />
+
+<camunda:constraint name=\"maxBoundaryInvalid\" config=\"Max number of characters reached\" />
+
+<camunda:constraint name=\"minBoundary\" config=\"0\" />
+
+</camunda:validation>
+
+</camunda:formField>
+
+<camunda:formField id=\"token_rel_status\" label=\"What is the status of payment token relation?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(token_relstoken_rels) === &#39;True&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"10\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.NC.0\" value=\"nc\" />
+
+<camunda:property name=\"options.VC.1\" value=\"vc\" />
+
+<camunda:property name=\"options.Fraud.2\" value=\"fraud\" />
+
+<camunda:property name=\"options.Sanitize.3\" value=\"sanitized\" />
+
+<camunda:property name=\"options.Leaked CC.4\" value=\"leaked\" />
+
+<camunda:property name=\"options.Abuse.5\" value=\"abuse\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"card_expired_vc\" label=\"Is the card expired in token VC relation?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"supplementalInfo\" value=\"If CC is expired, a bank call is recommended to verify card\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(token_rel_status) === &#39;vc&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"11\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"cc_age_token\" label=\"What is the CC Age in token rel? Select the attributes that match with relation\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"12\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.New (less than 90 days).0\" value=\"new\" />
+
+<camunda:property name=\"options.Old (more than 90 days).1\" value=\"old\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"name_token\" label=\"Name\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"13\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"email_token\" label=\"Emai pattern\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"14\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"legit_edom\" label=\"Legit Edomain\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"15\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"ip_ubid\" label=\"IP or IP block/UBID\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"16\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"order_token\" label=\"Order pattern\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"17\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"pmt_address\" label=\"Payment or Address only\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"18\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"none_token\" label=\"None of the above\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(card_expired_vccard_expired_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"19\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"gc_source\" label=\"How is the GC source?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(payment_method) === &#39;gift_card&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"20\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Good source.0\" value=\"gc_gs\" />
+
+<camunda:property name=\"options.Bad source.1\" value=\"gc_bs\" />
+
+<camunda:property name=\"options.Not available.2\" value=\"not_available\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"gc_bs_enforce\" label=\"Are you ready to enforce the account?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"supplementalInfo\" value=\"eval(gc_source) === &#39;gc_bs&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"21\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"strong_leaked_vc\" label=\"Is there any strong VC relation in RC?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(token_rel_status) === &#39;leaked&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"22\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"leaked_vc_fraud\" label=\"Fraud the acct and send fraud_first\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(strong_leaked_vcstrong_leaked_vc) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"23\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"leaked_vc_call\" label=\"Call bank to verify the payment info\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(strong_leaked_vcstrong_leaked_vc) === &#39;True&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"24\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"fraud_token_rel\" label=\"Was the fraud related account correctly actioned in last 30 days?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(token_rel_status) === &#39;fraud&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"25\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"sanit_token_rel\" label=\"Was the sanit related account correctly actioned in last 30 days?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(token_rel_status) === &#39;sanitized&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"26\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"payment_vel\" label=\"Is there payment velocity on account?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"27\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Similar pattern in RC.0\" value=\"similar_rc\" />
+
+<camunda:property name=\"options.Pattern of Prepaid cards.1\" value=\"ppcc_pattern\" />
+
+<camunda:property name=\"options.Unjustified payment velocity.2\" value=\"unjustified_vel\" />
+
+<camunda:property name=\"options.No payment velocity.3\" value=\"no_payment_vel\" />
+
+<camunda:property name=\"options.Previous payment decline.4\" value=\"payment_decline\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"payment_vel_enfocement\" label=\"Are you ready to enfoce the account?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(payment_vel)=== &#39;unjustified_vel&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"28\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"other_payment\" label=\"Has any other payment method been used?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"29\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Additional CC.0\" value=\"additional_cc\" />
+
+<camunda:property name=\"options.Gift card.1\" value=\"gc_other\" />
+
+<camunda:property name=\"options.Echeck.2\" value=\"echeck_other\" />
+
+<camunda:property name=\"options.Other.3\" value=\"other_pmt\" />
+
+<camunda:property name=\"options.Not applicable.4\" value=\"other_payment_na\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_1x62ymy</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_0ap35cw</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:userTask id=\"Task_1jmflp1\" name=\"GSI\" implementation=\"##unspecified\">
+
+<bpmn:documentation />
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"The payment verification is complete\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"Is the OIP captured as per order date? {{oip_captured}}, Is there a time zone/IP/country that does not match the origin marketplace of CUI? {{different_origin_market}}, How are the relations in GSI/OIP? {{gsi_relations}}, Is the OIP local to the Billing address? (&#60;80 km) {{oip_local_ba}}, Did you validate relation between CUI and time zone /sign in from different country?  {{different_country_validation}}, Do you see any of the following scenarios on the account? {{impactful_scenarios}}, \" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Review GSI attributes for a consistent pattern\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"oip_captured\" label=\"Is the OIP captured as per order date?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"oip_local_ba\" label=\"Is the OIP local to the Billing address? (&#60;80 km)\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(oip_capturedoip_captured) === &#39;False&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"different_origin_market\" label=\"Is there a time zone/IP/country that does not match the origin marketplace of CUI?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"different_country_validation\" label=\"Did you validate relation between CUI and time zone /sign in from different country? \" type=\"SELECT_ONE\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(different_origin_marketdifferent_origin_market) === &#39;True&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Validated by IV.0\" value=\"tz_country_iv\" />
+
+<camunda:property name=\"options.Old in strong RC relation.1\" value=\"old_relation\" />
+
+<camunda:property name=\"options.Legit MO (cruise, military, edu).2\" value=\"legit_mo\" />
+
+<camunda:property name=\"options.VPN sign ins.3\" value=\"vpn\" />
+
+<camunda:property name=\"options.Unable to relate.4\" value=\"unable_relate\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"country_iv_rc\" label=\"Add the IV link or CID that validates the different country\" type=\"STRING\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"supplementalInfo\" value=\"If your link is longer than 200 characters use Tiny (http://tiny.amazon.com/)\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(different_country_validation) === &#39;tz_country_iv&#39; || eval(different_country_validation) === &#39;old_relation&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"numberRows\" value=\"1\" />
+
+<camunda:property name=\"numberColumns\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+<camunda:validation>
+
+<camunda:constraint name=\"maxBoundary\" config=\"200\" />
+
+<camunda:constraint name=\"maxBoundaryInvalid\" config=\"Max number of characters reached\" />
+
+<camunda:constraint name=\"minBoundary\" config=\"0\" />
+
+</camunda:validation>
+
+</camunda:formField>
+
+<camunda:formField id=\"gsi_relations\" label=\"How are the relations in GSI/OIP?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Impactful relations.0\" value=\"impactful\" />
+
+<camunda:property name=\"options.Non impactful relations.1\" value=\"non_impactful\" />
+
+<camunda:property name=\"options.Clean GSI/OIP.2\" value=\"clean_gsi\" />
+
+<camunda:property name=\"options.Blank GSI/OIP.3\" value=\"blank\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"impactful_scenarios\" label=\"Do you see any of the following scenarios on the account? Check the attributes that match with impactful rel\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(gsi_relations) === &#39;impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Fraud relation coming for same item.0\" value=\"fraud_same_item\" />
+
+<camunda:property name=\"options.NC or abuse relation asking for refund.1\" value=\"abuse_refund\" />
+
+<camunda:property name=\"options.NC relations similar pattern.2\" value=\"nc_similar_pattern\" />
+
+<camunda:property name=\"options.None of the above.3\" value=\"none_gsi\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"email_gsi\" label=\"Email\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(gsi_relations) === &#39;impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"order_gsi_pattern\" label=\"Order pattern\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(gsi_relations) === &#39;impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"9\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"payment_gsi\" label=\"Payment\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(gsi_relations) === &#39;impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"10\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"address_gsi\" label=\"Address\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(gsi_relations) === &#39;impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"11\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"signins_gsi\" label=\"Signins\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(gsi_relations) === &#39;impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"12\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"none_gsi\" label=\"None of the above\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(gsi_relations) === &#39;impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"13\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_09w35hv</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_04nmvst</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_04nmvst\" sourceRef=\"Task_1jmflp1\" targetRef=\"Task_180eq0r\" />
+
+<bpmn:userTask id=\"Task_180eq0r\" name=\"Related Customers\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"GSI patterns have been reviewed\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"How are the relations in RC? {{related_customers}}, What kind of impactful relation is it? {{impactful_relation}}, Is there a family fraud/Legit MO observed? {{fam_legit_mo}}, Does the order pattern/payment pattern match in VC relation? {{order_pmt_pattern}}, Is relation trusted and with good Order history? {{relation_trusted}}, Is there an abuse/fraud/legit MO observed? {{nc_mo_pattern}}, Is the closure on related account legit/valid? {{closure_valid}}, Check if the CB/BD is resolved {{resolve_cb_rc}}, Is the sanitize action correct in related account? {{vcac_correct_rc}}, Is the legit customer coming back with new account? {{legit_cus_ato}},&#10;What kind of impactful relation is it? {{weak_relation_rc}}, Did you try making it a strong relation? {{weak_strong}}, If fraud relations same MO, do you want to take an enforcement action? {{fraud_enforcement}}\" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Review Related customers sections and rule out suspicious patterns\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"related_customers\" label=\"How are the relations in RC?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Strong Relations (Physical+virtual attrib).0\" value=\"strong_rels\" />
+
+<camunda:property name=\"options.Weak relations(Only or virtual only).1\" value=\"weak_rels\" />
+
+<camunda:property name=\"options.No relations.2\" value=\"no_relations\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"relation_cid\" label=\"Provide CID\" type=\"STRING\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(related_customers) === &#39;strong_rels&#39; || eval(related_customers) === &#39;weak_rels&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"numberRows\" value=\"1\" />
+
+<camunda:property name=\"numberColumns\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+<camunda:validation>
+
+<camunda:constraint name=\"maxBoundary\" config=\"20\" />
+
+<camunda:constraint name=\"maxBoundaryInvalid\" config=\"Max number of characters reached\" />
+
+<camunda:constraint name=\"minBoundary\" config=\"0\" />
+
+</camunda:validation>
+
+</camunda:formField>
+
+<camunda:formField id=\"impactful_relation\" label=\"What kind of impactful relation is it?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(related_customers) === &#39;strong_rels&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.NC.0\" value=\"nc_strong\" />
+
+<camunda:property name=\"options.VC.1\" value=\"strong_vc\" />
+
+<camunda:property name=\"options.Fraud.2\" value=\"fraud_strong\" />
+
+<camunda:property name=\"options.Abuse.3\" value=\"strong_abuse\" />
+
+<camunda:property name=\"options.CB/BD.4\" value=\"cb_strong\" />
+
+<camunda:property name=\"options.Sanitize.5\" value=\"strong_sanitize\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"fam_legit_mo\" label=\"Is there a family fraud/Legit MO observed?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;strong_vc&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Family friaud MO.0\" value=\"family_frd\" />
+
+<camunda:property name=\"options.Legit MO.1\" value=\"legit_mo\" />
+
+<camunda:property name=\"options.No.2\" value=\"no_mo\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"order_pmt_pattern\" label=\"Does the order pattern/payment pattern match in VC relation?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;strong_vc&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Order pattern .0\" value=\"order_pattern-mtch\" />
+
+<camunda:property name=\"options.Payment pattern .1\" value=\"pmt_pattern_mtch\" />
+
+<camunda:property name=\"options.Both match.2\" value=\"both\" />
+
+<camunda:property name=\"options.No match.3\" value=\"no_match\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"relation_trusted\" label=\"Is relation trusted and with good Order history?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;strong_vc&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"nc_mo_pattern\" label=\"Is there an abuse/fraud/legit MO observed?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;nc_strong&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Abuse.0\" value=\"abuse_rc\" />
+
+<camunda:property name=\"options.RFO.1\" value=\"rfo_rc\" />
+
+<camunda:property name=\"options.Legit MO.2\" value=\"legit_mo_rc\" />
+
+<camunda:property name=\"options.No MO.3\" value=\"no_mo\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"closure_valid\" label=\"Is the closure on related account legit/valid?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;fraud_strong&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"resolve_cb_rc\" label=\"Check if the CB/BD is resolved\" type=\"SELECT_ONE\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;cb_strong&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"9\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.CB resolved.0\" value=\"cb_resolved_rc\" />
+
+<camunda:property name=\"options.CB unresolved.1\" value=\"cb_unresolved_rc\" />
+
+<camunda:property name=\"options.Service/Prime/ATO CB.2\" value=\"service_ato_cb_rc\" />
+
+<camunda:property name=\"options.BD cleared.3\" value=\"bd_cleared_rc\" />
+
+<camunda:property name=\"options.Pending BD.4\" value=\"pending_bd_rc\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"vcac_correct_rc\" label=\"Is the sanitize action correct in related account?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;strong_sanitize&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"10\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"legit_cus_ato\" label=\"Is the legit customer coming back with new account?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(impactful_relation) === &#39;strong_sanitize&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"11\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"weak_relation_rc\" label=\"What kind of impactful relation is it?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(related_customers) === &#39;weak_rels&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"12\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Weak relation non impactful.0\" value=\"weak_non_impactful\" />
+
+<camunda:property name=\"options.Weak impactful relation.1\" value=\"weak_impactful\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"weak_strong\" label=\"Did you try making it a strong relation?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(weak_relation_rc) === &#39;weak_impactful&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"13\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.IP Block trusted in weak relation.0\" value=\"ipblock_trusted\" />
+
+<camunda:property name=\"options.IV relation between CUI and weak relation.1\" value=\"iv_weak_relation\" />
+
+<camunda:property name=\"options.Ordering pattern match with weak relation.2\" value=\"order_pattern_weak\" />
+
+<camunda:property name=\"options.Relations correspond to a legit MO.3\" value=\"weak_legit\" />
+
+<camunda:property name=\"options.Relations correspond to fraudulent pattern.4\" value=\"weak_fraud\" />
+
+<camunda:property name=\"options.Not a strong relation.5\" value=\"weak_not_strong\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"fraud_enforcement\" label=\"If fraud relations same MO, do you want to take an enforcement action?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(weak_strong) === &#39;weak_fraud&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"14\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_04nmvst</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_1jy0iu7</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:userTask id=\"Task_1w0z4i8\" name=\"External IV\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"Related customer review has been completed\" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Attemp to do internet verification to find customer&#39;s information. External IV validated by which of the following?\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"email_iv\" label=\"Email\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"different_names\" label=\"Different names in account\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"business\" label=\"Business/Employment\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"address_iv\" label=\"Address\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"phone_iv\" label=\"Phone\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"name_address\" label=\"Name and address\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"no_iv\" label=\"No IV found\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"iv_links\" label=\"IV links found\" type=\"STRING\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"supplementalInfo\" value=\"If your link is longer than 200 characters use Tiny (http://tiny.amazon.com/)\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"numberRows\" value=\"3\" />
+
+<camunda:property name=\"numberColumns\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+<camunda:validation>
+
+<camunda:constraint name=\"maxBoundary\" config=\"250\" />
+
+<camunda:constraint name=\"maxBoundaryInvalid\" config=\"Max number of characters reached\" />
+
+<camunda:constraint name=\"minBoundary\" config=\"0\" />
+
+<camunda:constraint name=\"optional\" config=\"true\" />
+
+</camunda:validation>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_17362xy</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_1mx1f40</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:userTask id=\"Task_06uerc0\" name=\"Calls\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"The investigation process is complete\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"Are you going to apply the Unverified Phone Call Process? {{ucp_apply}}, Are you calling the customer? {{customer_call}}, \" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"A bank/customer call could be necessary to justify account attributes. If bank call performed select all that apply\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"bank_na\" label=\"Bank call not applicable\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"name_verif\" label=\"Name verified\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"address_verif\" label=\"Address verified\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"phone_verif\" label=\"Phone verified\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"bank_wont\" label=\"Bank won&#39;t verify\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"bank_phone_wont\" label=\"Bank won&#39;t verify phone\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"unable\" label=\"Unable to reach bank \" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"och_bank\" label=\"Out of calling hours\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"closed_weekends\" label=\"Bank closed weekends\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"9\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"invalid\" label=\"Invalid card\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"10\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"insufficient\" label=\"Insufficient funds\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"11\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"sufficient\" label=\"Sufficient funds\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"12\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"ucp_apply\" label=\"Are you going to apply the Unverified Phone Call Process?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"13\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"customer_call\" label=\"Is customer call applicable? If call performed select the outcome of the call\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"supplementalInfo\" value=\"Customer call is applicable when the bank verified the payment information or a strong VC relation justifies the payment\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(ucp_applyucp_apply) === &#39;False&#39; \" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"14\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Customer call not applicable.0\" value=\"cust_not_applicable\" />
+
+<camunda:property name=\"options.Customer authorized.1\" value=\"cust_authorized\" />
+
+<camunda:property name=\"options.Unable to reach customer.2\" value=\"cust_unable\" />
+
+<camunda:property name=\"options.Wrong number.3\" value=\"cust_wrong\" />
+
+<camunda:property name=\"options.Out of calling hours.4\" value=\"cust_och\" />
+
+<camunda:property name=\"options.International customer.5\" value=\"cust_international\" />
+
+<camunda:property name=\"options.Customer did not authorize.6\" value=\"cust_unauthorized\" />
+
+<camunda:property name=\"options.Customer denied to speak.7\" value=\"cust_denied\" />
+
+<camunda:property name=\"options.No access to calls.8\" value=\"no_access_cust\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_13v5bhy</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_1ubze6n</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:userTask id=\"Task_0rh1gxm\" name=\"MO Section\" implementation=\"##unspecified\">
+
+<bpmn:extensionElements>
+
+<camunda:formData>
+
+<camunda:formField id=\"diagState\" label=\"The investigation process is complete\" type=\"formProperty\" />
+
+<camunda:formField id=\"summary\" label=\"Did you find any of the following Fraud MOs on the account? {{fraud_identification}}, What is the legit MO found? {{mo_legit_scenario}}, Which of the following scenarios do you see on the account? {{scenarios_cb}}, How many relations are noted with payment method? {{relations_pmt}}, How are the payment relations related to the cui? {{relation_type}}, What patterns are noted in token relations? {{pattern_weak_rels}}, Do you see any of the following scenarios on the account? Check the attributes matching with relations {{attributes_fraud}}, How is the GC source? {{gb_bs_mo}}, Are you ready to take an enforcement/pass action? {{mo_section_action}}\" type=\"formProperty\" />
+
+<camunda:formField id=\"instructions\" label=\"Review if the account attributes match with any MO\" type=\"formProperty\" />
+
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+
+<camunda:properties />
+
+</camunda:formField>
+
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+
+<camunda:formField id=\"mo_kind\" label=\"Based on the account&#39;s attributes, did you find any MO on the account?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"1\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Legit MO.0\" value=\"mo_legit\" />
+
+<camunda:property name=\"options.Fraud MO.1\" value=\"mo_fraud\" />
+
+<camunda:property name=\"options.None.2\" value=\"mo_none\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"mo_legit_scenario\" label=\"What is the legit MO found?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(mo_kind) === &#39;mo_legit&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"2\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.EDU MO .0\" value=\"mo_edu\" />
+
+<camunda:property name=\"options.Reseller MO.1\" value=\"mo_reseller\" />
+
+<camunda:property name=\"options.Corp/Business MO.2\" value=\"mo_corp\" />
+
+<camunda:property name=\"options.Military MO.3\" value=\"mo_military\" />
+
+<camunda:property name=\"options.Cruise MO.4\" value=\"mo_cruise\" />
+
+<camunda:property name=\"options.Other MO.5\" value=\"mo_other\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"fraud_identification\" label=\"Did you find any of the following Fraud MO on the account?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(mo_kind) === &#39;mo_fraud&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"3\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Fraud CB unresolved.0\" value=\"fraud_cb\" />
+
+<camunda:property name=\"options.Leaked CC.1\" value=\"leaked_cc\" />
+
+<camunda:property name=\"options.Repeat Fraud Offender.2\" value=\"rfo\" />
+
+<camunda:property name=\"options.GC bad source.3\" value=\"gc_bs\" />
+
+<camunda:property name=\"options.ID theft.4\" value=\"id_theft\" />
+
+<camunda:property name=\"options.Other.5\" value=\"other_fraud\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"scenarios_cb\" label=\"Which of the following scenarios do you see on the account?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;fraud_cb&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"4\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Unresolved CB in CUI account.0\" value=\"cui_unresolved\" />
+
+<camunda:property name=\"options.Strong NC with CB.1\" value=\"nc_cb\" />
+
+<camunda:property name=\"options.Strong VC with CB.2\" value=\"vc_cb\" />
+
+<camunda:property name=\"options.None.3\" value=\"none_cb\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"relations_pmt\" label=\"How many relations are noted with payment method?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;leaked_cc&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"5\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.One.0\" value=\"one\" />
+
+<camunda:property name=\"options.Less than 5.1\" value=\"less_5\" />
+
+<camunda:property name=\"options.Less than 8.2\" value=\"less_8\" />
+
+<camunda:property name=\"options.More than 8.3\" value=\"more_8\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"relation_type\" label=\"How are the payment relations related to the cui?\" type=\"SELECT_BUTTON\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;leaked_cc&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"6\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Strong .0\" value=\"strong_leaked\" />
+
+<camunda:property name=\"options.Weak.1\" value=\"weak_leaked\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"pattern_weak_rels\" label=\"What patterns are noted in token relations?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(relation_type) === &#39;weak_leaked&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"7\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Different account names with same CC.0\" value=\"different_names\" />
+
+<camunda:property name=\"options.Same CC relations with different addresses.1\" value=\"different_address\" />
+
+<camunda:property name=\"options.No similar pattern.2\" value=\"no_pattern_leaked\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"leaked_enforce\" label=\"Take an enforcement action and send Fraud_first blurb\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;leaked_cc&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"8\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"attributes_fraud\" label=\"Do you see any of the following scenarios on the account? Check the attributes matching with relations\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;rfo&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"9\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Customer coming for same item.0\" value=\"same_item\" />
+
+<camunda:property name=\"options.NC-Abuse relations asking for refund.1\" value=\"abuse_refund\" />
+
+<camunda:property name=\"options.Fraud relations smililar pattern.2\" value=\"fraud_pattern\" />
+
+<camunda:property name=\"options.Other.3\" value=\"other_fraud\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"email_fraud\" label=\"Email\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;rfo&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"10\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"order_fraud\" label=\"Ordering pattern\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;rfo&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"11\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"payment_fraud\" label=\"Payment\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;rfo&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"12\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"address_fraud\" label=\"Address\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;rfo&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"13\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"sigins\" label=\"Signins\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;rfo&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"14\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"gb_bs_mo\" label=\"How is the GC source?\" type=\"SELECT_RADIO\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;gc_bs&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"15\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+<camunda:property name=\"options.Fraudulent.0\" value=\"fraud_gc\" />
+
+<camunda:property name=\"options.Sanitized, order completed during ATO.1\" value=\"sanitized_gc\" />
+
+<camunda:property name=\"options.Account in hold status.2\" value=\"hold_gc\" />
+
+<camunda:property name=\"options.Good GC source but fraudulent NC.3\" value=\"good_gc_fraud\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"id_theft_pattern\" label=\"Is there a clear pattern of ID theft? Select all the attrubutes that match with the pattern\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"16\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"disposable\" label=\"Disposable email\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"17\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"cc_added\" label=\"Black/Blue Chase, AMEX, SVC or Discover CC\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"18\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"chase_gc\" label=\"$ 50 Gift Card or more: Source Chase\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"19\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"vc_address\" label=\"Weak VC relation with address\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"20\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"address_not\" label=\"Address not verified\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"21\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"phone_match\" label=\"No match or only phone match with bank\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"22\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"none_id_theft\" label=\"None\" type=\"CHECKBOX\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(fraud_identification) === &#39;id_theft&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"23\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+<camunda:formField id=\"mo_section_action\" label=\"Are you ready to take an enforcement/pass action?\" type=\"YES_NO_QUESTION\">
+
+<camunda:properties>
+
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(mo_kind) === &#39;mo_legit&#39; || eval(mo_kind) === &#39;mo_fraud&#39;\" />
+
+<camunda:property name=\"toggle\" value=\"false\" />
+
+<camunda:property name=\"ordering\" value=\"24\" />
+
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+
+<camunda:property name=\"optionsType\" value=\"manual\" />
+
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+
+</camunda:properties>
+
+</camunda:formField>
+
+</camunda:formData>
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_1mx1f40</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_03camnn</bpmn:outgoing>
+
+</bpmn:userTask>
+
+<bpmn:endEvent id=\"EndEvent_1wvfl41\">
+
+<bpmn:incoming>
+
+SequenceFlow_1pzv7jc</bpmn:incoming>
+
+<bpmn:incoming>
+
+SequenceFlow_02xbubs</bpmn:incoming>
+
+<bpmn:incoming>
+
+SequenceFlow_01csqum</bpmn:incoming>
+
+<bpmn:incoming>
+
+SequenceFlow_1xmzoor</bpmn:incoming>
+
+<bpmn:incoming>
+
+SequenceFlow_1sarqmf</bpmn:incoming>
+
+<bpmn:incoming>
+
+SequenceFlow_0uqjgrc</bpmn:incoming>
+
+<bpmn:incoming>
+
+SequenceFlow_1xoygo9</bpmn:incoming>
+
+</bpmn:endEvent>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1mx1f40\" sourceRef=\"Task_1w0z4i8\" targetRef=\"Task_0rh1gxm\" />
+
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_1tmuofz\">
+
+<bpmn:incoming>
+
+SequenceFlow_1ubze6n</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_1oyfuyi</bpmn:outgoing>
+
+<bpmn:outgoing>
+
+SequenceFlow_0uqjgrc</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1ubze6n\" sourceRef=\"Task_06uerc0\" targetRef=\"ExclusiveGateway_1tmuofz\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1oyfuyi\" name=\"UCP\" sourceRef=\"ExclusiveGateway_1tmuofz\" targetRef=\"Task_1ig38m6\">
+
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+
+ucp_apply === true</bpmn:conditionExpression>
+
+</bpmn:sequenceFlow>
+
+<bpmn:callActivity id=\"Task_1ig38m6\" name=\"UCP\" calledElement=\"payment_risk_bri_enforcement_nc_ucp\" camunda:calledElementBinding=\"version\" camunda:calledElementVersion=\"PROD\">
+
+<bpmn:extensionElements>
+
+<camunda:inputOutput />
+
+</bpmn:extensionElements>
+
+<bpmn:incoming>
+
+SequenceFlow_1oyfuyi</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_1pzv7jc</bpmn:outgoing>
+
+</bpmn:callActivity>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1pzv7jc\" sourceRef=\"Task_1ig38m6\" targetRef=\"EndEvent_1wvfl41\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_0npky5z\" sourceRef=\"Task_1gctu4n\" targetRef=\"Task_14fr0vj\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1sarqmf\" name=\"x_org_sanitize jump&#10;\" sourceRef=\"ExclusiveGateway_0p08a07\" targetRef=\"EndEvent_1wvfl41\">
+
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+
+x_org_sanitize === true</bpmn:conditionExpression>
+
+</bpmn:sequenceFlow>
+
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_0p08a07\">
+
+<bpmn:incoming>
+
+SequenceFlow_1r177gn</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_13m0okc</bpmn:outgoing>
+
+<bpmn:outgoing>
+
+SequenceFlow_1sarqmf</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1r177gn\" sourceRef=\"Task_14fr0vj\" targetRef=\"ExclusiveGateway_0p08a07\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_13m0okc\" sourceRef=\"ExclusiveGateway_0p08a07\" targetRef=\"Task_16t33tb\" />
+
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_0gvp86f\">
+
+<bpmn:incoming>
+
+SequenceFlow_0ap35cw</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_09w35hv</bpmn:outgoing>
+
+<bpmn:outgoing>
+
+SequenceFlow_1xmzoor</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_0ap35cw\" sourceRef=\"Task_0ytgtuj\" targetRef=\"ExclusiveGateway_0gvp86f\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_09w35hv\" sourceRef=\"ExclusiveGateway_0gvp86f\" targetRef=\"Task_1jmflp1\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1xmzoor\" name=\"payment_vel jump\" sourceRef=\"ExclusiveGateway_0gvp86f\" targetRef=\"EndEvent_1wvfl41\">
+
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+
+<![CDATA[payment_vel_enforcement === true || gc_bs_enforce === true || leaked_vc_fraud === 'true']]>
+
+</bpmn:conditionExpression>
+
+</bpmn:sequenceFlow>
+
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_1cygtu5\">
+
+<bpmn:incoming>
+
+SequenceFlow_1jy0iu7</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_17362xy</bpmn:outgoing>
+
+<bpmn:outgoing>
+
+SequenceFlow_01csqum</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1jy0iu7\" sourceRef=\"Task_180eq0r\" targetRef=\"ExclusiveGateway_1cygtu5\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_17362xy\" sourceRef=\"ExclusiveGateway_1cygtu5\" targetRef=\"Task_1w0z4i8\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_01csqum\" name=\"fraud_enforcement jump\" sourceRef=\"ExclusiveGateway_1cygtu5\" targetRef=\"EndEvent_1wvfl41\">
+
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+
+fraud_enforcement === true</bpmn:conditionExpression>
+
+</bpmn:sequenceFlow>
+
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_0mpefgp\">
+
+<bpmn:incoming>
+
+SequenceFlow_03camnn</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_13v5bhy</bpmn:outgoing>
+
+<bpmn:outgoing>
+
+SequenceFlow_02xbubs</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_03camnn\" sourceRef=\"Task_0rh1gxm\" targetRef=\"ExclusiveGateway_0mpefgp\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_13v5bhy\" sourceRef=\"ExclusiveGateway_0mpefgp\" targetRef=\"Task_06uerc0\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_02xbubs\" name=\"mo_section_action jump\" sourceRef=\"ExclusiveGateway_0mpefgp\" targetRef=\"EndEvent_1wvfl41\">
+
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+
+mo_section_action === true</bpmn:conditionExpression>
+
+</bpmn:sequenceFlow>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_0uqjgrc\" sourceRef=\"ExclusiveGateway_1tmuofz\" targetRef=\"EndEvent_1wvfl41\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1xoygo9\" name=\"vel_mo_jump\" sourceRef=\"ExclusiveGateway_0b18t7y\" targetRef=\"EndEvent_1wvfl41\">
+
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+
+vel_mo_action == true</bpmn:conditionExpression>
+
+</bpmn:sequenceFlow>
+
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_0b18t7y\">
+
+<bpmn:incoming>
+
+SequenceFlow_061izky</bpmn:incoming>
+
+<bpmn:outgoing>
+
+SequenceFlow_1xoygo9</bpmn:outgoing>
+
+<bpmn:outgoing>
+
+SequenceFlow_1x62ymy</bpmn:outgoing>
+
+</bpmn:exclusiveGateway>
+
+<bpmn:sequenceFlow id=\"SequenceFlow_061izky\" sourceRef=\"Task_16t33tb\" targetRef=\"ExclusiveGateway_0b18t7y\" />
+
+<bpmn:sequenceFlow id=\"SequenceFlow_1x62ymy\" sourceRef=\"ExclusiveGateway_0b18t7y\" targetRef=\"Task_0ytgtuj\" />
+
+</bpmn:process>
+
+<bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">
+
+<bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">
+
+<bpmndi:BPMNShape id=\"_BPMNShape_StartEvent_2\" bpmnElement=\"StartEvent_1\">
+
+<dc:Bounds x=\"440\" y=\"101\" width=\"36\" height=\"36\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"413\" y=\"137\" width=\"90\" height=\"20\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1tsayt0_di\" bpmnElement=\"SequenceFlow_1tsayt0\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"476\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"528\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"457\" y=\"97.5\" width=\"90\" height=\"13\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"UserTask_0l8hsos_di\" bpmnElement=\"Task_1gctu4n\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"528\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"UserTask_1vxdm5g_di\" bpmnElement=\"Task_14fr0vj\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"683\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"UserTask_03k1vsd_di\" bpmnElement=\"Task_16t33tb\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"959\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"UserTask_1o99fju_di\" bpmnElement=\"Task_0ytgtuj\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"1300\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"UserTask_1v7cfxk_di\" bpmnElement=\"Task_1jmflp1\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"1504\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_04nmvst_di\" bpmnElement=\"SequenceFlow_04nmvst\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1604\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1630\" y=\"118\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1572\" y=\"97.5\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"UserTask_0l36dk7_di\" bpmnElement=\"Task_180eq0r\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"1630\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"UserTask_15i90sh_di\" bpmnElement=\"Task_1w0z4i8\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"1839\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"UserTask_1sp1qc9_di\" bpmnElement=\"Task_06uerc0\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"2193\" y=\"79\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"UserTask_1819um7_di\" bpmnElement=\"Task_0rh1gxm\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+
+<dc:Bounds x=\"1972\" y=\"81\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNShape id=\"EndEvent_1wvfl41_di\" bpmnElement=\"EndEvent_1wvfl41\">
+
+<dc:Bounds x=\"2580\" y=\"101\" width=\"36\" height=\"36\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2553\" y=\"141\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1mx1f40_di\" bpmnElement=\"SequenceFlow_1mx1f40\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1939\" y=\"120\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1972\" y=\"120\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1910.5\" y=\"99\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"ExclusiveGateway_1tmuofz_di\" bpmnElement=\"ExclusiveGateway_1tmuofz\" isMarkerVisible=\"true\">
+
+<dc:Bounds x=\"2336\" y=\"94\" width=\"50\" height=\"50\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2316\" y=\"148\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1ubze6n_di\" bpmnElement=\"SequenceFlow_1ubze6n\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2293\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2336\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2269.5\" y=\"98\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1oyfuyi_di\" bpmnElement=\"SequenceFlow_1oyfuyi\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2361\" y=\"94\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2361\" y=\"17\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2331\" y=\"50.026315789473685\" width=\"24\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"CallActivity_1i63opm_di\" bpmnElement=\"Task_1ig38m6\" bioc:stroke=\"Blue\" bioc:fill=\"#87CEFA\">
+
+<dc:Bounds x=\"2311\" y=\"-63\" width=\"100\" height=\"80\" />
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1pzv7jc_di\" bpmnElement=\"SequenceFlow_1pzv7jc\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2411\" y=\"-23\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"-23\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"101\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2459.5\" y=\"-44.5\" width=\"90\" height=\"13\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_0npky5z_di\" bpmnElement=\"SequenceFlow_0npky5z\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"628\" y=\"118\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"683\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"610.5\" y=\"97.5\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1sarqmf_di\" bpmnElement=\"SequenceFlow_1sarqmf\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"869\" y=\"144\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"869\" y=\"247\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"247\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"137\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"795\" y=\"175\" width=\"74\" height=\"24\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"ExclusiveGateway_0p08a07_di\" bpmnElement=\"ExclusiveGateway_0p08a07\" isMarkerVisible=\"true\">
+
+<dc:Bounds x=\"844\" y=\"94\" width=\"50\" height=\"50\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"824\" y=\"148\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1r177gn_di\" bpmnElement=\"SequenceFlow_1r177gn\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"783\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"844\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"768.5\" y=\"98\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_13m0okc_di\" bpmnElement=\"SequenceFlow_13m0okc\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"894\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"959\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"881.5\" y=\"98\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"ExclusiveGateway_0gvp86f_di\" bpmnElement=\"ExclusiveGateway_0gvp86f\" isMarkerVisible=\"true\">
+
+<dc:Bounds x=\"1421.991017964072\" y=\"94\" width=\"50\" height=\"50\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1446.991017964072\" y=\"148\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_0ap35cw_di\" bpmnElement=\"SequenceFlow_0ap35cw\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1400\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1422\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1411\" y=\"98\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_09w35hv_di\" bpmnElement=\"SequenceFlow_09w35hv\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1472\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1504\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1488\" y=\"98\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1xmzoor_di\" bpmnElement=\"SequenceFlow_1xmzoor\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1447\" y=\"144\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1447\" y=\"398\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2669\" y=\"398\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2669\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2616\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1402\" y=\"190\" width=\"89\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"ExclusiveGateway_1cygtu5_di\" bpmnElement=\"ExclusiveGateway_1cygtu5\" isMarkerVisible=\"true\">
+
+<dc:Bounds x=\"1764.8532934131736\" y=\"94\" width=\"50\" height=\"50\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1789.8532934131736\" y=\"148\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1jy0iu7_di\" bpmnElement=\"SequenceFlow_1jy0iu7\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1730\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1765\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1747.5\" y=\"98\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_17362xy_di\" bpmnElement=\"SequenceFlow_17362xy\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1815\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1839\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1827\" y=\"98\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_01csqum_di\" bpmnElement=\"SequenceFlow_01csqum\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1790\" y=\"144\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1790\" y=\"336\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"336\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"137\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1694\" y=\"194\" width=\"85\" height=\"25\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"ExclusiveGateway_0mpefgp_di\" bpmnElement=\"ExclusiveGateway_0mpefgp\" isMarkerVisible=\"true\">
+
+<dc:Bounds x=\"2096\" y=\"94\" width=\"50\" height=\"50\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2076\" y=\"148\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_03camnn_di\" bpmnElement=\"SequenceFlow_03camnn\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2072\" y=\"120\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2096\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2039\" y=\"98.5\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_13v5bhy_di\" bpmnElement=\"SequenceFlow_13v5bhy\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2146\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2193\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2124.5\" y=\"98\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_02xbubs_di\" bpmnElement=\"SequenceFlow_02xbubs\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2121\" y=\"144\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2121\" y=\"287\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"287\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"137\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2027\" y=\"200.19417475728156\" width=\"86\" height=\"24\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_0uqjgrc_di\" bpmnElement=\"SequenceFlow_0uqjgrc\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2386\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2580\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"2483\" y=\"98\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1xoygo9_di\" bpmnElement=\"SequenceFlow_1xoygo9\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1167\" y=\"144\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1167\" y=\"380\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"380\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"2598\" y=\"137\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1270.4882471457354\" y=\"361\" width=\"65\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNShape id=\"ExclusiveGateway_0b18t7y_di\" bpmnElement=\"ExclusiveGateway_0b18t7y\" isMarkerVisible=\"true\">
+
+<dc:Bounds x=\"1142\" y=\"94\" width=\"50\" height=\"50\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1122\" y=\"148\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNShape>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_061izky_di\" bpmnElement=\"SequenceFlow_061izky\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1059\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1142\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1055.5\" y=\"98\" width=\"90\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+<bpmndi:BPMNEdge id=\"SequenceFlow_1x62ymy_di\" bpmnElement=\"SequenceFlow_1x62ymy\">
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1192\" y=\"119\" />
+
+<di:waypoint xsi:type=\"dc:Point\" x=\"1300\" y=\"119\" />
+
+<bpmndi:BPMNLabel>
+
+<dc:Bounds x=\"1246\" y=\"98\" width=\"0\" height=\"12\" />
+
+</bpmndi:BPMNLabel>
+
+</bpmndi:BPMNEdge>
+
+</bpmndi:BPMNPlane>
+
+</bpmndi:BPMNDiagram>
+
+</bpmn:definitions>
