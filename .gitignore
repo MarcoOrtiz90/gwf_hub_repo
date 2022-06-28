@@ -1,5 +1,11 @@
 gwf_hub/gwf_hub/__pycache__/*.pyc
 gwf_hub/overview/__pycache__/*.pyc
+gwf_hub/accounts/__pycache__/*.pyc
+gwf_hub/albacorizer/__pycache__/*.pyc
+gwf_hub/auto_answer_generator/__pycache__/*.pyc
 gwf_hub/gwf_hub/__pycache__/
 gwf_hub/overview/__pycache__/
+gwf_hub/accounts/__pycache__/
+gwf_hub/albacorizer/__pycache__/
+gwf_hub/auto_answer_generator/__pycache__/
 */__pycache__/*

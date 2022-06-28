@@ -35,7 +35,6 @@ def extractorFunc(source_bpmn_code, bpmn_code, user_task_list):
                     xml_string += line + '\n'
                     line = ''
 
-
     with open(file='source_bpmn_code.txt', encoding='UTF-8', mode='w') as f:
         f.write(xml_string)
         f.close()
@@ -89,11 +88,9 @@ def extractorFunc(source_bpmn_code, bpmn_code, user_task_list):
                     shape_code += task_shape
                     break
 
-                # Two variables holding the full script - shape_code, task_code which later gets copied to the final script
-
+                # Two variables holding the full script - shape_code, task_code which later gets copied to the dest_code
                 # At this point the codes for the task have already been copied, now we paste the task code on the
                 # destination BPMN codes.
-
 
     xml_string = ''
     line = ''
