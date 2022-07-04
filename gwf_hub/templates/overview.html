@@ -4,7 +4,7 @@
 <div class="main-panel">
     {% include 'navbar.html' %}
     <div class="content">
-        <h2 class='amazon-main-opaque'>Kernel Dashboard</h2>
+        <h2 class='amazon-main-opaque'>GWF Kernel Dashboard</h2>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xl-3 col-lg-12">
@@ -89,39 +89,25 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="amazon-main-opaque">Albacore Test Flows</h2>
-                    <p class="neo-tint">The following Dashboard provides current Data on Test Flows</p>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card card-stats">
-                                    <div class="card-header card-header-info card-header-icon">
-                                        <div class="card-icon">
-                                            <img src="{% static '/imgs/testFlows_small.png' %}" alt="Test Flows">       
-                                        </div>
-                                        <p class="card-category" style="color: rgb(255, 153, 0);">Workflow Resquest Widget</p>
-                                            <h3 class="card-title">2 Flows currently locked to you</h3> 
-                                    </div>
-                                    <hr>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6" style="border-right: 0.5px solid rgb(253, 151, 34); text-align:center">
-                                                <h4>Request a New Workflow</h4>
-                                                <select name="requestFlow" id="requestFlow" style="width: 150px;">
-                                                    <option value="flow">Flows</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h4 style="text-align: center;">Available Backup Flows</h4>
-                                                <h2 style="text-align: center;">4</h2>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                <div class="col-xl-3 col-lg-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-danger">
+                            <div class="ct-chart" id="payload" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/payloadBuilder.png' %}" alt="">
                             </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Payload Builder</h4>
+                            <p class="card-category">This function is in development. Currently outputs XML for BPMN workflow inputs</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="nav-tabs-wrapper">
+                                    <a href="{% url 'payloadBuilder' %}" class="btn btn-secondary btn-sm">
+                                        Access Payload Builder
+                                    </a>
+                            </div>
+<<<<<<< HEAD
                             <div class="col-md-6">
                                 <div class="card card-chart">
                                     <div class="card-header card-header-info">
@@ -191,10 +177,12 @@
                                     </div>
                                 </div>
                             </div>                            
+=======
+>>>>>>> main
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
 </div>
