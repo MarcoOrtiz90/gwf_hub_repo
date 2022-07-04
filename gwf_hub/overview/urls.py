@@ -10,6 +10,10 @@ urlpatterns = [
     path("workflow-hierarchy/", views.hierarchy, name="workflow-hierarchy"),
     path("albacorizer/", include('albacorizer.urls')),
     path('json_parser/', include('json_parser.urls')),
+<<<<<<< HEAD
     path('paramount_task_extractor/', include('paramount_task_extractor.urls')),
+=======
+    path('payload_builder', include('payload_builder.urls'))
+>>>>>>> main
  ]
 

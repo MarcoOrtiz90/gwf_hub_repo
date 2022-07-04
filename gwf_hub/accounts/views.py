@@ -27,7 +27,7 @@ def login_view(request):
     
     return render(request, "login.html", context)
 
-@login_required
+## @login_required
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
@@ -50,7 +50,7 @@ def register_view(request):
     # return render(request, "register.html", context)
 
 
-@login_required
+##@login_required
 def passwordChange(request):
     if request.method == "POST":
         form = PasswordChangeForm(request.user, request.POST)
