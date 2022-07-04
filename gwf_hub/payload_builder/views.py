@@ -11,7 +11,7 @@ def payloadBuilder(request):
             export = ''
             while iteration <= iterationCount:                
                 for category in categories:                    
-                    if category is "string" :
+                    if category == "string" :
                         loopData = ''
 
     return render(request, 'builder.html')
