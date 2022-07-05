@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+    <div class="content">
+        <h2 class='neo-tint'>GWF Kernel Dashboard</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-info">
+                            <div class="ct-chart" id="albacore" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/snail_albacore.png' %}" alt="Albacore Applications">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title" style="color: rgb(255, 153,0)">Albacore Apps</h4>
+                            <p class="card-category">This section holds applications made specially to simplify Albacore tasks. </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="nav-tabs-wrapper">
+                                <a href="{% url 'auto-generator' %}" class="btn btn-secondary btn-sm">
+                                    Access Albacore Apps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-info">
+                            <div class="ct-chart" id="paramount" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/bandwidth.png' %}" alt="Paramount Applications">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title" style="color: rgb(255, 153,0);">Paramount Apps</h4>
+                            <p class="card-category">This section holds applications made specially to simplify Paramount tasks. </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="nav-tabs-wrapper">
+                                <a href="{% url 'auto-generator' %}" class="btn btn-secondary btn-sm">
+                                    Access Paramount Apps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

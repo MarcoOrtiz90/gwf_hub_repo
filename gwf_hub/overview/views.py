@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 ##@login_required
 def overview(response):
     context = {'main': "main"}
-    return render(response, 'overview.html', context)
+    return render(response, 'applications.html', context)
 
 def database(response):
     if response.user.is_authenticated:
