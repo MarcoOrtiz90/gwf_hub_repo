@@ -10,6 +10,12 @@ def overview(response):
     context = {'main': "main"}
     return render(response, 'applications.html', context)
 
+def paramountApps(response):
+    return render(response, 'applications_paramount.html', {})
+
+def albacoreApps(response):
+    return render(response, 'applications_albacore.html', {})
+
 def database(response):
     if response.user.is_authenticated:
         return render (response, 'database.html', {})

@@ -4,113 +4,52 @@
 <div class="main-panel">
     {% include 'navbar.html' %}
     <div class="content">
-        <h2 class='amazon-main-opaque'>GWF Kernel Dashboard</h2>
+        <h2 class='neo-tint'>GWF Kernel Dashboard</h2>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-3 col-lg-12">
+                <div class="col-xl-6">
                     <div class="card card-chart">
-                        <div class="card-header card-header-success">
-                            <div class="ct-chart" id="auto_answer" style="text-align: center;">
+                        <div class="card-header card-header-info">
+                            <div class="ct-chart" id="albacore" style="text-align: center;">
                                 <!-- <h1 style="text-align: center;">IMG</h1> -->
-                                <img src="{% static '/imgs/aa.png' %}" alt="Auto Answers Template Generator">
+                                <img src="{% static '/imgs/snail_albacore.png' %}" alt="Albacore Applications">
                             </div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Auto-Answer Templates Generator</h4>
-                            <p class="card-category">A template generator for Paramount's Auto-Answers JavaScript Tasks.</p>
+                            <h4 class="card-title" style="color: rgb(255, 153,0)">Albacore Apps</h4>
+                            <p class="card-category">This section holds applications made specially to simplify Albacore tasks. </p>
                         </div>
                         <div class="card-footer">
                             <div class="nav-tabs-wrapper">
                                 <a href="{% url 'auto-generator' %}" class="btn btn-secondary btn-sm">
-                                    Access AA Generator
+                                    Access Albacore Apps
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-12">
+                <div class="col-xl-6">
                     <div class="card card-chart">
-                        <div class="card-header card-header-primary">
-                            <div class="ct-chart" id="validator" style="text-align: center;">
-                                <img src="{% static '/imgs/validator.png' %}" alt="Validator">
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Validator</h4>
-                            <p class="card-category">A simple tool to verify issues and GAPS on  workflows through JSON codes.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="nav-tabs-wrapper">
-                                <a href="{% url 'validator' %}" class="btn btn-secondary btn-sm">
-                                    Access Validator
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-12">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-warning">
-                            <div class="ct-chart" id="parser" style="text-align: center;">
-                                <img src="{% static '/imgs/parser2.png' %}" alt="Validator">
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Parser</h4>
-                            <p class="card-category">This function will help you acquire a formatted Source File from an Albacore JSON code flow.</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="nav-tabs-wrapper">
-                                <a href="{% url 'json_parser' %}" class="btn btn-secondary btn-sm">
-                                    Access Parser
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-12">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-danger">
-                            <div class="ct-chart" id="albacorizer" style="text-align: center;">
+                        <div class="card-header card-header-info">
+                            <div class="ct-chart" id="paramount" style="text-align: center;">
                                 <!-- <h1 style="text-align: center;">IMG</h1> -->
-                                <img src="{% static '/imgs/albacorizer2.png' %}" alt="">
+                                <img src="{% static '/imgs/bandwidth.png' %}" alt="Paramount Applications">
                             </div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Albacorizer</h4>
-                            <p class="card-category">This function will take a Source File and convert the data into JSON codes ready to be used in Albacore.</p>
+                            <h4 class="card-title" style="color: rgb(255, 153,0);">Paramount Apps</h4>
+                            <p class="card-category">This section holds applications made specially to simplify Paramount tasks. </p>
                         </div>
                         <div class="card-footer">
                             <div class="nav-tabs-wrapper">
-                                    <a href="{% url 'albacorizer' %}" class="btn btn-secondary btn-sm">
-                                        Access Albacorizer
-                                    </a>
+                                <a href="{% url 'auto-generator' %}" class="btn btn-secondary btn-sm">
+                                    Access Paramount Apps
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-12">
-                    <div class="card card-chart">
-                        <div class="card-header card-header-danger">
-                            <div class="ct-chart" id="payload" style="text-align: center;">
-                                <!-- <h1 style="text-align: center;">IMG</h1> -->
-                                <img src="{% static '/imgs/payloadBuilder.png' %}" alt="">
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <h4 class="card-title">Payload Builder</h4>
-                            <p class="card-category">This function is in development. Currently outputs XML for BPMN workflow inputs</p>
-                        </div>
-                        <div class="card-footer">
-                            <div class="nav-tabs-wrapper">
-                                    <a href="{% url 'payloadBuilder' %}" class="btn btn-secondary btn-sm">
-                                        Access Payload Builder
-                                    </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
+            </div>
         </div>
     </div>
 </div>
