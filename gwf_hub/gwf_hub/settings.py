@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'albacorizer.apps.AlbacorizerConfig',
     'json_parser.apps.JsonParserConfig',
-    'validator.apps.ValidatorConfig'
+    'validator.apps.ValidatorConfig',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'livereload.middleware.LiveReloadScript',
+    # 'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'gwf_hub.urls'
@@ -140,3 +140,4 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

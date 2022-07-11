@@ -11,11 +11,20 @@ function requestIDs(event){
 }
 
 
-function copyToClipboard(){
-    let textarea = document.getElementById('template')
-    textarea.select();
-    document.execCommand('copy')
-    alert("Template Copied to Clipboard")
+function copyToClipboard(id){
+    let textarea = ''
+    if(id == 'autoAnswer'){
+        textarea = document.getElementById('template')
+        textarea.select();
+        document.execCommand('copy')
+        alert("Template Copied to Clipboard")
+    }else if (id == 'extractor'){
+        textarea = document.getElementById('bpmnResult')
+        textarea.select();
+        document.execCommand('copy')
+        alert("BPMN Code Copied to Clipboard")
+    }
+    
 }
 
 
@@ -38,4 +47,44 @@ function removeID(event){
         alert("No more IDs to remove")
     }
 }
+
+// $('#parse').click(()=>{
+//     console.log("clicked")
+//     $.ajax({
+//         url: '',
+//         type: 'get',
+//         data: {
+//             button_text: $(this).text()
+//         },
+//         success: ((response)=>{
+//             $('parser-progress').width("50px")
+//         })
+//     })
+// });
+
+$('#parse').click(function(){
+    $.ajax({
+        url:'',
+        type: 'get',
+        data: {
+            button_request: $(this).text()
+        },
+        success: function(response){
+            $('#parser-progress').width('50%')
+        }
+    })
+})
+
+// let parse_status = setTimeout(()=>{
+//     $.ajax({
+//         url: '',
+//         type: 'get',
+//         data: {
+//             process: 'process-request'
+//         },
+//         success:
+//     })
+// },5000);
+
+
 

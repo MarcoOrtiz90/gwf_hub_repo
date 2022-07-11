@@ -1,10 +1,23 @@
 from django.shortcuts import render
 from django.contrib import messages
+from django.http import JsonResponse
+from . import web_automation
+from . import parser_main
+
 
 # Create your views here.
 
 
 def call_parser(request):
+    ######### Test for AJAX Call 
+    # text = request.GET.get('button_request')
+    # progress = ''
+    # print()
+    # print(text)
+    # print()
+    ##########
+    progress = parser_main.progress
+    number_of_workflow = parser_main.number_of_workflows
     status = ''
     try:
         if request.method == 'POST':
@@ -53,7 +66,6 @@ def call_parser(request):
                 error_msg = {"error": error_generated}
                 return render(request, 'json_parser.html', error_msg)
 
-            from . import web_automation
             web_automation.wf_id_data(workflow_id, region, browser_used)
             completion_message = "Your source files have successfully been created for the flows - " + str(workflow_id)
             returning_msg = {'message_to_display': completion_message}
@@ -64,4 +76,3 @@ def call_parser(request):
         error_msg = {"error": error_generated}
         return render(request, 'json_parser.html', error_msg)
     return render(request, 'json_parser.html')
-

@@ -12,6 +12,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support.ui import Select
+from . import parser_main
 import getpass
 
 browser_name = ''
@@ -31,26 +32,25 @@ def wf_id_data(wf_ids, reg, browser_used):
     workflow_ids = wf_ids
     workflow_ids = workflow_ids.split(',')
     region = reg
-    browser = default_browser()
+    # browser = default_browser()
     driver = path(browser_string)
-    data_dict = web_manipulation(driver)
-    from . import parser_main
+    data_dict = web_manipulation(driver)    
     parser_main.web_automated_data(data_dict, workflow_ids)
     return "Done"
 
 
-def default_browser():
-    osPlatform = platform.system()
+# def default_browser():
+#     osPlatform = platform.system()
 
-    if osPlatform == 'Windows':
-        try:
-            with OpenKey(HKEY_CURRENT_USER,
-                         r'SOFTWARE\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice') as regkey:
-                browser_choice = QueryValueEx(regkey, 'ProgId')[0]
-                return browser_choice
+#     if osPlatform == 'Windows':
+#         try:
+#             with OpenKey(HKEY_CURRENT_USER,
+#                          r'SOFTWARE\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice') as regkey:
+#                 browser_choice = QueryValueEx(regkey, 'ProgId')[0]
+#                 return browser_choice
 
-        except Exception as n:
-            print('Failed to look up default browser in system registry. Using fallback value.', n)
+#         except Exception as n:
+#             print('Failed to look up default browser in system registry. Using fallback value.', n)
 
 
 def path(browser_string):
@@ -118,6 +118,13 @@ def web_manipulation(driver):
             time.sleep(7)
             section_list = []
 
+            # If albacore could not load the flow within time
+            try:
+                select = Select(driver.find_element_by_xpath('//*[@id="start-section-select"]/select'))
+            except Exception as e:
+                time.sleep(7)
+            # Providing 5 more seconds since it did not load the flow
+
             try:
                 select = Select(driver.find_element_by_xpath('//*[@id="start-section-select"]/select'))
                 first_section = str(select.first_selected_option.get_attribute("value"))
@@ -125,9 +132,9 @@ def web_manipulation(driver):
 
             except Exception as a:
                 print("Wait error on element: ", a)
-                status = "Data not found"
-                driver.quit()
-                return status
+                driver.find_element_by_xpath("/html/body/div[2]/div/div[1]/ul/li[4]/a").click()
+                time.sleep(3)
+                continue
             data_store_dict[workflow_id] = first_section
             sections = driver.find_element_by_id('sections-raw').get_attribute('value')
             sections_data = sections
@@ -148,6 +155,7 @@ def web_manipulation(driver):
             question_file_list.append(file_name_questions)
             driver.find_element_by_xpath("/html/body/div[2]/div/div[1]/ul/li[4]/a").click()
             time.sleep(3)
+
     except Exception as e:
         print("An error occurred: ", e)
     return data_store_dict

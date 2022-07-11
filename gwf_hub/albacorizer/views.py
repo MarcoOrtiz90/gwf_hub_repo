@@ -23,3 +23,6 @@ def jsoncodes(request):
                 return render(request, 'albacorizer.html', data_dict)
         except Exception as ve:
             print("Value Error noted as - ", ve)
+
+# Customer data,Order Details,Credit Cards,GSI,Beta GSI,RC,GC,Addresses
+# Customer data,Order Details,Credit Cards,GSI,Beta GSI,RC,GC,Addresses
