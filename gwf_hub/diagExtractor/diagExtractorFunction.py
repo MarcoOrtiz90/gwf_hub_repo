@@ -45,14 +45,33 @@ with open(file='parammount.xml', mode='r', encoding='UTF-8') as xml_code:
 
                 question_id = question_data[1].strip('\\')
 
-                bpmn_string = bpmn_string + question + " {" + question_id + "}, "
-        # Coming out of the condition if the code changes for section
+                bpmn_string = bpmn_string + question + " {{" + question_id + "}}, "
+
+        if 'SELECT_RADIO' in lines:
+            if status == 'IN':
+                question_data = lines.split('"')
+                question = question_data[3].strip('\\')
+
+                question_id = question_data[1].strip('\\')
+
+                bpmn_string = bpmn_string + question + " {{" + question_id + "}}, "
+
+        if 'SELECT_ONE' in lines:
+            if status == 'IN':
+                question_data = lines.split('"')
+                question = question_data[3].strip('\\')
+
+                question_id = question_data[1].strip('\\')
+
+                bpmn_string = bpmn_string + question + " {{" + question_id + "}}, "
+
         if "</bpmn:userTask>" in lines:
             status = "OUT"
             bpmn_string = bpmn_string.rstrip(", ")
             bpmn_dictionary_data.update({section_id: bpmn_string})
             bpmn_string = ''
 
+        # Coming out of the condition if the code changes for section
 
 for section, data in bpmn_dictionary_data.items():
     print(section + ": " + data + '\n')
