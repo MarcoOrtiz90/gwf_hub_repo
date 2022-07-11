@@ -3,28 +3,12 @@ from django.contrib import messages
 from django.http import JsonResponse
 from . import web_automation
 from . import parser_main
-<<<<<<< HEAD
-
-=======
 from django.http import JsonResponse
->>>>>>> uiChanges
 
 # Create your views here.
 
 
 def call_parser(request):
-<<<<<<< HEAD
-    ######### Test for AJAX Call 
-    # text = request.GET.get('button_request')
-    # progress = ''
-    # print()
-    # print(text)
-    # print()
-    ##########
-    progress = parser_main.progress
-    number_of_workflow = parser_main.number_of_workflows
-=======
->>>>>>> uiChanges
     status = ''
     try:
         if request.method == 'POST':
@@ -81,11 +65,6 @@ def call_parser(request):
         e = str(e)
         error_generated = "Exception generated - " + e
         error_msg = {"error": error_generated}
-<<<<<<< HEAD
-        return render(request, 'json_parser.html', error_msg)
-    return render(request, 'json_parser.html')
-=======
         return render(request, 'json_parser.html', error_msg)    
 
     return render(request, 'json_parser.html')
->>>>>>> uiChanges
