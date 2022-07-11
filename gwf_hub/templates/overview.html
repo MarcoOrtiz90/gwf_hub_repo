@@ -4,32 +4,41 @@
 <div class="main-panel">
     {% include 'navbar.html' %}
     <div class="content">
+<<<<<<< HEAD
         <h2 class='amazon-main-opaque'>GWF Kernel Dashboard</h2>
+=======
+<<<<<<< HEAD
+        <h2 class='amazon-main-opaque'>GWF Kernel Dashboard</h2>
+=======
+        <h2 class='neo-tint'>GWF Kernel Dashboard</h2>
+>>>>>>> uiChanges
+>>>>>>> diagExtractor
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xl-3 col-lg-12">
+                <div class="col-xl-6">
                     <div class="card card-chart">
-                        <div class="card-header card-header-success">
-                            <div class="ct-chart" id="auto_answer" style="text-align: center;">
+                        <div class="card-header card-header-info">
+                            <div class="ct-chart" id="albacore" style="text-align: center;">
                                 <!-- <h1 style="text-align: center;">IMG</h1> -->
-                                <img src="{% static '/imgs/aa.png' %}" alt="Auto Answers Template Generator">
+                                <img src="{% static '/imgs/snail_albacore.png' %}" alt="Albacore Applications">
                             </div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Auto-Answer Templates Generator</h4>
-                            <p class="card-category">A template generator for Paramount's Auto-Answers JavaScript Tasks.</p>
+                            <h4 class="card-title" style="color: rgb(255, 153,0)">Albacore Apps</h4>
+                            <p class="card-category">This section holds applications made specially to simplify Albacore tasks. </p>
                         </div>
                         <div class="card-footer">
                             <div class="nav-tabs-wrapper">
                                 <a href="{% url 'auto-generator' %}" class="btn btn-secondary btn-sm">
-                                    Access AA Generator
+                                    Access Albacore Apps
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-12">
+                <div class="col-xl-6">
                     <div class="card card-chart">
+<<<<<<< HEAD
                         <div class="card-header card-header-warning">
                             <div class="ct-chart" id="task_extractor" style="text-align: center;">
                                 <!-- <h1 style="text-align: center;">IMG</h1> -->
@@ -91,25 +100,52 @@
                 </div>
                 <div class="col-xl-3 col-lg-12">
                     <div class="card card-chart">
-                        <div class="card-header card-header-danger">
-                            <div class="ct-chart" id="albacorizer" style="text-align: center;">
-                                <!-- <h1 style="text-align: center;">IMG</h1> -->
-                                <img src="{% static '/imgs/albacorizer2.png' %}" alt="Albacorizer">
+                        <div class="card-header card-header-warning">
+                            <div class="ct-chart" id="diagextractor" style="text-align: center;">
+                                <img src="{% static '/imgs/parser2.png' %}" alt="Parser">
                             </div>
                         </div>
                         <div class="card-body">
-                            <h4 class="card-title">Albacorizer</h4>
-                            <p class="card-category">This function will take a Source File and convert the data into JSON codes ready to be used in Albacore.</p>
+                            <h4 class="card-title">Diagnostics Generator</h4>
+                            <p class="card-category">This function will help you acquire the diagnostics for the paramount workflow section by section.</p>
                         </div>
                         <div class="card-footer">
                             <div class="nav-tabs-wrapper">
-                                    <a href="{% url 'albacorizer' %}" class="btn btn-secondary btn-sm">
-                                        Access Albacorizer
-                                    </a>
+                                <a href="{% url 'json_parser' %}" class="btn btn-secondary btn-sm">
+                                    Access Diagnostics Generator
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-3 col-lg-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-danger">
+                            <div class="ct-chart" id="albacorizer" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/albacorizer2.png' %}" alt="Albacorizer">
+=======
+                        <div class="card-header card-header-info">
+                            <div class="ct-chart" id="paramount" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/bandwidth.png' %}" alt="Paramount Applications">
+>>>>>>> uiChanges
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title" style="color: rgb(255, 153,0);">Paramount Apps</h4>
+                            <p class="card-category">This section holds applications made specially to simplify Paramount tasks. </p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="nav-tabs-wrapper">
+                                <a href="{% url 'auto-generator' %}" class="btn btn-secondary btn-sm">
+                                    Access Paramount Apps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<<<<<<< HEAD
                 <div class="col-xl-3 col-lg-12">
                     <div class="card card-chart">
                         <div class="card-header card-header-danger">
@@ -132,6 +168,9 @@
                     </div>
                 </div>
             </div>            
+=======
+            </div>
+>>>>>>> uiChanges
         </div>
     </div>
 </div>

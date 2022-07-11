@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %} 
+
+    <div class="content">
+        <h2 class="amazon-main-opaque">Validator</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-primary card-header-icon">
+                            <div class="card-icon">
+                                <img src="{% static '/imgs/validator_small.png' %}" alt="Auto Answers Template Generator">
+                            </div>        
+                        </div>
+                        <div class="card-body" style="text-align: left;">
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <label>
+                                    Workflow Sections JSON Code
+                                </label><br>
+                                    {% if return_sections_data != "" %}
+                                        <pre><textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="60">{{ return_sections_data }}</textarea></pre>
+                                    {% else %}
+                                        <pre><textarea name="sections_json" placeholder="Enter Sections JSON code" rows="4" cols="60">{{ return_sections_data }}</textarea></pre>
+                                    {% endif %}
+                                <br>
+                                <label>
+                                    Workflow Questions JSON Code
+                                </label><br>
+                                    {% if return_questions_data != "" %}
+                                        <pre><textarea name="questions_json" rows="4" cols="60" placeholder="Enter Questions JSON code">{{ return_questions_data }}</textarea></pre>
+                                    {% else %}
+                                        <pre><textarea name="questions_json" placeholder="Enter Questions JSON code" rows="4" cols="60">{{ return_questions_data }}</textarea></pre>
+                                    {% endif %}
+                                <hr>
+                                <h3 class="neo-tint-opaque">Include</h3>
+                                <label class="switch">
+                                    <input type="checkbox" name="auto_answers" id="autoanswers">
+                                    <span class="slider round"></span>
+                                </label><label style="margin-left: 5px;">Auto-Answer Detection</label><br>
+                    
+                                <label class="switch">
+                                    <input type="checkbox" id="duplicateid" name="duplicate_id">
+                                    <span class="slider round"></span>
+                                </label><label style="margin-left: 5px;">Duplicate Answer Detection</label><br>
+                    
+                                <label class="switch">
+                                    <input type="checkbox" id="jumps" name="jumps_check">
+                                    <span class="slider round"></span>
+                                </label><label style="margin-left: 5px;">Answer Using Jumps</label><br>
+                    
+                                <label class="switch">
+                                    <input type="checkbox" id="inactiveqgroup" name="inactive_q_group">
+                                    <span class="slider round"></span>
+                                </label><label style="margin-left: 5px;">Inactive question groups</label><br>
+                    
+                                <label class="switch">
+                                    <input type="checkbox" id="mandatesnc" name="mandates_not_connected">
+                                    <span class="slider round"></span>
+                                </label><label style="margin-left: 5px;">Mandates not connected</label><br>
+                    
+                                <label class="switch">
+                                    <input type="checkbox" id="wrongjumps" name="wrong_jumps">
+                                    <span class="slider round"></span>
+                                </label><label style="margin-left: 5px;">Wrong Jumps Used</label><br>
+                                <button type="submit" class="btn btn-primary">Validate !</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                            <p style="color: grey;"><strong class="neo-tint">Validator</strong> is a tool used by GWF team to validate the
+                                functions/features requested by the Workflow specialist. It gives specific outputs in terms of
+                                which questions in the flow are using auto answers, which answers are using jumps, are those
+                                jumps correctly set, and much more.
+                            </p>
+                            <ol>
+                                <li style="color:grey;">Copy both questions and sections JSON codes from the required
+                                    workflows
+                                </li>
+                                <li style="color:grey;">Paste the JSON in their respective field</li>
+                                <li style="color:grey;">Specify your filters with the selectors</li>
+                                <li style="color:grey;">Submit to Validate!</li>
+                    
+                            </ol>
+                            <br>
+                            {% if error_found %}
+                                <h3 class="neo-tint-opaque">Validator Result</h3>
+                                <p style="color:grey;">Data collected if any:</p>
+                                <pre><textarea rows="6" cols="80" style="color:red">{{ issues_to_print }}</textarea></pre>
+                            {% else %}
+                                <h3 class="neo-tint-opaque">Validator Result</h3>
+                                <p style="color:grey;">Data collected if any:</p>
+                                <pre><textarea rows="6" cols="80" style="color:grey">{{ issues_to_print }}</textarea></pre>
+                    
+                            {% endif %}      
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -3,21 +3,12 @@ from django.contrib import messages
 from django.http import JsonResponse
 from . import web_automation
 from . import parser_main
-
+from django.http import JsonResponse
 
 # Create your views here.
 
 
 def call_parser(request):
-    ######### Test for AJAX Call 
-    # text = request.GET.get('button_request')
-    # progress = ''
-    # print()
-    # print(text)
-    # print()
-    ##########
-    progress = parser_main.progress
-    number_of_workflow = parser_main.number_of_workflows
     status = ''
     try:
         if request.method == 'POST':
@@ -74,5 +65,6 @@ def call_parser(request):
         e = str(e)
         error_generated = "Exception generated - " + e
         error_msg = {"error": error_generated}
-        return render(request, 'json_parser.html', error_msg)
+        return render(request, 'json_parser.html', error_msg)    
+
     return render(request, 'json_parser.html')

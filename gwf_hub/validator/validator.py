@@ -34,7 +34,8 @@ def current_question_data(questions, sections, toggle_dict):
     wrong_jumps = toggle_dict["wrong_jumps"]
     mandates_not_connected = toggle_dict["mandates_not_connected"]
 
-    print("auto_answers : " + auto_answers, "duplicate_id : " + duplicate_id)
+    print("auto_answers : " + auto_answers, "duplicate_id : " + duplicate_id, "jumps: " + jumps, "inactive_q_group: " +
+          inactive_q_group, "mandates_not_connected: " + mandates_not_connected)
     duplicated_question_group_id = []
     for values, data in c_questions.items():
         if values not in q_group_ids:
@@ -46,6 +47,9 @@ def current_question_data(questions, sections, toggle_dict):
         sections_id_bucket.append(values)
         if "workflow_question_group_ids" in data:
             number_of_mandates = len(data["workflow_question_group_ids"])
+            if number_of_mandates == 0:
+                error_text = str(values + " does not contain any mandate question groups! ")
+                mandates.append(error_text)
             for n in range(0, number_of_mandates):
                 mandates.append(data['workflow_question_group_ids'][n])
 
@@ -138,7 +142,7 @@ def current_question_data(questions, sections, toggle_dict):
 
     if wrong_jumps == "on":
         if len(wrong_jumps_used) > 0:
-            issues_string = issues_string + "Answers using wrong jumps - " + str(wrong_jumps) + "\n"
+            issues_string = issues_string + "Answers using wrong jumps - " + str(wrong_jumps_used) + "\n"
 
     if auto_answers == "on":
         if len(auto_answer) > 0:
