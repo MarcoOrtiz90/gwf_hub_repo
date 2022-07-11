@@ -50,8 +50,12 @@
                                         {% endif %}
                         
                                         {% if message_to_display != "" %}
-                                        <p style="color:grey;">{{ message_to_display }}</p>
+                                        <p style="color:grey;">{{ message_to_display }}</p>                                        
                                         {% endif%}
+                                        <div class="progress">
+                                            <p style="color:grey;">Workflows are being processed</p>
+                                            <div class="loader"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -70,14 +74,6 @@
                                 <li style="color: grey;">The application will start the automated process of accesing Albacore, pulling the flow and its respective JSON codes to create the Source File.</li>
                                 <li style="color: grey;">Once finished a folder is created on the user's desktop with the requested Source File.</li>
                             </ol>      
-                        </div>
-                    </div>
-                    <div class="card-stats">
-                        <div class="card-body" style="text-align: left;">
-                            <h4 class="neo-tint">Parsing...</h4>
-                            <div class="progress">                                
-                                <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" id="parser-progress" style="width: 90%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                              </div>
                         </div>
                     </div>
                 </div>

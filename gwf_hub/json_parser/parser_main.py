@@ -750,6 +750,7 @@ def web_automated_data(data_dict, wf_ids):
         print("Folder already present")
 
     for w_id in workflow_ids:
+<<<<<<< HEAD
         try:
             web_automated_data_called = False
             extracting_mandate_questions_called = False
@@ -777,6 +778,34 @@ def web_automated_data(data_dict, wf_ids):
             section_file = data_store_dict[workflow_section]
             question_json = json.loads(question_file)
             fup_string = ''
+=======
+        web_automated_data_called = False
+        extracting_mandate_questions_called = False
+        extracting_follow_up_called = False
+        identify_starting_section_called = False
+
+        if not web_automated_data_called:
+            progress_check()
+            web_automated_data_called = True
+        workflow_id = w_id
+        worksheet_name = workflow_id + ".xlsx"
+        tic = time.perf_counter()
+        mandate_questions = []
+        follow_up_list = []
+        wb = openpyxl.Workbook()
+        sheet = wb.active
+        sheet.title = "master sheet"
+        sheet_name = sheet.title
+        wb.save(f'C:\\Users\\'+getpass.getuser()+'\Desktop\\Source files\\' + worksheet_name)
+        print("Parser collected the workflows IDs - ", workflow_id)
+        row_counter = 2
+        workflow_section = "sections_" + workflow_id
+        workflow_question = "questions_" + workflow_id
+        question_file = data_store_dict[workflow_question]
+        section_file = data_store_dict[workflow_section]
+        question_json = json.loads(question_file)
+        fup_string = ''
+>>>>>>> uiChanges
 
             current_question_data()
 
@@ -793,3 +822,15 @@ def progress_check():
     progress += 0.25
     number_of_workflows = len(workflow_ids)
 
+<<<<<<< HEAD
+=======
+        identify_starting_section()
+
+
+def progress_check():
+    global progress, workflow_ids
+    progress += 0.25
+    print(progress)
+    number_of_workflows = len(workflow_ids)
+
+>>>>>>> uiChanges

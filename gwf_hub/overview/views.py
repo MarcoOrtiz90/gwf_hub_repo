@@ -8,7 +8,13 @@ from django.contrib.auth import authenticate, login
 ##@login_required
 def overview(response):
     context = {'main': "main"}
-    return render(response, 'overview.html', context)
+    return render(response, 'applications.html', context)
+
+def paramountApps(response):
+    return render(response, 'applications_paramount.html', {})
+
+def albacoreApps(response):
+    return render(response, 'applications_albacore.html', {})
 
 def database(response):
     if response.user.is_authenticated:
