@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="main-panel">
+    {% include 'navbar.html' %}
+    <div class="content">
+        <h2 class='amazon-main-opaque'>Question & Answer Counter</h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                            {% if main == 'yes' %}
+                                <form action='' method="POST">
+                                    {% csrf_token %}
+                                    <input type="number" id='container_number' placeholder="Amount of Containers" style="width: 150px;">
+                                    <button type="submit" class="btn btn-sm btn-info" name="request_container" value="request_container">Request</button>
+                                </form>
+                            {% endif %}
+                        </div>                        
+                    </div>                    
+                </div>
+                <div class="col-md-8">
+                    <h3 class='amazon-main-opaque'>How to:</h3>
+                    <div class="card card-stats">
+                        <div class="card-body" style="text-align: left;">
+                            <p style="color: grey;"><strong>Question & Answer Task Creator</strong> is a functionality created to count workflow questions, extract their answer ids and create a BPMN output to map in the desired Top Level Container.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

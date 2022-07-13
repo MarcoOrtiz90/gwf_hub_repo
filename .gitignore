@@ -13,5 +13,6 @@ gwf_hub/validator/__pycache__/
 gwf_hub/diagExtractor/__pycache__/
 gwf_hub/paramount_task_extractor/__pycache__/
 gwf_hub/payload_builder/__pycache__/
+gwf_hub/question_answer_counter/__pycache__/
 */__pycache__/*
 

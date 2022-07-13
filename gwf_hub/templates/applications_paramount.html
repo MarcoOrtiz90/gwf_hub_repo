@@ -91,6 +91,27 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-3 col-lg-12">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-success">
+                            <div class="ct-chart" id="question_counter" style="text-align: center;">
+                                <!-- <h1 style="text-align: center;">IMG</h1> -->
+                                <img src="{% static '/imgs/aa.png' %}" alt="Question Coutner">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title">Question & Answer Counter</h4>
+                            <p class="card-category">Gathers workflow question and answer count in order to set-up the payload builder</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="nav-tabs-wrapper">
+                                <a href="{% url 'question-counter' %}" class="btn btn-secondary btn-sm">
+                                    Access Question Counter
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
