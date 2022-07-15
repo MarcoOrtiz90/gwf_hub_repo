@@ -9,14 +9,18 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="card card-stats">
+                        <div class="card-header card-header-danger card-header-icon">
+                            <div class="card-icon">
+                                <img src="{% static '/imgs/aa_small.png' %}" alt="Q & A counter">
+                            </div>
+                        </div>
                         <div class="card-body" style="text-align: left;">
-                            {% if main == 'yes' %}
-                                <form action='' method="POST">
-                                    {% csrf_token %}
-                                    <input type="number" id='container_number' placeholder="Amount of Containers" style="width: 150px;">
-                                    <button type="submit" class="btn btn-sm btn-info" name="request_container" value="request_container">Request</button>
-                                </form>
-                            {% endif %}
+                            <form action='' method="POST">
+                                {% csrf_token %}
+                                <input type="file" id='bpmn-codes'style="width: 350px;" class="form-control" name='bpmn_file'>
+                                <hr>
+                                <button type="submit" class="btn btn-sm btn-info" name="request_container" value="request_container">Analyze</button>                                                                
+                            </form>
                         </div>                        
                     </div>                    
                 </div>
@@ -28,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
 </div>

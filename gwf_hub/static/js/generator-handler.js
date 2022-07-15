@@ -10,6 +10,19 @@ function requestIDs(event){
     formCopyTarget.append(emptyFormEle)
 }
 
+function containerRequest(event){
+    if(event){
+        event.preventDefault()
+    }
+    // const requestAmount = document.getElementById('container-fluid')
+    const containerAmount = document.getElementById('container-number').value
+    if(containerAmount === ''){
+        alert('Amount of containers is empty. Please select number of required containers');
+    } else {
+        containerAmount = parseInt(containerAmount);
+
+    }
+}
 
 function copyToClipboard(id){
     let textarea = ''
