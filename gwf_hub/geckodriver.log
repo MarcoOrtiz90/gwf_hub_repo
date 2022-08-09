@@ -4569,3 +4569,28 @@ unwatchForTargets()@TargetList.jsm:37
 destructor()@TargetList.jsm:109
 stop()@CDP.jsm:104
 close()@RemoteAgent.jsm:138
+1660073804360	geckodriver	INFO	Listening on 127.0.0.1:60833
+1660073807433	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "60834" "-no-remote" "-profile" "C:\\Users\\mttrejos\\AppData\\Local\\Temp\\rust_mozprofileZdMqXA"
+1660073808516	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\mttrejos\\AppData\\Local\\Temp\\rust_mozprofileZdMqXA\\search.json.mozlz4", (void 0)))
+JavaScript error: resource://gre/modules/TelemetryUtils.jsm, line 154: TypeError: date is undefined
+DevTools listening on ws://localhost:60834/devtools/browser/700f85a6-a26b-4c7e-8d92-7a11b3730a22
+1660073811453	Marionette	INFO	Listening on port 60840
+1660073811645	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1660073896494	Marionette	INFO	Stopped listening on port 60840
+JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+!!! error running onStopped callback: TypeError: callback is not a function
+1660073896961	RemoteAgent	ERROR	unable to stop listener: [Exception... "Component returned failure code: 0x8000ffff (NS_ERROR_UNEXPECTED) [nsIWindowMediator.getEnumerator]"  nsresult: "0x8000ffff (NS_ERROR_UNEXPECTED)"  location: "JS frame :: chrome://remote/content/cdp/observers/TargetObserver.jsm :: stop :: line 64"  data: no] Stack trace: stop()@TargetObserver.jsm:64
+unwatchForTabs()@TargetList.jsm:70
+unwatchForTargets()@TargetList.jsm:37
+destructor()@TargetList.jsm:109
+stop()@CDP.jsm:104
+close()@RemoteAgent.jsm:138
+1660073909243	geckodriver	INFO	Listening on 127.0.0.1:60929
+1660073912293	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "60930" "-no-remote" "-profile" "C:\\Users\\mttrejos\\AppData\\Local\\Temp\\rust_mozprofiletPAH1I"
+1660073913243	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\mttrejos\\AppData\\Local\\Temp\\rust_mozprofiletPAH1I\\search.json.mozlz4", (void 0)))
+JavaScript error: resource://gre/modules/TelemetryUtils.jsm, line 154: TypeError: date is undefined
+DevTools listening on ws://localhost:60930/devtools/browser/a939f0ec-4ab6-452c-863d-4d4cae426d74
+1660073916841	Marionette	INFO	Listening on port 60937
+1660073917116	RemoteAgent	WARN	TLS certificate errors will be ignored for this session

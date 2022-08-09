@@ -1,10 +1,9 @@
 from distutils.log import error
 import pandas as pd
-import openpyxl as xl
 
 def buildPayload():    
     payload = '' # final payload output to return
-    dataFile = pd.read_excel('payment_risk_apay_in_api_data.xlsx', sheet_name='APAY IN')
+    dataFile = pd.read_excel('payment_risk_GC_BGC_api_data.xlsx', sheet_name='bgcData')
     valStart = '${&#34;'
     valEnd = '&#34;}'
     camundaValString = '<camunda:in sourceExpression=\\"'
