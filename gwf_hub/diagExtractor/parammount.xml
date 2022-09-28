@@ -1,0 +1,818 @@
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bioc=\"http://bpmn.io/schema/bpmn/biocolor/1.0\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:camunda=\"http://camunda.org/schema/1.0/bpmn\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_024ijxk\" targetNamespace=\"http://bpmn.io/schema/bpmn\" exporter=\"Camunda Modeler\" exporterVersion=\"1.14.0\">
+<bpmn:process id=\"Process_1\" processType=\"None\" isClosed=\"false\" isExecutable=\"true\">
+<bpmn:startEvent id=\"StartEvent_1\">
+<bpmn:outgoing>
+SequenceFlow_1tsayt0</bpmn:outgoing>
+</bpmn:startEvent>
+<bpmn:sequenceFlow id=\"SequenceFlow_1tsayt0\" sourceRef=\"StartEvent_1\" targetRef=\"Task_1gctu4n\" />
+<bpmn:endEvent id=\"EndEvent_1g9mwtu\">
+<bpmn:incoming>
+SequenceFlow_1h4idlk</bpmn:incoming>
+</bpmn:endEvent>
+<bpmn:sequenceFlow id=\"SequenceFlow_0e2hkto\" sourceRef=\"Task_1gctu4n\" targetRef=\"Task_0pisfoj\" />
+<bpmn:userTask id=\"Task_1gctu4n\" name=\"NC/VC\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"## **B2B Investigation**&#10;***&#10;#### *New  **B2B Orders/PBI** Investigation*\" type=\"formProperty\" />
+<camunda:formField id=\"summary\" label=\"What type of customer is this? {{account_age}}, Workflow Run-ID {{diag_run_id}}\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Verify customer account age. **NC** or **VC** account*\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"account_age\" label=\"What type of customer is this?\" type=\"SELECT_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+<camunda:property name=\"options.VC.0\" value=\"vc_cui\" />
+<camunda:property name=\"options.NC.1\" value=\"nc_cui\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1tsayt0</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0e2hkto</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_06edxo2\" sourceRef=\"Task_1dmainm\" targetRef=\"ExclusiveGateway_1cgldyg\" />
+<bpmn:businessRuleTask id=\"Task_1dmainm\" name=\"CUI Age DMN\" implementation=\"##unspecified\" camunda:decisionRef=\"Decision_056yddh\">
+<bpmn:incoming>
+SequenceFlow_1eed6ab</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_06edxo2</bpmn:outgoing>
+</bpmn:businessRuleTask>
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_1cgldyg\" name=\"customer_age\">
+<bpmn:extensionElements>
+<camunda:inputOutput>
+<camunda:inputParameter name=\"customer_age\" />
+</camunda:inputOutput>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_06edxo2</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0704hs3</bpmn:outgoing>
+<bpmn:outgoing>
+SequenceFlow_1a12imr</bpmn:outgoing>
+</bpmn:exclusiveGateway>
+<bpmn:sequenceFlow id=\"SequenceFlow_0704hs3\" name=\"&#34;nc&#34;\" sourceRef=\"ExclusiveGateway_1cgldyg\" targetRef=\"Task_16m6xag\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+<![CDATA[\"nc\"]]>
+</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:sequenceFlow id=\"SequenceFlow_1a12imr\" name=\"&#34;vc&#34;\" sourceRef=\"ExclusiveGateway_1cgldyg\" targetRef=\"Task_00pfjqd\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+<![CDATA[\"vc\"]]>
+</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:userTask id=\"Task_1r4aqeg\" name=\"Additional Annotations\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"## *Additional Annotations* &#10;***&#10;#### *Related Customers investigation has finished*\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Add **Additional Annotations** if required.*&#10;***&#10;### Global Workflow Score: {{workflow_score}}\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"additional_annotations\" label=\"Additional Annotations if required\" type=\"STRING\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"numberRows\" value=\"4\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+<camunda:validation>
+<camunda:constraint name=\"maxBoundary\" config=\"100\" />
+<camunda:constraint name=\"minBoundary\" config=\"0\" />
+<camunda:constraint name=\"optional\" config=\"true\" />
+</camunda:validation>
+</camunda:formField>
+<camunda:formField id=\"\" label=\"Paramount::COMMON_Continue\" type=\"CONTINUE_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"2\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0av6nqu</bpmn:incoming>
+<bpmn:incoming>
+SequenceFlow_0mtsw13</bpmn:incoming>
+<bpmn:incoming>
+SequenceFlow_04zq0qu</bpmn:incoming>
+<bpmn:incoming>
+SequenceFlow_179aptv</bpmn:incoming>
+<bpmn:incoming>
+SequenceFlow_0beetmh</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1o12zk7</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_1o12zk7\" sourceRef=\"Task_1r4aqeg\" targetRef=\"Task_1wnb1i8\" />
+<bpmn:callActivity id=\"Task_16m6xag\" name=\"NC\" calledElement=\"payment_risk_b2b_order_pbi_nc\" camunda:calledElementBinding=\"version\" camunda:calledElementVersion=\"PROD\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0704hs3</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1b9em6s</bpmn:outgoing>
+</bpmn:callActivity>
+<bpmn:callActivity id=\"Task_00pfjqd\" name=\"VC\" calledElement=\"payment_risk_b2b_orders_pbi_vc\" camunda:calledElementBinding=\"version\" camunda:calledElementVersion=\"PROD\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1a12imr</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_02z1p4c</bpmn:outgoing>
+</bpmn:callActivity>
+<bpmn:sequenceFlow id=\"SequenceFlow_1h4idlk\" sourceRef=\"Task_1wnb1i8\" targetRef=\"EndEvent_1g9mwtu\" />
+<bpmn:userTask id=\"Task_1wnb1i8\" name=\"Workflow End\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"WORKFLOW  END\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"WORKFLOW END\" type=\"formProperty\" />
+<camunda:formField id=\"type\" label=\"SUCCESS\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"\" label=\"Paramount::COMMON_Continue\" type=\"CONTINUE_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1o12zk7</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1h4idlk</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_0r9txlf\" sourceRef=\"Task_0pisfoj\" targetRef=\"Task_1k2pqep\" />
+<bpmn:userTask id=\"Task_0pisfoj\" name=\"Reinstate &#38; Annotations\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"## *Reinstate &#38; Annotations* &#10;***&#10;#### *A **B2B** order is queued for your review*\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Investigate the account for historical data around annotations and reinstate status*\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"annotation_describe\" label=\"Describe the annotation section review (90+ days)\" type=\"SELECT_ONE\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+<camunda:property name=\"options.Spot Buy Update.0\" value=\"spot_buy_update\" />
+<camunda:property name=\"options.Escalation Update to Pass Orders.1\" value=\"escalation_to_pass\" />
+<camunda:property name=\"options.Escalation Update to Enforce Acc.2\" value=\"escalation_to_enforce_acc\" />
+<camunda:property name=\"options.Clean/No updates in Annot.3\" value=\"clean_no_updates\" />
+<camunda:property name=\"options.Account Recently reinstated( within 90 days).4\" value=\"prev_reinst_acc\" />
+</camunda:properties>
+</camunda:formField>
+<camunda:formField id=\"pass_action_check\" label=\"Do you have enough points to take pass action?\" type=\"YES_NO_QUESTION\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(annotation_describe)===&#34;spot_buy_update&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"2\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+<camunda:formField id=\"reinstate_check\" label=\"Was the reinstate correct?\" type=\"YES_NO_QUESTION\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(annotation_describe)===&#34;prev_reinst_acc&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"3\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+<camunda:formField id=\"incorrect_reinst_reason\" label=\"Why was it incorrect?\" type=\"SELECT_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(reinstate_checkreinstate_check) ===&#34;False&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"4\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+<camunda:property name=\"options.Missed Fraud MO.0\" value=\"missed_fraud_mo\" />
+<camunda:property name=\"options.Missed ATO.1\" value=\"missed_ato\" />
+<camunda:property name=\"options.Fraud Rels in GSI.2\" value=\"gsi_fraud_rels\" />
+<camunda:property name=\"options.Missed Payment Validation.3\" value=\"missed_pay_validation\" />
+<camunda:property name=\"options.CB/BD Above threshold.4\" value=\"cb_bd_above_thresh\" />
+<camunda:property name=\"options.Misinterpreted RC Relations.5\" value=\"misinterpreted_relations\" />
+<camunda:property name=\"options.Misinterpreted IV Relation.6\" value=\"misinterpreted_iv\" />
+<camunda:property name=\"options.Missed Order Velocity.7\" value=\"missed_ord_vel\" />
+<camunda:property name=\"options.Missed Ordering Pattern.8\" value=\"missed_ord_pattern\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0e2hkto</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0r9txlf</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_1b90bnt\" sourceRef=\"Task_1k2pqep\" targetRef=\"Task_17c0864\" />
+<bpmn:scriptTask id=\"Task_1k2pqep\" name=\"Score Track Reinst\" scriptFormat=\"JAVASCRIPT\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0r9txlf</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1b90bnt</bpmn:outgoing>
+<bpmn:script>
+<![CDATA[var annotation_describe = document.get(\"annotation_describe\").stringValue();\nvar positive_score_reinstates = 0;\nvar negative_score_reinstates = 0;\n\nif(annotation_describe == \"escalation_to_enforce_acc\"){\n    negative_score_reinstates = -3;\n}else if(annotation_describe == \"spot_buy_update\" || annotation_describe == \"escalation_to_pass\"){\n    positive_score_reinstates = 3;\n}else if(annotation_describe == \"clean_no_updates\" || annotation_describe == \"prev_reinst_acc\"){\n    positive_score_reinstates = 1;\n}\n\nvar score_values = ionSystem.newEmptyStruct();\nscore_values.put(\"positive_score_reinstates\").newInt(positive_score_reinstates);\nscore_values.put(\"negative_score_reinstates\").newInt(negative_score_reinstates);\n\nscore_values;]]>
+</bpmn:script>
+</bpmn:scriptTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_1hyogdo\" sourceRef=\"Task_17c0864\" targetRef=\"ExclusiveGateway_0cckjlz\" />
+<bpmn:businessRuleTask id=\"Task_17c0864\" name=\"Reinstates Jump\" implementation=\"##unspecified\" camunda:decisionRef=\"Decision_0pz3kta\">
+<bpmn:incoming>
+SequenceFlow_1b90bnt</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1hyogdo</bpmn:outgoing>
+</bpmn:businessRuleTask>
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_0cckjlz\" name=\"reinstate_jump\">
+<bpmn:extensionElements>
+<camunda:inputOutput>
+<camunda:inputParameter name=\"reinstate_jump\" />
+</camunda:inputOutput>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1hyogdo</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1eed6ab</bpmn:outgoing>
+<bpmn:outgoing>
+SequenceFlow_0av6nqu</bpmn:outgoing>
+</bpmn:exclusiveGateway>
+<bpmn:sequenceFlow id=\"SequenceFlow_1eed6ab\" name=\"false\" sourceRef=\"ExclusiveGateway_0cckjlz\" targetRef=\"Task_1dmainm\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+false</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:scriptTask id=\"Task_0q7z02g\" name=\"Score Card Suggest Logic NC\" scriptFormat=\"JAVASCRIPT\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1bi690q</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1boqx09</bpmn:outgoing>
+<bpmn:script>
+<![CDATA[var annotation_describe = \"\";\nvar account_type = \"\";\nvar describe_x_org = \"\";\nvar ach_verified = \"\";\nvar is_cui_sales_managed = \"\";\nvar users_leg_attributes_all_nc_verified = \"\";\nvar users_leg_attributes_nc_vc_good_oh = \"\";\nvar users_leg_attributes_vc_leg_gd_oh = \"\";\nvar users_leg_attributes_leg_acc_unjust_pay_vel = \"\";\nvar users_leg_attributes_users_negative_pattern = \"\";\nvar is_shipping_address_verf = \"\";\nvar item_type = \"\";\nvar cui_order_pattern_unjust_risky_op = \"\";\nvar cui_order_pattern_unjust_order_vel = \"\";\nvar cui_order_pattern_itm_corr_biz = \"\";\nvar cui_order_pattern_bulk_order = \"\";\nvar cui_order_pattern_strg_rel_sim_op = \"\";\nvar cui_order_pattern_same_pttrn_x_org = \"\";\nvar cui_order_pattern_good_itm_combo = \"\";\nvar cui_order_pattern_non_risky_op = \"\";\nvar cui_order_pattern_one_time_purchase = \"\";\nvar cui_order_pattern_order_vel_biz_rc_just = \"\";\nvar cch_verify = \"\";\nvar payment_evolved_reason = \"\";\nvar cch_call_outcome_requested_cancel = \"\";\nvar cch_call_outcome_cch_no_authorize = \"\";\nvar cch_call_outcome_cch_authorized = \"\";\nvar order_and_prev_sign_ins_ip_fp_frd_pttrn = \"\";\nvar order_and_prev_sign_ins_pw_change = \"\";\nvar order_and_prev_sign_ins_tz_do_not_corr_ip = \"\";\nvar order_and_prev_sign_ins_ip_fp_neg_frd_san_rel = \"\";\nvar order_and_prev_sign_ins_browser_degradation = \"\";\nvar order_and_prev_sign_ins_unjust_credentials_change = \"\";\nvar order_and_prev_sign_ins_unjust_geo_loc_change = \"\";\nvar order_and_prev_sign_ins_unjust_vpn_sign_ins = \"\";\nvar order_and_prev_sign_ins_sim_gsi_pttrn = \"\";\nvar order_and_prev_sign_ins_clean_new_sign_ins = \"\";\nvar order_and_prev_sign_ins_old_device_strg_rel = \"\";\nvar order_and_prev_sign_ins_new_trst_ip_strg_rel = \"\";\nvar order_and_prev_sign_ins_traveller_mo = \"\";\nvar order_and_prev_sign_ins_internal_sign_ins = \"\";\nvar order_and_prev_sign_ins_strg_rel_trst_ubid = \"\";\nvar order_and_prev_sign_ins_strg_rel_trst_auth_session = \"\";\nvar order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just = \"\";\nvar rels_section_check = \"\";\nvar cui_pattern_check = \"\";\nvar fraud_mo_check_order_details = \"\";\nvar fraud_mo_check_payment = \"\";\n\nvar question_strings = [\"annotation_describe\", \"account_type\", \"describe_x_org\", \"ach_verified\", \"is_cui_sales_managedis_cui_sales_managed\", \"users_leg_attributes_all_nc_verifiedusers_leg_attributes_all_nc_verified\", \"users_leg_attributes_nc_vc_good_ohusers_leg_attributes_nc_vc_good_oh\", \"users_leg_attributes_vc_leg_gd_ohusers_leg_attributes_vc_leg_gd_oh\", \"users_leg_attributes_leg_acc_unjust_pay_velusers_leg_attributes_leg_acc_unjust_pay_vel\",\"users_leg_attributes_users_negative_patternusers_leg_attributes_users_negative_pattern\", \"is_shipping_address_verf\", \"item_type\", \"cui_order_pattern_unjust_risky_opcui_order_pattern_unjust_risky_op\",\"cui_order_pattern_unjust_order_velcui_order_pattern_unjust_order_vel\",\"cui_order_pattern_itm_corr_bizcui_order_pattern_itm_corr_biz\",\"cui_order_pattern_bulk_ordercui_order_pattern_bulk_order\",\"cui_order_pattern_strg_rel_sim_opcui_order_pattern_strg_rel_sim_op\",\"cui_order_pattern_same_pttrn_x_orgcui_order_pattern_same_pttrn_x_org\",\"cui_order_pattern_good_itm_combocui_order_pattern_good_itm_combo\",\"cui_order_pattern_non_risky_opcui_order_pattern_non_risky_op\",\"cui_order_pattern_one_time_purchasecui_order_pattern_one_time_purchase\",\"cui_order_pattern_order_vel_biz_rc_justcui_order_pattern_order_vel_biz_rc_just\", \"cch_verify\", \"payment_evolved_reason\", \"cch_call_outcome_requested_cancelcch_call_outcome_requested_cancel\",\"cch_call_outcome_cch_no_authorizecch_call_outcome_cch_no_authorize\",\"cch_call_outcome_cch_authorizedcch_call_outcome_cch_authorized\", \"order_and_prev_sign_ins_ip_fp_frd_pttrnorder_and_prev_sign_ins_ip_fp_frd_pttrn\", \"order_and_prev_sign_ins_pw_changeorder_and_prev_sign_ins_pw_change\", \"order_and_prev_sign_ins_tz_do_not_corr_iporder_and_prev_sign_ins_tz_do_not_corr_ip\", \"order_and_prev_sign_ins_ip_fp_neg_frd_san_relorder_and_prev_sign_ins_ip_fp_neg_frd_san_rel\", \"order_and_prev_sign_ins_browser_degradationorder_and_prev_sign_ins_browser_degradation\", \"order_and_prev_sign_ins_unjust_credentials_changeorder_and_prev_sign_ins_unjust_credentials_change\", \"order_and_prev_sign_ins_unjust_geo_loc_changeorder_and_prev_sign_ins_unjust_geo_loc_change\", \"order_and_prev_sign_ins_unjust_vpn_sign_insorder_and_prev_sign_ins_unjust_vpn_sign_ins\", \"order_and_prev_sign_ins_sim_gsi_pttrnorder_and_prev_sign_ins_sim_gsi_pttrn\", \"order_and_prev_sign_ins_clean_new_sign_insorder_and_prev_sign_ins_clean_new_sign_ins\", \"order_and_prev_sign_ins_old_device_strg_relorder_and_prev_sign_ins_old_device_strg_rel\", \"order_and_prev_sign_ins_new_trst_ip_strg_relorder_and_prev_sign_ins_new_trst_ip_strg_rel\", \"order_and_prev_sign_ins_traveller_moorder_and_prev_sign_ins_traveller_mo\", \"order_and_prev_sign_ins_internal_sign_insorder_and_prev_sign_ins_internal_sign_ins\", \"order_and_prev_sign_ins_strg_rel_trst_ubidorder_and_prev_sign_ins_strg_rel_trst_ubid\", \"order_and_prev_sign_ins_strg_rel_trst_auth_sessionorder_and_prev_sign_ins_strg_rel_trst_auth_session\", \"order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_justorder_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just\", \"rels_section_check\", \"cui_pattern_check\", \"fraud_mo_check_order_details\", \"fraud_mo_check_payment\"]\n\nfor(i=0; i < question_strings.length; i++){\n    if(document.get(question_strings[i]) !== null){\n        if(i === 0){\n            annotation_describe = document.get(question_strings[i]).stringValue();\n        }else if(i === 1){\n            account_type = document.get(question_strings[i]).stringValue();\n        }else if(i === 2){\n            describe_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 3){\n            ach_verified = document.get(question_strings[i]).stringValue();\n        }else if(i === 4){\n            is_cui_sales_managed = document.get(question_strings[i]).stringValue();\n        }else if(i === 5){\n            users_leg_attributes_all_nc_verified = document.get(question_strings[i]).stringValue();\n        }else if(i === 6){\n            users_leg_attributes_nc_vc_good_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 7){\n            users_leg_attributes_vc_leg_gd_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 8){\n            users_leg_attributes_leg_acc_unjust_pay_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 9){\n            users_leg_attributes_users_negative_pattern = document.get(question_strings[i]).stringValue();\n        }else if(i === 10){\n            is_shipping_address_verf = document.get(question_strings[i]).stringValue();\n        }else if(i === 11){\n            item_type = document.get(question_strings[i]).stringValue();\n        }else if(i === 12){\n            cui_order_pattern_unjust_risky_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 13){\n            cui_order_pattern_unjust_order_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 14){\n            cui_order_pattern_itm_corr_biz = document.get(question_strings[i]).stringValue();\n        }else if(i === 15){\n            cui_order_pattern_bulk_order = document.get(question_strings[i]).stringValue();\n        }else if(i === 16){\n            cui_order_pattern_strg_rel_sim_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 17){\n            cui_order_pattern_same_pttrn_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 18){\n            cui_order_pattern_good_itm_combo = document.get(question_strings[i]).stringValue();\n        }else if(i === 19){\n            cui_order_pattern_non_risky_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 20){\n            cui_order_pattern_one_time_purchase = document.get(question_strings[i]).stringValue();\n        }else if(i === 21){\n            cui_order_pattern_order_vel_biz_rc_just = document.get(question_strings[i]).stringValue();\n        }else if(i === 22){\n            cch_verify = document.get(question_strings[i]).stringValue();\n        }else if(i === 23){\n            payment_evolved_reason = document.get(question_strings[i]).stringValue();\n        }else if(i === 24){\n            cch_call_outcome_requested_cancel = document.get(question_strings[i]).stringValue();\n        }else if(i === 25){\n            cch_call_outcome_cch_no_authorize = document.get(question_strings[i]).stringValue();\n        }else if(i === 26){\n            cch_call_outcome_cch_authorized = document.get(question_strings[i]).stringValue();\n        }else if(i === 27){\n            order_and_prev_sign_ins_ip_fp_frd_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 28){\n            order_and_prev_sign_ins_pw_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 29){\n            order_and_prev_sign_ins_tz_do_not_corr_ip = document.get(question_strings[i]).stringValue();\n        }else if(i === 30){\n            order_and_prev_sign_ins_ip_fp_neg_frd_san_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 31){\n            order_and_prev_sign_ins_browser_degradation = document.get(question_strings[i]).stringValue();\n        }else if(i === 32){\n            order_and_prev_sign_ins_unjust_credentials_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 33){\n            order_and_prev_sign_ins_unjust_geo_loc_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 34){\n            order_and_prev_sign_ins_unjust_vpn_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 35){\n            order_and_prev_sign_ins_sim_gsi_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 36){\n            order_and_prev_sign_ins_clean_new_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 37){\n            order_and_prev_sign_ins_old_device_strg_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 38){\n            order_and_prev_sign_ins_new_trst_ip_strg_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 39){\n            order_and_prev_sign_ins_traveller_mo = document.get(question_strings[i]).stringValue();\n        }else if(i === 40){\n            order_and_prev_sign_ins_internal_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 41){\n            order_and_prev_sign_ins_strg_rel_trst_ubid = document.get(question_strings[i]).stringValue();\n        }else if(i === 42){\n            order_and_prev_sign_ins_strg_rel_trst_auth_session = document.get(question_strings[i]).stringValue();\n        }else if(i === 43){\n            order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_jus = document.get(question_strings[i]).stringValue();\n        }else if(i === 44){\n            rels_section_check = document.get(question_strings[i]).stringValue();\n        }else if(i === 45){\n            cui_pattern_check = document.get(question_strings[i]).stringValue();\n        }else if(i === 46){\n            fraud_mo_check_order_details = document.get(question_strings[i]).stringValue();\n        }else if(i === 47){\n            fraud_mo_check_payment = document.get(question_strings[i]).stringValue();\n        }\n    };\n}\n//==collect variables from context==//\n\n//==collect scores and parse them into integers==//\nvar negative_score_reinstates = document.get(\"negative_score_reinstates\").intValue();\nvar positive_score_reinstates = document.get(\"positive_score_reinstates\").intValue();\nvar positive_score_cust_data = document.get(\"positive_score_cust_data\").intValue();\nvar negative_score_cust_data = document.get(\"negative_score_cust_data\").intValue();\nvar positive_score_biz_entity = document.get(\"positive_score_biz_entity\").intValue();\nvar negative_score_biz_entity = document.get(\"negative_score_biz_entity\").intValue();\nvar positive_score_order_details = document.get(\"positive_score_order_details\").intValue();\nvar negative_score_order_details = document.get(\"negative_score_order_details\").intValue();\nvar positive_score_payment_details = document.get(\"positive_score_payment_details\").intValue();\nvar negative_score_payment_details = document.get(\"negative_score_payment_details\").intValue();\nvar positive_score_gsi = document.get(\"positive_score_gsi\").intValue();\nvar negative_score_gsi = document.get(\"negative_score_gsi\").intValue();\nvar positive_score_related_customers = document.get(\"positive_score_related_customers\").intValue();\nvar negative_score_related_customers = document.get(\"negative_score_related_customers\").intValue();\n//==collect scores and parse them into integers==//\n\n//==arrays to keep flag count==//\nvar action_flag_hold = [];\nvar action_flag_sanitize = [];\nvar action_flag_fraud = [];\nvar action_flag_cancel = [];\n//==workflow run final score==//\nvar wf_run_score = \"\";\n\nfunction globalScores(){\n    var positives = [positive_score_reinstates, positive_score_cust_data, positive_score_biz_entity, positive_score_order_details, positive_score_payment_details, positive_score_gsi, positive_score_related_customers ];\n    var negatives = [negative_score_reinstates, negative_score_cust_data, negative_score_biz_entity, negative_score_order_details, negative_score_payment_details, negative_score_gsi, negative_score_related_customers ];\n\n    var global_positive = 0;\n    var global_negative = 0;\n\n    for(i=0; i < positives.length; i++){\n        if(i === 0) {\n            global_positive = positives[i]\n        }else{\n            global_positive += positives[i]\n        };\n    };\n\n    for(j=0; j < negatives.length; j++){\n        if(j === 0){\n            global_negative = negatives[j]\n        }else{\n            global_negative += negatives[j]\n        };\n    };\n\n    wf_run_score = global_negative + global_positive\n}//function takes all scores from all sections. Combines them into two globals (positive and negative) and evaluates the WF score\nglobalScores()\n\nfunction countActionFlags(){\n    if(account_type === \"dormant_account\"){\n        action_flag_sanitize.push(\"account_type\");\n    }else if(account_type === \"unresolved_cb_strg_rel\"){\n        action_flag_hold.push(\"account_type\");\n    };\n    \n    if(describe_x_org === \"unverified_nc\" || describe_x_org === \"vc_frd_rels\"){\n        action_flag_hold.push(\"describe_x_org\");\n    }else if(describe_x_org === \"ato_vc\"){\n        action_flag_sanitize.push(\"describe_x_org\");\n    }else if(describe_x_org === \"ongoing_fraud_mo\"){\n        action_flag_fraud.push(\"describe_x_org\");\n    };\n    \n    if (ach_verified === \"broken_edom_free_email\" || ach_verified === \"ach_unverified_email\"){\n        action_flag_hold.push(\"ach_verified\");\n    }else if( ach_verified === \"ach_risky_email\"){\n        action_flag_fraud.push(\"ach_verified\");\n    };\n    \n    if(is_cui_sales_managed === \"false\"){\n        action_flag_hold.push(\"is_cui_sales_managed\");\n    }\n    \n    if(users_leg_attributes_leg_acc_unjust_pay_vel === \"true\"){\n        action_flag_hold.push(\"users_leg_attributes_leg_acc_unjust_pay_vel\");\n    } \n    if(users_leg_attributes_users_negative_pattern === \"true\"){\n        action_flag_hold.push(\"users_leg_attributes_users_negative_pattern\");\n    }\n    \n    if(is_shipping_address_verf === \"frd_sani_rel_sa\" || is_shipping_address_verf === \"unjust_mult_addrss_pttrn\" || is_shipping_address_verf === \"unverf_sa\" || is_shipping_address_verf === \"reshipper_address\" || is_shipping_address_verf === \"locker_address\"){\n        action_flag_hold.push(\"is_shipping_address_verf\");\n    }\n    \n    if(item_type === \"high_value\" || item_type === \"medium_risk\" || item_type === \"high_risk\"){\n        action_flag_hold.push(\"item_type\");\n    };\n    \n    if(cui_order_pattern_unjust_risky_op === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_risky_op\");\n    }\n    if(cui_order_pattern_unjust_order_vel === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_order_vel\");\n    };\n    \n    if(cch_verify === \"cc_dif_names_on_token\" || cch_verify === \"unverified_card\"){\n        action_flag_hold.push(\"cch_verify\");\n    };\n    \n    if(payment_evolved_reason === \"weak_pay_rel\" || payment_evolved_reason === \"payment_velocity\" || payment_evolved_reason === \"no_result_of_cch_on_iv\" || payment_evolved_reason === \"unverf_billing_address\"){\n        action_flag_hold.push(\"payment_evolved_reason\");\n    }else if(payment_evolved_reason === \"stolen_payment_used\"){\n        action_flag_fraud.push(\"payment_evolved_reason\")\n    };\n    \n    if(cch_call_outcome_requested_cancel === \"true\"){\n        action_flag_cancel.push(\"cch_call_outcome_requested_cancel\");\n    }\n    if(cch_call_outcome_cch_no_authorize === \"true\"){\n        action_flag_sanitize.push(\"cch_call_outcome_cch_no_authorize\");\n    };\n    \n    if(order_and_prev_sign_ins_ip_fp_frd_pttrn === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_ip_fp_frd_pttrn\");\n    } \n    if(order_and_prev_sign_ins_ip_fp_neg_frd_san_rel === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_ip_fp_neg_frd_san_rel\");\n    }\n    if(order_and_prev_sign_ins_browser_degradation === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_browser_degradation\");\n    }\n    if(order_and_prev_sign_ins_unjust_credentials_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_credentials_change\");\n    }\n    if(order_and_prev_sign_ins_unjust_geo_loc_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_geo_loc_change\");\n    }\n    if(order_and_prev_sign_ins_unjust_vpn_sign_ins === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_vpn_sign_ins\");\n    }\n    if(order_and_prev_sign_ins_pw_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_pw_change\");\n    }\n    if(order_and_prev_sign_ins_tz_do_not_corr_ip === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_tz_do_not_corr_ip\");\n    }\n    \n    if(rels_section_check === \"strg_negative_ordr_em_pttrn\"){\n        action_flag_fraud.push(\"rels_section_check\")\n    }else if(rels_section_check === \"mult_nc_w_diff_em_pttrn\" || rels_section_check === \"weak_rels_same_ach\" || rels_section_check === \"strg_fraud_rels\"){\n        action_flag_hold.push(\"rels_section_check\")\n    };\n    \n    if(cui_pattern_check === \"yes_same_fraud\"){\n        action_flag_fraud.push(\"cui_pattern_check\");\n    }else if(cui_pattern_check === \"yes_same_ato_pttrn\"){\n        action_flag_sanitize.push(\"cui_pattern_check\");\n    };\n    \n    if(fraud_mo_check_payment === \"leaked_cc\" || fraud_mo_check_payment === \"id_theft\" || fraud_mo_check_payment === \"bstc_mo\" || fraud_mo_check_payment === \"impersonation_mo\" || fraud_mo_check_payment === \"known_frd_ato_mo\" || fraud_mo_check_payment === \"rfo_mo\" || fraud_mo_check_payment === \"nc_fraud_account\" || fraud_mo_check_payment === \"drop_ship_mo\" || fraud_mo_check_payment === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_payment\");\n    }else if (fraud_mo_check_payment === \"ato_dormant_acc\"){\n        action_flag_sanitize.push(\"fraud_mo_check_payment\");\n    };\n    \n    if(fraud_mo_check_order_details === \"leaked_cc\" || fraud_mo_check_order_details === \"id_theft\" || fraud_mo_check_order_details === \"bstc_mo\" || fraud_mo_check_order_details === \"impersonation_mo\" || fraud_mo_check_order_details === \"known_frd_ato_mo\" || fraud_mo_check_order_details === \"rfo_mo\" || fraud_mo_check_order_details === \"nc_fraud_account\" || fraud_mo_check_order_details === \"drop_ship_mo\" || fraud_mo_check_order_details === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_payment\");\n    }else if (fraud_mo_check_payment === \"ato_dormant_acc\"){\n        action_flag_sanitize.push(\"fraud_mo_check_payment\");\n    };\n}//function checks all of the variables that were selected and based upon their selection, an action flag is assigned.\ncountActionFlags()\n\n//====Following functions determine, through combinations, if a determine action is necessary===//\nfunction sanitizeCheck(){\n    var action = \"sanitize\"\n    if(account_type === \"dormant_account\" && is_shipping_address_verf === \"unverf_sa\"){\n        if(item_type === \"high_value\" || item_type === \"high_risk\"){\n            if(cui_order_pattern_unjust_risky_op === \"true\" || cui_order_pattern_unjust_order_vel === \"true\"){\n                if(action_flag_sanitize.length >
+= 2){\n                    return action;\n                };\n            };\n        };\n    }else if(account_type === \"dormant_account\" && cch_verify === \"cc_diff_names_on_token\"){\n        if(action_flag_sanitize.length >
+= 2){\n            return action;\n        };\n    }else if(account_type === \"dormant_acc\" && cch_verify === \"unverified_card\"){\n        if(payment_evolved_reason === \"weak_pay_rel\" || payment_evolved_reason === \"payment_velocity\" || payment_evolved_reason === \"no_result_of_cch_on_iv\"){\n            if(action_flag_sanitize.length >
+= 2){\n                return action;\n            };\n        };\n    }else if(account_type === \"dormant_account\" && cui_pattern_check === \"yes_same_ato_pttrn\"){\n        return action;\n    }else if(fraud_mo_check_order_details === \"ato_dormant_acc\" || fraud_mo_check_payment === \"ato_dormant_acc\"){\n        return action;\n    };\n};\n\nfunction fraudCheck(){\n    var action = \"fraud\"\n    if(describe_x_org === \"ongoing_fraud_mo\"){\n        return action;\n    }else if(ach_verified === \"broken_edom_free_mail\" || ach_verified === \"ach_risky_email\" || ach_verified === \"ach_unverified_email\"){\n        if(cch_verify === \"cc_diff_names_on_token\"){\n            return action\n        };\n        if(payment_evolved_reason === \"stolen_payment_used\"){\n            return action;\n        };\n        if(rels_section_check === \"strg_negative_ordr_em_pttrn\"){\n            return action;\n        };\n        if(fraud_mo_check_payment === \"leaked_cc\" || fraud_mo_check_order_details === \"leaked_cc\"){\n            return action;\n        };\n    }else if(cui_pattern_check === \"yes_same_fraud\"){\n        if(action_flag_hold.length >
+= 1){\n            return action;\n        }\n    }else if(fraud_mo_check_payment === \"id_theft\" || fraud_mo_check_payment === \"bstc_mo\" || fraud_mo_check_payment === \"impersonation_mo\" || fraud_mo_check_payment === \"known_frd_ato_mo\" || fraud_mo_check_payment === \"rfo_mo\" || fraud_mo_check_payment === \"nc_fraud_account\" || fraud_mo_check_payment === \"drop_ship_mo\" || fraud_mo_check_payment === \"triangulation_mo\"){\n        if(action_flag_hold.length >
+= 1){\n            return action;\n        }            \n    }else if(fraud_mo_check_order_details === \"id_theft\" || fraud_mo_check_order_details === \"bstc_mo\" || fraud_mo_check_order_details === \"impersonation_mo\" || fraud_mo_check_order_details === \"known_frd_ato_mo\" || fraud_mo_check_order_details === \"rfo_mo\" || fraud_mo_check_order_details === \"nc_fraud_account\" || fraud_mo_check_order_details === \"drop_ship_mo\" || fraud_mo_check_order_details === \"triangulation_mo\"){\n        if(action_flag_hold.length >
+= 1){\n            return action;\n        } \n    }\n}\n\nfunction cancelCheck(){\n    var action = \"cancel\"\n    if(cch_call_outcome_requested_cancel === \"true\"){\n        return action;\n    }\n}\n\nfunction holdCheck(){\n    var action = \"hold\"\n    if(ach_verified === \"broken_edom_free_email\" || ach_verified === \"ach_unverified_email\"){\n        if(action_flag_hold.length >
+=2){\n            return action;\n        }\n    }\n}\n\nfunction passCheck(){\n    var action = \"pass\"\n    if(wf_run_score >
+= 2){\n        return action;\n    }\n}\n\n//==function takes care of filtering actions and triggers funtion to create final output struct===//\nfunction suggestAction(){\n    var sanitize = sanitizeCheck();\n    var fraud = fraudCheck();\n    var cancel = cancelCheck();\n    var hold = holdCheck();\n    var pass = passCheck()\n    var retVal = ionSystem.newEmptyStruct();\n\n    if (sanitize === \"sanitize\"){\n        var values =[\n            [\n                {message:\"Sanitize Account\", value:\"sanitize_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_sanitize_suggest\", dynamicKeysInput);        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(fraud === \"fraud\"){\n        var values = [\n            [\n                {message:\"Fraud Account\", value:\"fraud_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_fraud_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(cancel === \"cancel\"){\n        var values = [\n            [\n                {message:\"Cancel Account\", value:\"cancel_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_cancel_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(hold === \"hold\"){\n        var values = [\n            [\n                {message:\"Hold Account\", value:\"hold_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_hold_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(pass === \"pass\"){\n        var values = [\n            [\n                {message:\"Pass Account\", value:\"pass_Account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_pass_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    };\n    return retVal;\n};\nvar retValContext = suggestAction();\nretValContext;]]>
+</bpmn:script>
+</bpmn:scriptTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_0av6nqu\" name=\"true\" sourceRef=\"ExclusiveGateway_0cckjlz\" targetRef=\"Task_1r4aqeg\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+true</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:scriptTask id=\"ScriptTask_05kiowe\" name=\"Score Card Suggest Logic VC\" scriptFormat=\"JAVASCRIPT\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0aedhwk</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1j4lu9l</bpmn:outgoing>
+<bpmn:script>
+<![CDATA[var annotation_describe = \"\";\nvar is_cui_sales_managed = \"\";\nvar users_leg_attributes_all_nc_verified = \"\";\nvar users_leg_attributes_nc_vc_good_oh = \"\";\nvar users_leg_attributes_vc_leg_gd_oh = \"\";\nvar users_leg_attributes_leg_acc_unjust_pay_vel = \"\";\nvar account_type = \"\";\nvar describe_x_org = \"\";\nvar is_shipping_address_verf = \"\";\nvar item_type = \"\";\nvar cui_order_pattern_same_pttrn_3_months = \"\";\nvar cui_order_pattern_unjust_order_vel = \"\";\nvar cui_order_pattern_itm_corr_biz = \"\";\nvar cui_order_pattern_bulk_order = \"\";\nvar cui_order_pattern_strg_rel_sim_op = \"\";\nvar cui_order_pattern_same_pttrn_x_org = \"\";\nvar cui_order_pattern_good_itm_combo = \"\";\nvar cui_order_pattern_non_risky_op = \"\";\nvar cui_order_pattern_one_time_purchase = \"\";\nvar cui_order_pattern_order_vel_biz_rc_just = \"\";\nvar cui_order_pattern_justified_ordr_vel = \"\";\nvar cui_order_pattern_unjust_ordr_pttrn = \"\";\nvar fraud_mo_check_order_details = \"\";\nvar cch_verify = \"\";\nvar payment_evolved_reason = \"\";\nvar fraud_mo_check_payment = \"\";\nvar order_and_prev_sign_ins_ip_fp_frd_pttrn = \"\";\nvar order_and_prev_sign_ins_pw_change = \"\";\nvar order_and_prev_sign_ins_tz_do_not_corr_ip = \"\";\nvar order_and_prev_sign_ins_ip_fp_neg_frd_san_rel = \"\";\nvar order_and_prev_sign_ins_browser_degradation = \"\";\nvar order_and_prev_sign_ins_unjust_credentials_change = \"\";\nvar order_and_prev_sign_ins_unjust_geo_loc_change = \"\";\nvar order_and_prev_sign_ins_unjust_vpn_sign_ins = \"\";\nvar order_and_prev_sign_ins_sim_gsi_pttrn = \"\";\nvar order_and_prev_sign_ins_clean_new_sign_ins = \"\";\nvar order_and_prev_sign_ins_old_device_strg_rel = \"\";\nvar order_and_prev_sign_ins_new_trst_ip_strg_rel = \"\";\nvar order_and_prev_sign_ins_traveller_mo = \"\";\nvar order_and_prev_sign_ins_internal_sign_ins = \"\";\nvar order_and_prev_sign_ins_strg_rel_trst_ubid = \"\";\nvar order_and_prev_sign_ins_strg_rel_trst_auth_session = \"\";\nvar order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just = \"\";\nvar rels_section_check = \"\";\nvar cui_pattern_check = \"\";\nvar question_strings = [\"annotation_describe\",\"is_cui_sales_managedis_cui_sales_managed\", \"users_leg_attributes_all_nc_verifiedusers_leg_attributes_all_nc_verified\", \"users_leg_attributes_nc_vc_good_ohusers_leg_attributes_nc_vc_good_oh\", \"users_leg_attributes_vc_leg_gd_ohusers_leg_attributes_vc_leg_gd_oh\", \"users_leg_attributes_leg_acc_unjust_pay_velusers_leg_attributes_leg_acc_unjust_pay_vel\",\"account_type\", \"describe_x_org\", \"is_shipping_address_verf\", \"item_type\",\"cui_order_pattern_unjust_order_velcui_order_pattern_unjust_order_vel\", \"cui_order_pattern_same_pttrn_3_monthscui_order_pattern_same_pttrn_3_months\",\"cui_order_pattern_itm_corr_bizcui_order_pattern_itm_corr_biz\",\"cui_order_pattern_bulk_ordercui_order_pattern_bulk_order\",\"cui_order_pattern_strg_rel_sim_opcui_order_pattern_strg_rel_sim_op\",\"cui_order_pattern_same_pttrn_x_orgcui_order_pattern_same_pttrn_x_org\",\"cui_order_pattern_good_itm_combocui_order_pattern_good_itm_combo\",\"cui_order_pattern_non_risky_opcui_order_pattern_non_risky_op\",\"cui_order_pattern_one_time_purchasecui_order_pattern_one_time_purchase\",\"cui_order_pattern_order_vel_biz_rc_justcui_order_pattern_order_vel_biz_rc_just\", \"cui_order_pattern_justified_ordr_velcui_order_pattern_justified_ordr_vel\",\"cui_order_pattern_unjust_ordr_pttrncui_order_pattern_unjust_ordr_pttrn\",\"fraud_mo_check_order_details\", \"cch_verify\", \"payment_evolved_reason\",\"fraud_mo_check_payment\", \"order_and_prev_sign_ins_ip_fp_frd_pttrnorder_and_prev_sign_ins_ip_fp_frd_pttrn\", \"order_and_prev_sign_ins_pw_changeorder_and_prev_sign_ins_pw_change\", \"order_and_prev_sign_ins_tz_do_not_corr_iporder_and_prev_sign_ins_tz_do_not_corr_ip\", \"order_and_prev_sign_ins_ip_fp_neg_frd_san_relorder_and_prev_sign_ins_ip_fp_neg_frd_san_rel\", \"order_and_prev_sign_ins_browser_degradationorder_and_prev_sign_ins_browser_degradation\", \"order_and_prev_sign_ins_unjust_credentials_changeorder_and_prev_sign_ins_unjust_credentials_change\", \"order_and_prev_sign_ins_unjust_geo_loc_changeorder_and_prev_sign_ins_unjust_geo_loc_change\", \"order_and_prev_sign_ins_unjust_vpn_sign_insorder_and_prev_sign_ins_unjust_vpn_sign_ins\", \"order_and_prev_sign_ins_sim_gsi_pttrnorder_and_prev_sign_ins_sim_gsi_pttrn\", \"order_and_prev_sign_ins_clean_new_sign_insorder_and_prev_sign_ins_clean_new_sign_ins\", \"order_and_prev_sign_ins_old_device_strg_relorder_and_prev_sign_ins_old_device_strg_rel\", \"order_and_prev_sign_ins_new_trst_ip_strg_relorder_and_prev_sign_ins_new_trst_ip_strg_rel\", \"order_and_prev_sign_ins_traveller_moorder_and_prev_sign_ins_traveller_mo\", \"order_and_prev_sign_ins_internal_sign_insorder_and_prev_sign_ins_internal_sign_ins\", \"order_and_prev_sign_ins_strg_rel_trst_ubidorder_and_prev_sign_ins_strg_rel_trst_ubid\", \"order_and_prev_sign_ins_strg_rel_trst_auth_sessionorder_and_prev_sign_ins_strg_rel_trst_auth_session\", \"order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_justorder_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just\", \"rels_section_check\", \"cui_pattern_check\"]\n\nfor(i=0; i , question_strings.length; i++){\n    if(document.get(question_strings[i]) !== null){\n        if(i === 0){\n            annotation_describe = document.get(question_strings[i]).stringValue(); \n        }else if( i === 1){\n            is_cui_sales_managed = document.get(question_strings[i]).stringValue(); \n        }else if(i === 2){\n            users_leg_attributes_all_nc_verified = document.get(question_strings[i]).stringValue();\n        }else if(i === 3){\n            users_leg_attributes_nc_vc_good_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 4){\n            users_leg_attributes_vc_leg_gd_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 5){\n            users_leg_attributes_leg_acc_unjust_pay_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 6){\n            account_type = document.get(question_strings[i]).stringValue();\n        }else if(i === 7){\n            describe_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 8){\n            is_shipping_address_verf = document.get(question_strings[i]).stringValue();\n        }else if(i === 9){\n            item_type = document.get(question_strings[i]).stringValue(); \n        }else if(i === 10){\n            cui_order_pattern_same_pttrn_3_months = document.get(question_strings[i]).stringValue();\n        }else if(i === 11){\n            cui_order_pattern_unjust_order_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 12){\n            cui_order_pattern_itm_corr_biz = document.get(question_strings[i]).stringValue();\n        }else if(i === 13){\n            cui_order_pattern_bulk_order = document.get(question_strings[i]).stringValue();\n        }else if(i === 14){\n            cui_order_pattern_strg_rel_sim_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 15){\n            cui_order_pattern_same_pttrn_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 16){\n            cui_order_pattern_good_itm_combo = document.get(question_strings[i]).stringValue();\n        }else if(i === 17){\n            cui_order_pattern_non_risky_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 18){\n            cui_order_pattern_one_time_purchase = document.get(question_strings[i]).stringValue();\n        }else if(i === 19){\n            cui_order_pattern_order_vel_biz_rc_just = document.get(question_strings[i]).stringValue();\n        }else if(i === 20){\n            cui_order_pattern_justified_ordr_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 21){\n            cui_order_pattern_unjust_ordr_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 22){\n            fraud_mo_check_order_details = document.get(question_strings[i]).stringValue();\n        }else if(i === 23){\n            cch_verify = document.get(question_strings[i]).stringValue();\n        }else if(i === 25){\n            payment_evolved_reason = document.get(question_strings[i]).stringValue();\n        }else if(i === 26){\n            fraud_mo_check_payment = document.get(question_strings[i]).stringValue();\n        }else if(i === 27){\n            order_and_prev_sign_ins_ip_fp_frd_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 28){\n            order_and_prev_sign_ins_pw_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 29){\n            order_and_prev_sign_ins_tz_do_not_corr_ip = document.get(question_strings[i]).stringValue();\n        }else if(i === 30){\n            order_and_prev_sign_ins_ip_fp_neg_frd_san_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 31){\n            order_and_prev_sign_ins_browser_degradation = document.get(question_strings[i]).stringValue();\n        }else if(i === 32){\n            order_and_prev_sign_ins_unjust_credentials_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 33){\n            order_and_prev_sign_ins_unjust_geo_loc_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 34){\n            order_and_prev_sign_ins_unjust_vpn_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 35){\n            order_and_prev_sign_ins_sim_gsi_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 36){\n            order_and_prev_sign_ins_clean_new_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 37){\n            order_and_prev_sign_ins_old_device_strg_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 38){\n            order_and_prev_sign_ins_new_trst_ip_strg_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 39){\n            order_and_prev_sign_ins_traveller_mo = document.get(question_strings[i]).stringValue();\n        }else if(i === 40){\n            order_and_prev_sign_ins_internal_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 41){\n            order_and_prev_sign_ins_strg_rel_trst_ubid = document.get(question_strings[i]).stringValue();\n        }else if(i === 42){\n            order_and_prev_sign_ins_strg_rel_trst_auth_session = document.get(question_strings[i]).stringValue();\n        }else if(i === 43){\n            order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just = document.get(question_strings[i]).stringValue();\n        }else if(i === 44){\n            rels_section_check = document.get(question_strings[i]).stringValue();\n        }else if(i === 45){\n            cui_pattern_check = document.get(question_strings[i]).stringValue();\n        }\n    }\n};\n\n//==collect scores and parse them into integers==//\nvar negative_score_reinstates = document.get(\"negative_score_reinstates\").intValue();\nvar positive_score_reinstates = document.get(\"positive_score_reinstates\").intValue();\nvar positive_score_cust_data = document.get(\"positive_score_cust_data\").intValue();\nvar negative_score_cust_data = document.get(\"negative_score_cust_data\").intValue();\nvar positive_score_biz_entity = document.get(\"positive_score_biz_entity\").intValue();\nvar negative_score_biz_entity = document.get(\"negative_score_biz_entity\").intValue();\nvar positive_score_order_details = document.get(\"positive_score_order_details\").intValue();\nvar negative_score_order_details = document.get(\"negative_score_order_details\").intValue();\nvar positive_score_payment_details = document.get(\"positive_score_payment_details\").intValue();\nvar negative_score_payment_details = document.get(\"negative_score_payment_details\").intValue();\nvar positive_score_gsi = document.get(\"positive_score_gsi\").intValue();\nvar negative_score_gsi = document.get(\"negative_score_gsi\").intValue();\nvar positive_score_related_customers = document.get(\"positive_score_related_customers\").intValue();\nvar negative_score_related_customers = document.get(\"negative_score_related_customers\").intValue();\n//==collect scores and parse them into integers==//\n\n//==arrays to keep flag count==//\nvar action_flag_hold = [];\nvar action_flag_sanitize = [];\nvar action_flag_fraud = [];\nvar action_flag_cancel = [];\n//==workflow run final score==//\nvar wf_run_score = \"\";\n\n//globalScores() function takes all scores from all sections. Combines them into two globals (positive and negative) and evaluates the final WF score\nfunction globalScores(){\n    var positives = [positive_score_reinstates, positive_score_cust_data, positive_score_biz_entity, positive_score_order_details, positive_score_payment_details, positive_score_gsi, positive_score_related_customers ];\n    var negatives = [negative_score_reinstates, negative_score_cust_data, negative_score_biz_entity, negative_score_order_details, negative_score_payment_details, negative_score_gsi, negative_score_related_customers ];\n\n    var global_positive = 0;\n    var global_negative = 0;\n\n    for(i=0; i < positives.length; i++){\n        if(i === 0) {\n            global_positive = positives[i]\n        }else{\n            global_positive += positives[i]\n        };\n    };\n\n    for(j=0; j < negatives.length; j++){\n        if(j === 0){\n            global_negative = negatives[j]\n        }else{\n            global_negative += negatives[j]\n        };\n    };\n\n    wf_run_score = global_negative + global_positive\n}\nglobalScores()\n\n//countActionFlags function checks all of the variables that were selected and based upon their selection, an action flag is assigned.\nfunction countActionFlags(){\n    if(is_cui_sales_managed === \"False\"){\n        action_flag_hold.push(\"is_cui_sales_managed\");\n    };\n    if(users_leg_attributes_leg_acc_unjust_pay_vel === \"true\"){\n        action_flag_hold.push(\"users_leg_attributes_leg_acc_unjust_pay_vel\");\n    };\n    if(account_type === \"vc_low_comp_oh\" || account_type === \"vc_unresolved_cb_sop_limit\" || account_type === \"vc_bd_sop_limit_strg_rel\"){\n        action_flag_hold.push(\"account_type\");\n    }else if(account_type === \"dormant_account\"){\n        action_flag_sanitize.push(\"account_type\");\n    }else if(account_type === \"acc_already_sanitize\"){\n        action_flag_cancel.push(\"account_type\");\n    };\n    if(describe_x_org === \"ato_vc\"){\n        action_flag_sanitize.push(\"describe_x_org\");\n    }else if(describe_x_org === \"vc_frd_rels\"){\n        action_flag_hold.push(\"describe_x_org\");\n    }else if(describe_x_org === \"ongoing_fraud_mo\"){\n        action_flag_fraud.push(\"describe_x_org\")\n    };\n    if(order_and_prev_sign_ins_ip_fp_frd_pttrn === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_ip_fp_frd_pttrn\");\n    }; \n    if(order_and_prev_sign_ins_ip_fp_neg_frd_san_rel === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_ip_fp_neg_frd_san_rel\");\n    };\n    if(order_and_prev_sign_ins_browser_degradation === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_browser_degradation\");\n    };\n    if(order_and_prev_sign_ins_unjust_credentials_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_credentials_change\");\n    };\n    if(order_and_prev_sign_ins_unjust_geo_loc_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_geo_loc_change\");\n    };\n    if(order_and_prev_sign_ins_unjust_vpn_sign_ins === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_vpn_sign_ins\");\n    };\n    if(order_and_prev_sign_ins_pw_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_pw_change\");\n    };\n    if(order_and_prev_sign_ins_tz_do_not_corr_ip === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_tz_do_not_corr_ip\");\n    };\n    if(is_shipping_address_verf === \"unjust_mult_addrss_pttrn\" || is_shipping_address_verf === \"unverf_sa\" || is_shipping_address_verf === \"reshipper_address\" || is_shipping_address_verf === \"packstation_dhl_hermes\"){\n        action_flag_hold.push(\"is_shipping_address_verf\");\n    }else if(is_shipping_address_verf === \"frd_sani_rel_sa\"){\n        action_flag_sanitize.push(\"is_shipping_address_verf\");\n    };\n    if(item_type === \"high_value\" || item_type === \"high_risk\" || item_type === \"medium_risk\"){\n        action_flag_hold.push(\"item_type\");\n    };\n    if(cui_order_pattern_unjust_ordr_pttrn === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_ordr_pttrn\")\n    };\n    if(cui_order_pattern_unjust_order_vel === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_order_vel\")    \n    };\n    if(cch_call_outcome_order_details === \"cch_request_cancel\"){\n        action_flag_cancel.push(\"cch_call_outcome_order_details\");\n    }else if(cch_call_outcome_order_details === \"cch_did_not_authorize\" ){\n        action_flag_sanitize.push(\"cch_call_outcome_order_details\");\n    };\n    if(cch_verify === \"cc_diff_names_on_token\" || cch_verify === \"unverified_card\"){\n        action_flag_hold.push(\"cch_verify\");\n    };\n    if(payment_evolved_reason === \"weak_pay_rel\" || payment_evolved_reason === \"payment_velocity\" || payment_evolved_reason === \"no_result_of_cch_on_iv\" || payment_evolved_reason === \"unverf_billing_address\" || payment_evolved_reason === \"stolen_payment_used\"){\n        action_flag_hold.push(\"payment_evolved_reason\");\n    }\n    if(rels_section_check === \"strg_negative_ordr_em_pttrn\" || rels_section_check === \"mult_nc_w_diff_em_pttrn\" || rels_section_check === \"weak_rels_same_ach\" || rels_section_check === \"strg_fraud_rels\"){\n        action_flag_hold.push(\"rels_section_check\")\n    };\n    if(cui_pattern_check === \"yes_same_fraud\"){\n        action_flag_fraud.push(\"cui_pattern_check\");\n    }else if(cui_pattern_check === \"yes_same_ato_pttrn\"){\n        action_flag_sanitize.push(\"cui_pattern_check\")\n    };\n\n    if(fraud_mo_check_order_details === \"ato_dormant_acc\" || fraud_mo_check_order_details === \"bstc_mo\" || fraud_mo_check_order_details === \"spoofing_mo\" || fraud_mo_check_order_details === \"fake_biz_mo\" || fraud_mo_check_order_details === \"unverf_order_em\" || fraud_mo_check_order_details === \"shipping_charges\" || fraud_mo_check_order_details === \"ongoing_ato_mo\"){\n        action_flag_sanitize.push(\"fraud_mo_check_order_details\");\n    }else if(fraud_mo_check_order_details === \"leaked_cc\" || fraud_mo_check_order_details === \"id_theft\" || fraud_mo_check_order_details === \"known_frd_ato_mo\" || fraud_mo_check_order_details === \"vc_going_bad\" || fraud_mo_check_order_details === \"rfo_mo\" || fraud_mo_check_order_details === \"sleeper_mo\" || fraud_mo_check_order_details === \"drop_ship_mo\" || fraud_mo_check_order_details === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_order_details\");\n    }\n    if(fraud_mo_check_payment === \"dormant_with_ato_pd\" || fraud_mo_check_payment === \"bstc_mo\" || fraud_mo_check_payment === \"spoofing_mo\" || fraud_mo_check_payment === \"fake_biz_mo\" || fraud_mo_check_payment === \"unverf_order_em\" || fraud_mo_check_payment === \"shipping_charges\" || fraud_mo_check_payment === \"ongoing_ato_mo\"){\n        action_flag_sanitize.push(\"fraud_mo_check_payment\");\n    }else if(fraud_mo_check_payment === \"leaked_cc\" || fraud_mo_check_payment === \"id_theft\" || fraud_mo_check_payment === \"known_frd_ato_mo\" || fraud_mo_check_payment === \"vc_going_bad\" || fraud_mo_check_payment === \"rfo_mo\" || fraud_mo_check_payment === \"sleeper_mo\" || fraud_mo_check_payment === \"drop_ship_mo\" || fraud_mo_check_payment === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_payment\");\n    }\n\n}\ncountActionFlags()\n\n//====Following functions determine, through combinations, if a determine action is necessary===//\n\nfunction sanitizeCheck(){\n    var action = \"sanitize\"\n    if(account_type === \"vc_low_comp_oh\" || account_type === \"dormant_account\"){\n        if(action_flag_sanitize.length >
+= 1 && action_flag_hold.length >
+= 2){\n            return action;\n        }\n    };\n    if(describe_x_org === \"ato_vc\"){\n        return action;\n    };\n    if(cch_call_outcome_order_details === \"cch_did_not_authorize\"){\n        return action;\n    };\n    if(cui_pattern_check === \"yes_same_ato_pttrn\" || fraud_mo_check_order_details === \"ongoing_ato_mo\" || fraud_mo_check_payment === \"ongoing_ato_mo\" || fraud_mo_check_order_details ===\"spoofing_mo\" || fraud_mo_check_payment === \"spoofing_mo\"){\n        return action;\n    }\n    if(fraud_mo_check_order_details === \"ato_dormant_acc\" || fraud_mo_check_payment === \"dormant_with_ato_pd\"){\n        if(action_flag_hold.length >
+= 1){\n            return action;\n        };\n    };\n};\n\nfunction fraudCheck(){\n    var action = \"fraud\";\n    if(account_type === \"vc_low_comp_oh\" && payment_evolved_reason === \"weak_pay_rel\"){\n        if(action_flag_hold.length >
+= 2){\n            return action;\n        }\n    };\n    if(describe_x_org === \"ongoing_fraud_mo\"){\n        return action;\n    };\n    if(cui_pattern_check === \"yes_same_fraud\" || fraud_mo_check_order_details === \"id_theft\" || fraud_mo_check_payment === \"id_theft\" || fraud_mo_check_order_details === \"known_frd_ato_mo\" || fraud_mo_check_payment === \"known_frd_ato_mo\" || fraud_mo_check_order_details === \"vc_going_bad\" || fraud_mo_check_payment === \"vc_going_bad\" ||fraud_mo_check_order_details === \"rfo_mo\" || fraud_mo_check_payment === \"rfo_mo\" ||fraud_mo_check_order_details === \"sleeper_mo\" || fraud_mo_check_payment === \"sleeper_mo\" ||fraud_mo_check_order_details === \"drop_ship_mo\" || fraud_mo_check_payment === \"drop_ship_mo\" ||fraud_mo_check_order_details === \"triangulation_mo\" || fraud_mo_check_payment === \"triangulation_mo\"){\n        if(action_flag_hold.length >
+= 1){\n            return action;\n        };\n    };\n    if(account_type === \"vc_low_comp_oh\"){\n        if(fraud_mo_check_order_details === \"leaked_cc\" || fraud_mo_check_payment === \"leaked_cc\"){\n            return action;\n        }\n    }\n};\n\nfunction holdCheck(){\n    var action = \"hold\"\n    if(action_flag_hold.length >
+= 3){\n        return action;\n    };\n    if(account_type === \"vc_unresolved_cb_sop_limit\" || account_type === \"vc_bd_sop_limit_strg_rel\"){\n        return action;\n    };\n};\n\nfunction cancelCheck(){\n    var action = \"cancel\";\n    if(account_type === \"acc_already_sanitize\"){\n        return action;\n    };\n    if(cch_call_outcome_order_details === \"cch_request_cancel\"){\n        return action;\n    };\n    if(cui_order_pattern_susp_seller_acc === \"true\"){\n        return action;\n    };\n};\n\nfunction passCheck(){\n    var action = \"pass\";\n    if(wf_run_score >
+= 2){\n        return action;\n    };\n};\n\nfunction suggestAction(){\n    var sanitize = sanitizeCheck();\n    var fraud = fraudCheck();\n    var hold = holdCheck();\n    var cancel = cancelCheck();\n    var pass = passCheck();\n    var retVal = ionSystem.newEmptyStruct();\n\n    if (sanitize === \"sanitize\"){\n        var values =[\n            [\n                {message:\"Sanitize Account\", value:\"sanitize_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_sanitize_suggest\", dynamicKeysInput);        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(fraud === \"fraud\"){\n        var values = [\n            [\n                {message:\"Fraud Account\", value:\"fraud_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_fraud_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(cancel === \"cancel\"){\n        var values = [\n            [\n                {message:\"Cancel Account\", value:\"cancel_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_cancel_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(hold === \"hold\"){\n        var values = [\n            [\n                {message:\"Hold Account\", value:\"hold_account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_hold_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    }else if(pass === \"pass\"){\n        var values = [\n            [\n                {message:\"Pass Account\", value:\"pass_Account\"}\n            ],\n            [\n                {message:\"Disregard Suggested Action\", value:\"disregard_suggest\"}\n            ]\n        ]\n        var dynamicKeysMap = ionSystem.newEmptyStruct();\n\n        var inputProperties = ionSystem.newEmptyList();\n        inputProperties.add(ionSystem.newString(\"BUTTON_SELECT\"));\n\n        var inputOptions = ionSystem.newEmptyList();\n        for(i=0; i < values.length; i++){\n            var option = ionSystem.newEmptyStruct();\n            option.put('message').newString(values[i][0][\"message\"]);\n            option.put('value').newString(values[i][0][\"value\"]);\n            inputOptions.add(option);    \n        };\n\n        var dynamicKeysInput = ionSystem.newEmptyStruct();\n        dynamicKeysInput.put('label').newString(\"Workflow's Scorecard suggests the following action\");\n        dynamicKeysInput.put('type').newString('select_one');\n        dynamicKeysInput.put('order').newInt(0);\n        dynamicKeysInput.put('properties', inputProperties);\n        dynamicKeysInput.put('options', inputOptions);\n\n        dynamicKeysMap.put(\"scorecard_pass_suggest\", dynamicKeysInput);\n        \n        retVal.put(\"scorecard_output\", dynamicKeysMap);        \n    };\n    return retVal;\n};\nvar retValContext = suggestAction();\nretValContext;]]>
+</bpmn:script>
+</bpmn:scriptTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_1boqx09\" sourceRef=\"Task_0q7z02g\" targetRef=\"Task_0s2jb98\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_1j4lu9l\" sourceRef=\"ScriptTask_05kiowe\" targetRef=\"Task_1q3pgwl\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_0mtsw13\" sourceRef=\"Task_1q3pgwl\" targetRef=\"Task_1r4aqeg\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_1b9em6s\" sourceRef=\"Task_16m6xag\" targetRef=\"Task_1btrhu0\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_02z1p4c\" sourceRef=\"Task_00pfjqd\" targetRef=\"Task_0zv7ldi\" />
+<bpmn:businessRuleTask id=\"Task_088r8ml\" name=\"Scorecard payment verification VC\" implementation=\"##unspecified\" camunda:decisionRef=\"Decision_1fmauwd\">
+<bpmn:incoming>
+SequenceFlow_01wys7g</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0m6bo2t</bpmn:outgoing>
+</bpmn:businessRuleTask>
+<bpmn:businessRuleTask id=\"Task_1i2cxpj\" name=\"Scorecard payment verification NC\" implementation=\"##unspecified\" camunda:decisionRef=\"Decision_1hkd45p\">
+<bpmn:incoming>
+SequenceFlow_07dyub7</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0kewf66</bpmn:outgoing>
+</bpmn:businessRuleTask>
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_1pb7uqx\" name=\"scorecard\">
+<bpmn:extensionElements>
+<camunda:inputOutput>
+<camunda:inputParameter name=\"scorecard\" />
+</camunda:inputOutput>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0kewf66</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1bi690q</bpmn:outgoing>
+<bpmn:outgoing>
+SequenceFlow_04zq0qu</bpmn:outgoing>
+</bpmn:exclusiveGateway>
+<bpmn:sequenceFlow id=\"SequenceFlow_0kewf66\" sourceRef=\"Task_1i2cxpj\" targetRef=\"ExclusiveGateway_1pb7uqx\" />
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_1619qeg\" name=\"scorecard\">
+<bpmn:extensionElements>
+<camunda:inputOutput>
+<camunda:inputParameter name=\"scorecard\" />
+</camunda:inputOutput>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0m6bo2t</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0aedhwk</bpmn:outgoing>
+<bpmn:outgoing>
+SequenceFlow_179aptv</bpmn:outgoing>
+</bpmn:exclusiveGateway>
+<bpmn:sequenceFlow id=\"SequenceFlow_0m6bo2t\" sourceRef=\"Task_088r8ml\" targetRef=\"ExclusiveGateway_1619qeg\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_0aedhwk\" name=\"true\" sourceRef=\"ExclusiveGateway_1619qeg\" targetRef=\"ScriptTask_05kiowe\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+true</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:sequenceFlow id=\"SequenceFlow_1bi690q\" name=\"true\" sourceRef=\"ExclusiveGateway_1pb7uqx\" targetRef=\"Task_0q7z02g\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+true</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:sequenceFlow id=\"SequenceFlow_04zq0qu\" name=\"false\" sourceRef=\"ExclusiveGateway_1pb7uqx\" targetRef=\"Task_1r4aqeg\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+false</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:sequenceFlow id=\"SequenceFlow_179aptv\" name=\"false\" sourceRef=\"ExclusiveGateway_1619qeg\" targetRef=\"Task_1r4aqeg\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+false</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:sequenceFlow id=\"SequenceFlow_0beetmh\" sourceRef=\"Task_0s2jb98\" targetRef=\"Task_1r4aqeg\" />
+<bpmn:userTask id=\"Task_0s2jb98\" name=\"Scorecard Suggest NC\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"## *Scorecard Analysis*  &#10;*** &#10;#### *Related Customers investigation has concluded*\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Review **Scorecard** suggestion.*&#10;***&#10;#### **Global Workflow Score**: {{workflow_score}}&#10;***&#10;#### **Sanitize**: {{sanitize_attributes}}&#10;***&#10;#### **Fraud**: {{fraud_attributes}}&#10;***&#10;#### **Hold**: {{hold_attributes}}&#10;***&#10;#### **Cancel**: {{cancel_attributes}}&#10;\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"dynamicFieldsVariable\" label=\"scorecard_output\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"acknowledge_disregard\" label=\"Acknowledge suggestion disregard\" type=\"CHECKBOX\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(scorecard_fraud_suggest)===&#34;disregard_suggest&#34; || eval(scorecard_sanitize_suggest)===&#34;disregard_suggest&#34; || eval(scorecard_hold_suggest)===&#34;disregard_suggest&#34; || eval(scorecard_cancel_suggest)===&#34;disregard_suggest&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1boqx09</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0beetmh</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:userTask id=\"Task_1q3pgwl\" name=\"Scorecard Suggest VC\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"## *Scorecard Analysis*   &#10;***  &#10;#### *Related Customers investigation has concluded*\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Review **Scorecard** suggestion.*&#10;***&#10;#### **Global Workflow Score**: {{workflow_score}}&#10;***&#10;#### **Sanitize**: {{sanitize_attributes}}&#10;***&#10;#### **Fraud**: {{fraud_attributes}}&#10;***&#10;#### **Hold**: {{hold_attributes}}&#10;***&#10;#### **Cancel**: {{cancel_attributes}}\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"dynamicFieldsVariable\" label=\"scorecard_output\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"acknowledge_disregard\" label=\"Acknowledge suggestion disregard\" type=\"CHECKBOX\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(scorecard_fraud_suggest)===&#34;disregard_suggest&#34; || eval(scorecard_sanitize_suggest)===&#34;disregard_suggest&#34; || eval(scorecard_hold_suggest)===&#34;disregard_suggest&#34; || eval(scorecard_cancel_suggest)===&#34;disregard_suggest&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1j4lu9l</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0mtsw13</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_07dyub7\" sourceRef=\"Task_1btrhu0\" targetRef=\"Task_1i2cxpj\" />
+<bpmn:scriptTask id=\"Task_1btrhu0\" name=\"Insert Workflow Run Scorecard attributes NC\" scriptFormat=\"JAVASCRIPT\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1b9em6s</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_07dyub7</bpmn:outgoing>
+<bpmn:script>
+<![CDATA[var negative_score_reinstates = document.get(\"negative_score_reinstates\").intValue();\nvar positive_score_reinstates = document.get(\"positive_score_reinstates\").intValue();\nvar positive_score_cust_data = document.get(\"positive_score_cust_data\").intValue();\nvar negative_score_cust_data = document.get(\"negative_score_cust_data\").intValue();\nvar positive_score_biz_entity = document.get(\"positive_score_biz_entity\").intValue();\nvar negative_score_biz_entity = document.get(\"negative_score_biz_entity\").intValue();\nvar positive_score_order_details = document.get(\"positive_score_order_details\").intValue();\nvar negative_score_order_details = document.get(\"negative_score_order_details\").intValue();\nvar positive_score_payment_details = document.get(\"positive_score_payment_details\").intValue();\nvar negative_score_payment_details = document.get(\"negative_score_payment_details\").intValue();\nvar positive_score_gsi = document.get(\"positive_score_gsi\").intValue();\nvar negative_score_gsi = document.get(\"negative_score_gsi\").intValue();\nvar positive_score_related_customers = document.get(\"positive_score_related_customers\").intValue();\nvar negative_score_related_customers = document.get(\"negative_score_related_customers\").intValue();\nvar wf_run_score = 0;\nvar action_flag_hold = [];\nvar action_flag_sanitize = [];\nvar action_flag_fraud = [];\nvar action_flag_cancel = [];\nvar annotation_describe = \"\";\nvar account_type = \"\";\nvar describe_x_org = \"\";\nvar ach_verified = \"\";\nvar is_cui_sales_managed = \"\";\nvar users_leg_attributes_all_nc_verified = \"\";\nvar users_leg_attributes_nc_vc_good_oh = \"\";\nvar users_leg_attributes_vc_leg_gd_oh = \"\";\nvar users_leg_attributes_leg_acc_unjust_pay_vel = \"\";\nvar users_leg_attributes_users_negative_pattern = \"\";\nvar is_shipping_address_verf = \"\";\nvar item_type = \"\";\nvar cui_order_pattern_unjust_risky_op = \"\";\nvar cui_order_pattern_unjust_order_vel = \"\";\nvar cui_order_pattern_itm_corr_biz = \"\";\nvar cui_order_pattern_bulk_order = \"\";\nvar cui_order_pattern_strg_rel_sim_op = \"\";\nvar cui_order_pattern_same_pttrn_x_org = \"\";\nvar cui_order_pattern_good_itm_combo = \"\";\nvar cui_order_pattern_non_risky_op = \"\";\nvar cui_order_pattern_one_time_purchase = \"\";\nvar cui_order_pattern_order_vel_biz_rc_just = \"\";\nvar cch_verify = \"\";\nvar payment_evolved_reason = \"\";\nvar cch_call_outcome_requested_cancel = \"\";\nvar cch_call_outcome_cch_no_authorize = \"\";\nvar cch_call_outcome_cch_authorized = \"\";\nvar order_and_prev_sign_ins = \"\";\nvar rels_section_check = \"\";\nvar cui_pattern_check = \"\";\nvar fraud_mo_check_order_details = \"\";\nvar fraud_mo_check_payment = \"\";\n\nvar question_strings = [\"annotation_describe\", \"account_type\", \"describe_x_org\", \"ach_verified\", \"is_cui_sales_managedis_cui_sales_managed\", \"users_leg_attributes_all_nc_verifiedusers_leg_attributes_all_nc_verified\", \"users_leg_attributes_nc_vc_good_ohusers_leg_attributes_nc_vc_good_oh\", \"users_leg_attributes_vc_leg_gd_ohusers_leg_attributes_vc_leg_gd_oh\", \"users_leg_attributes_leg_acc_unjust_pay_velusers_leg_attributes_leg_acc_unjust_pay_vel\",\"users_leg_attributes_users_negative_patternusers_leg_attributes_users_negative_pattern\", \"is_shipping_address_verf\", \"item_type\", \"cui_order_pattern_unjust_risky_opcui_order_pattern_unjust_risky_op\",\"cui_order_pattern_unjust_order_velcui_order_pattern_unjust_order_vel\",\"cui_order_pattern_itm_corr_bizcui_order_pattern_itm_corr_biz\",\"cui_order_pattern_bulk_ordercui_order_pattern_bulk_order\",\"cui_order_pattern_strg_rel_sim_opcui_order_pattern_strg_rel_sim_op\",\"cui_order_pattern_same_pttrn_x_orgcui_order_pattern_same_pttrn_x_org\",\"cui_order_pattern_good_itm_combocui_order_pattern_good_itm_combo\",\"cui_order_pattern_non_risky_opcui_order_pattern_non_risky_op\",\"cui_order_pattern_one_time_purchasecui_order_pattern_one_time_purchase\",\"cui_order_pattern_order_vel_biz_rc_justcui_order_pattern_order_vel_biz_rc_just\", \"cch_verify\", \"payment_evolved_reason\", \"cch_call_outcome_requested_cancelcch_call_outcome_requested_cancel\",\"cch_call_outcome_cch_no_authorizecch_call_outcome_cch_no_authorize\",\"cch_call_outcome_cch_authorizedcch_call_outcome_cch_authorized\", \"order_and_prev_sign_ins\", \"rels_section_check\", \"cui_pattern_check\", \"fraud_mo_check_order_details\", \"fraud_mo_check_payment\"]\n\nfor(i=0; i < question_strings.length; i++){\n    if(document.get(question_strings[i]) !== null){\n        if(i === 0){\n            annotation_describe = document.get(question_strings[i]).stringValue();\n        }else if(i === 1){\n            account_type = document.get(question_strings[i]).stringValue();\n        }else if(i === 2){\n            describe_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 3){\n            ach_verified = document.get(question_strings[i]).stringValue();\n        }else if(i === 4){\n            is_cui_sales_managed = document.get(question_strings[i]).stringValue();\n        }else if(i === 5){\n            users_leg_attributes_all_nc_verified = document.get(question_strings[i]).stringValue();\n        }else if(i === 6){\n            users_leg_attributes_nc_vc_good_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 7){\n            users_leg_attributes_vc_leg_gd_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 8){\n            users_leg_attributes_leg_acc_unjust_pay_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 9){\n            users_leg_attributes_users_negative_pattern = document.get(question_strings[i]).stringValue();\n        }else if(i === 10){\n            is_shipping_address_verf = document.get(question_strings[i]).stringValue();\n        }else if(i === 11){\n            item_type = document.get(question_strings[i]).stringValue();\n        }else if(i === 12){\n            cui_order_pattern_unjust_risky_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 13){\n            cui_order_pattern_unjust_order_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 14){\n            cui_order_pattern_itm_corr_biz = document.get(question_strings[i]).stringValue();\n        }else if(i === 15){\n            cui_order_pattern_bulk_order = document.get(question_strings[i]).stringValue();\n        }else if(i === 16){\n            cui_order_pattern_strg_rel_sim_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 17){\n            cui_order_pattern_same_pttrn_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 18){\n            cui_order_pattern_good_itm_combo = document.get(question_strings[i]).stringValue();\n        }else if(i === 19){\n            cui_order_pattern_non_risky_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 20){\n            cui_order_pattern_one_time_purchase = document.get(question_strings[i]).stringValue();\n        }else if(i === 21){\n            cui_order_pattern_order_vel_biz_rc_just = document.get(question_strings[i]).stringValue();\n        }else if(i === 22){\n            cch_verify = document.get(question_strings[i]).stringValue();\n        }else if(i === 23){\n            payment_evolved_reason = document.get(question_strings[i]).stringValue();\n        }else if(i === 24){\n            cch_call_outcome_requested_cancel = document.get(question_strings[i]).stringValue();\n        }else if(i === 25){\n            cch_call_outcome_cch_no_authorize = document.get(question_strings[i]).stringValue();\n        }else if(i === 26){\n            cch_call_outcome_cch_authorized = document.get(question_strings[i]).stringValue();\n        }else if(i === 27){\n            order_and_prev_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 28){\n            rels_section_check = document.get(question_strings[i]).stringValue();\n        }else if(i === 29){\n            cui_pattern_check = document.get(question_strings[i]).stringValue();\n        }else if(i === 30){\n            fraud_mo_check_order_details = document.get(question_strings[i]).stringValue();\n        }else if(i === 31){\n            fraud_mo_check_payment = document.get(question_strings[i]).stringValue();\n        }\n    };\n}\n\nfunction globalScores(){\n    var positives = [positive_score_reinstates, positive_score_cust_data, positive_score_biz_entity, positive_score_order_details, positive_score_payment_details, positive_score_gsi, positive_score_related_customers ];\n    var negatives = [negative_score_reinstates, negative_score_cust_data, negative_score_biz_entity, negative_score_order_details, negative_score_payment_details, negative_score_gsi, negative_score_related_customers ];\n\n    var global_positive = 0;\n    var global_negative = 0;\n\n    for(i=0; i < positives.length; i++){\n        if(i === 0) {\n            global_positive = positives[i]\n        }else{\n            global_positive += positives[i]\n        };\n    };\n\n    for(j=0; j < negatives.length; j++){\n        if(j === 0){\n            global_negative === negatives[j]\n        }else{\n            global_negative += negatives[j]\n        };\n    };\n\n    wf_run_score = global_negative + global_positive\n}//function takes all scores from all sections. Combines them into two globals (positive and negative) and evaluates the WF score\nglobalScores();\n\nfunction countActionFlags(){\n    if(account_type === \"dormant_account\"){\n        action_flag_sanitize.push(\"account_type\");\n    }else if(account_type === \"unresolved_cb_strg_rel\"){\n        action_flag_hold.push(\"account_type\");\n    };\n    \n    if(describe_x_org === \"unverified_nc\" || describe_x_org === \"vc_frd_rels\"){\n        action_flag_hold.push(\"describe_x_org\");\n    }else if(describe_x_org === \"ato_vc\"){\n        action_flag_sanitize.push(\"describe_x_org\");\n    }else if(describe_x_org === \"ongoing_fraud_mo\"){\n        action_flag_fraud.push(\"describe_x_org\");\n    };\n    \n    if (ach_verified === \"broken_edom_free_email\" || ach_verified === \"ach_unverified_email\"){\n        action_flag_hold.push(\"ach_verified\");\n    }else if( ach_verified === \"ach_risky_email\"){\n        action_flag_fraud.push(\"ach_verified\");\n    };\n    \n    if(is_cui_sales_managed === \"false\"){\n        action_flag_hold.push(\"is_cui_sales_managed\");\n    }\n    \n    if(users_leg_attributes_leg_acc_unjust_pay_vel === \"true\"){\n        action_flag_hold.push(\"users_leg_attributes_leg_acc_unjust_pay_vel\");\n    } \n    if(users_leg_attributes_users_negative_pattern === \"true\"){\n        action_flag_hold.push(\"users_leg_attributes_users_negative_pattern\");\n    }\n    \n    if(is_shipping_address_verf === \"frd_sani_rel_sa\" || is_shipping_address_verf === \"unjust_mult_addrss_pttrn\" || is_shipping_address_verf === \"unverf_sa\" || is_shipping_address_verf === \"reshipper_address\" || is_shipping_address_verf === \"locker_address\"){\n        action_flag_hold.push(\"is_shipping_address_verf\");\n    }\n    \n    if(item_type === \"high_value\" || item_type === \"medium_risk\" || item_type === \"high_risk\"){\n        action_flag_hold.push(\"item_type\");\n    };\n    \n    if(cui_order_pattern_unjust_risky_op === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_risky_op\");\n    }\n    if(cui_order_pattern_unjust_order_vel === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_order_vel\");\n    };\n    \n    if(cch_verify === \"cc_dif_names_on_token\" || cch_verify === \"unverified_card\"){\n        action_flag_hold.push(\"cch_verify\");\n    };\n    \n    if(payment_evolved_reason === \"weak_pay_rel\" || payment_evolved_reason === \"payment_velocity\" || payment_evolved_reason === \"no_result_of_cch_on_iv\" || payment_evolved_reason === \"unverf_billing_address\"){\n        action_flag_hold.push(\"payment_evolved_reason\");\n    }else if(payment_evolved_reason === \"stolen_payment_used\"){\n        action_flag_fraud.push(\"payment_evolved_reason\")\n    };\n    \n    if(cch_call_outcome_requested_cancel === \"true\"){\n        action_flag_cancel.push(\"cch_call_outcome_requested_cancel\");\n    }\n    if(cch_call_outcome_cch_no_authorize === \"true\"){\n        action_flag_sanitize.push(\"cch_call_outcome_cch_no_authorize\");\n    };\n    \n    if(order_and_prev_sign_ins === \"fraud_pttrn_through_ip_fp\" || order_and_prev_sign_ins === \"password_change\" || order_and_prev_sign_ins === \"tz_do_not_corr_ip\" || order_and_prev_sign_ins === \"negative_fraud_sani_rel_ip_fp\" || order_and_prev_sign_ins === \"browser_degradation\" || order_and_prev_sign_ins === \"unjust_credential_change\" || order_and_prev_sign_ins === \"geo_loc_unjust_change\" || order_and_prev_sign_ins === \"unjust_vpn_sign_ins\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins\")\n    }\n    \n    if(rels_section_check === \"strg_negative_ordr_em_pttrn\"){\n        action_flag_fraud.push(\"rels_section_check\")\n    }else if(rels_section_check === \"mult_nc_w_diff_em_pttrn\" || rels_section_check === \"weak_rels_same_ach\" || rels_section_check === \"strg_fraud_rels\"){\n        action_flag_hold.push(\"rels_section_check\")\n    };\n    \n    if(cui_pattern_check === \"yes_same_fraud\"){\n        action_flag_fraud.push(\"cui_pattern_check\");\n    }else if(cui_pattern_check === \"yes_same_ato_pttrn\"){\n        action_flag_sanitize.push(\"cui_pattern_check\");\n    };\n    \n    if(fraud_mo_check_payment === \"leaked_cc\" || fraud_mo_check_payment === \"id_theft\" || fraud_mo_check_payment === \"bstc_mo\" || fraud_mo_check_payment === \"impersonation_mo\" || fraud_mo_check_payment === \"known_frd_ato_mo\" || fraud_mo_check_payment === \"rfo_mo\" || fraud_mo_check_payment === \"nc_fraud_account\" || fraud_mo_check_payment === \"drop_ship_mo\" || fraud_mo_check_payment === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_payment\");\n    }else if (fraud_mo_check_payment === \"ato_dormant_acc\"){\n        action_flag_sanitize.push(\"fraud_mo_check_payment\");\n    };\n    \n    if(fraud_mo_check_order_details === \"leaked_cc\" || fraud_mo_check_order_details === \"id_theft\" || fraud_mo_check_order_details === \"bstc_mo\" || fraud_mo_check_order_details === \"impersonation_mo\" || fraud_mo_check_order_details === \"known_frd_ato_mo\" || fraud_mo_check_order_details === \"rfo_mo\" || fraud_mo_check_order_details === \"nc_fraud_account\" || fraud_mo_check_order_details === \"drop_ship_mo\" || fraud_mo_check_order_details === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_payment\");\n    }else if (fraud_mo_check_payment === \"ato_dormant_acc\"){\n        action_flag_sanitize.push(\"fraud_mo_check_payment\");\n    };\n    action_flag_hold = action_flag_hold.length.toString() + \" Hold Attributes\";\n    action_flag_sanitize = action_flag_sanitize.length.toString() + \" Sanitize Attributes\";\n    action_flag_fraud = action_flag_fraud.length.toString() + \" Fraud Attributes\";\n    action_flag_cancel = action_flag_cancel.length.toString() + \" Cancel Attributes\";\n}//function checks all of the variables that were selected and based upon their selection, an action flag is assigned.\ncountActionFlags()\n\nvar retVal = ionSystem.newEmptyStruct();\nretVal.put(\"workflow_score\").newInt(wf_run_score);\nretVal.put(\"hold_attributes\").newString(action_flag_hold);\nretVal.put(\"sanitize_attributes\").newString(action_flag_sanitize);\nretVal.put(\"fraud_attributes\").newString(action_flag_fraud);\nretVal.put(\"cancel_attributes\").newString(action_flag_cancel);\nretVal;]]>
+</bpmn:script>
+</bpmn:scriptTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_01wys7g\" sourceRef=\"Task_0zv7ldi\" targetRef=\"Task_088r8ml\" />
+<bpmn:scriptTask id=\"Task_0zv7ldi\" name=\"Insert Workflow Run Scorecard attributes VC\" scriptFormat=\"JAVASCRIPT\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_02z1p4c</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_01wys7g</bpmn:outgoing>
+<bpmn:script>
+<![CDATA[var annotation_describe = \"\";\nvar is_cui_sales_managed = \"\";\nvar users_leg_attributes_all_nc_verified = \"\";\nvar users_leg_attributes_nc_vc_good_oh = \"\";\nvar users_leg_attributes_vc_leg_gd_oh = \"\";\nvar users_leg_attributes_leg_acc_unjust_pay_vel = \"\";\nvar account_type = \"\";\nvar describe_x_org = \"\";\nvar is_shipping_address_verf = \"\";\nvar item_type = \"\";\nvar cui_order_pattern_same_pttrn_3_months = \"\";\nvar cui_order_pattern_unjust_order_vel = \"\";\nvar cui_order_pattern_itm_corr_biz = \"\";\nvar cui_order_pattern_bulk_order = \"\";\nvar cui_order_pattern_strg_rel_sim_op = \"\";\nvar cui_order_pattern_same_pttrn_x_org = \"\";\nvar cui_order_pattern_good_itm_combo = \"\";\nvar cui_order_pattern_non_risky_op = \"\";\nvar cui_order_pattern_one_time_purchase = \"\";\nvar cui_order_pattern_order_vel_biz_rc_just = \"\";\nvar cui_order_pattern_justified_ordr_vel = \"\";\nvar cui_order_pattern_unjust_ordr_pttrn = \"\";\nvar fraud_mo_check_order_details = \"\";\nvar cch_verify = \"\";\nvar payment_evolved_reason = \"\";\nvar fraud_mo_check_payment = \"\";\nvar order_and_prev_sign_ins_ip_fp_frd_pttrn = \"\";\nvar order_and_prev_sign_ins_pw_change = \"\";\nvar order_and_prev_sign_ins_tz_do_not_corr_ip = \"\";\nvar order_and_prev_sign_ins_ip_fp_neg_frd_san_rel = \"\";\nvar order_and_prev_sign_ins_browser_degradation = \"\";\nvar order_and_prev_sign_ins_unjust_credentials_change = \"\";\nvar order_and_prev_sign_ins_unjust_geo_loc_change = \"\";\nvar order_and_prev_sign_ins_unjust_vpn_sign_ins = \"\";\nvar order_and_prev_sign_ins_sim_gsi_pttrn = \"\";\nvar order_and_prev_sign_ins_clean_new_sign_ins = \"\";\nvar order_and_prev_sign_ins_old_device_strg_rel = \"\";\nvar order_and_prev_sign_ins_new_trst_ip_strg_rel = \"\";\nvar order_and_prev_sign_ins_traveller_mo = \"\";\nvar order_and_prev_sign_ins_internal_sign_ins = \"\";\nvar order_and_prev_sign_ins_strg_rel_trst_ubid = \"\";\nvar order_and_prev_sign_ins_strg_rel_trst_auth_session = \"\";\nvar order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just = \"\";\nvar rels_section_check = \"\";\nvar cui_pattern_check = \"\";\nvar question_strings = [\"annotation_describe\",\"is_cui_sales_managedis_cui_sales_managed\", \"users_leg_attributes_all_nc_verifiedusers_leg_attributes_all_nc_verified\", \"users_leg_attributes_nc_vc_good_ohusers_leg_attributes_nc_vc_good_oh\", \"users_leg_attributes_vc_leg_gd_ohusers_leg_attributes_vc_leg_gd_oh\", \"users_leg_attributes_leg_acc_unjust_pay_velusers_leg_attributes_leg_acc_unjust_pay_vel\",\"account_type\", \"describe_x_org\", \"is_shipping_address_verf\", \"item_type\",\"cui_order_pattern_unjust_order_velcui_order_pattern_unjust_order_vel\", \"cui_order_pattern_same_pttrn_3_monthscui_order_pattern_same_pttrn_3_months\",\"cui_order_pattern_itm_corr_bizcui_order_pattern_itm_corr_biz\",\"cui_order_pattern_bulk_ordercui_order_pattern_bulk_order\",\"cui_order_pattern_strg_rel_sim_opcui_order_pattern_strg_rel_sim_op\",\"cui_order_pattern_same_pttrn_x_orgcui_order_pattern_same_pttrn_x_org\",\"cui_order_pattern_good_itm_combocui_order_pattern_good_itm_combo\",\"cui_order_pattern_non_risky_opcui_order_pattern_non_risky_op\",\"cui_order_pattern_one_time_purchasecui_order_pattern_one_time_purchase\",\"cui_order_pattern_order_vel_biz_rc_justcui_order_pattern_order_vel_biz_rc_just\", \"cui_order_pattern_justified_ordr_velcui_order_pattern_justified_ordr_vel\",\"cui_order_pattern_unjust_ordr_pttrncui_order_pattern_unjust_ordr_pttrn\",\"fraud_mo_check_order_details\", \"cch_verify\", \"payment_evolved_reason\",\"fraud_mo_check_payment\", \"order_and_prev_sign_ins_ip_fp_frd_pttrnorder_and_prev_sign_ins_ip_fp_frd_pttrn\", \"order_and_prev_sign_ins_pw_changeorder_and_prev_sign_ins_pw_change\", \"order_and_prev_sign_ins_tz_do_not_corr_iporder_and_prev_sign_ins_tz_do_not_corr_ip\", \"order_and_prev_sign_ins_ip_fp_neg_frd_san_relorder_and_prev_sign_ins_ip_fp_neg_frd_san_rel\", \"order_and_prev_sign_ins_browser_degradationorder_and_prev_sign_ins_browser_degradation\", \"order_and_prev_sign_ins_unjust_credentials_changeorder_and_prev_sign_ins_unjust_credentials_change\", \"order_and_prev_sign_ins_unjust_geo_loc_changeorder_and_prev_sign_ins_unjust_geo_loc_change\", \"order_and_prev_sign_ins_unjust_vpn_sign_insorder_and_prev_sign_ins_unjust_vpn_sign_ins\", \"order_and_prev_sign_ins_sim_gsi_pttrnorder_and_prev_sign_ins_sim_gsi_pttrn\", \"order_and_prev_sign_ins_clean_new_sign_insorder_and_prev_sign_ins_clean_new_sign_ins\", \"order_and_prev_sign_ins_old_device_strg_relorder_and_prev_sign_ins_old_device_strg_rel\", \"order_and_prev_sign_ins_new_trst_ip_strg_relorder_and_prev_sign_ins_new_trst_ip_strg_rel\", \"order_and_prev_sign_ins_traveller_moorder_and_prev_sign_ins_traveller_mo\", \"order_and_prev_sign_ins_internal_sign_insorder_and_prev_sign_ins_internal_sign_ins\", \"order_and_prev_sign_ins_strg_rel_trst_ubidorder_and_prev_sign_ins_strg_rel_trst_ubid\", \"order_and_prev_sign_ins_strg_rel_trst_auth_sessionorder_and_prev_sign_ins_strg_rel_trst_auth_session\", \"order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_justorder_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just\", \"rels_section_check\", \"cui_pattern_check\"]\n\nfor(i=0; i , question_strings.length; i++){\n    if(document.get(question_strings[i]) !== null){\n        if(i === 0){\n            annotation_describe = document.get(question_strings[i]).stringValue(); \n        }else if( i === 1){\n            is_cui_sales_managed = document.get(question_strings[i]).stringValue(); \n        }else if(i === 2){\n            users_leg_attributes_all_nc_verified = document.get(question_strings[i]).stringValue();\n        }else if(i === 3){\n            users_leg_attributes_nc_vc_good_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 4){\n            users_leg_attributes_vc_leg_gd_oh = document.get(question_strings[i]).stringValue();\n        }else if(i === 5){\n            users_leg_attributes_leg_acc_unjust_pay_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 6){\n            account_type = document.get(question_strings[i]).stringValue();\n        }else if(i === 7){\n            describe_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 8){\n            is_shipping_address_verf = document.get(question_strings[i]).stringValue();\n        }else if(i === 9){\n            item_type = document.get(question_strings[i]).stringValue(); \n        }else if(i === 10){\n            cui_order_pattern_same_pttrn_3_months = document.get(question_strings[i]).stringValue();\n        }else if(i === 11){\n            cui_order_pattern_unjust_order_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 12){\n            cui_order_pattern_itm_corr_biz = document.get(question_strings[i]).stringValue();\n        }else if(i === 13){\n            cui_order_pattern_bulk_order = document.get(question_strings[i]).stringValue();\n        }else if(i === 14){\n            cui_order_pattern_strg_rel_sim_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 15){\n            cui_order_pattern_same_pttrn_x_org = document.get(question_strings[i]).stringValue();\n        }else if(i === 16){\n            cui_order_pattern_good_itm_combo = document.get(question_strings[i]).stringValue();\n        }else if(i === 17){\n            cui_order_pattern_non_risky_op = document.get(question_strings[i]).stringValue();\n        }else if(i === 18){\n            cui_order_pattern_one_time_purchase = document.get(question_strings[i]).stringValue();\n        }else if(i === 19){\n            cui_order_pattern_order_vel_biz_rc_just = document.get(question_strings[i]).stringValue();\n        }else if(i === 20){\n            cui_order_pattern_justified_ordr_vel = document.get(question_strings[i]).stringValue();\n        }else if(i === 21){\n            cui_order_pattern_unjust_ordr_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 22){\n            fraud_mo_check_order_details = document.get(question_strings[i]).stringValue();\n        }else if(i === 23){\n            cch_verify = document.get(question_strings[i]).stringValue();\n        }else if(i === 25){\n            payment_evolved_reason = document.get(question_strings[i]).stringValue();\n        }else if(i === 26){\n            fraud_mo_check_payment = document.get(question_strings[i]).stringValue();\n        }else if(i === 27){\n            order_and_prev_sign_ins_ip_fp_frd_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 28){\n            order_and_prev_sign_ins_pw_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 29){\n            order_and_prev_sign_ins_tz_do_not_corr_ip = document.get(question_strings[i]).stringValue();\n        }else if(i === 30){\n            order_and_prev_sign_ins_ip_fp_neg_frd_san_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 31){\n            order_and_prev_sign_ins_browser_degradation = document.get(question_strings[i]).stringValue();\n        }else if(i === 32){\n            order_and_prev_sign_ins_unjust_credentials_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 33){\n            order_and_prev_sign_ins_unjust_geo_loc_change = document.get(question_strings[i]).stringValue();\n        }else if(i === 34){\n            order_and_prev_sign_ins_unjust_vpn_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 35){\n            order_and_prev_sign_ins_sim_gsi_pttrn = document.get(question_strings[i]).stringValue();\n        }else if(i === 36){\n            order_and_prev_sign_ins_clean_new_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 37){\n            order_and_prev_sign_ins_old_device_strg_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 38){\n            order_and_prev_sign_ins_new_trst_ip_strg_rel = document.get(question_strings[i]).stringValue();\n        }else if(i === 39){\n            order_and_prev_sign_ins_traveller_mo = document.get(question_strings[i]).stringValue();\n        }else if(i === 40){\n            order_and_prev_sign_ins_internal_sign_ins = document.get(question_strings[i]).stringValue();\n        }else if(i === 41){\n            order_and_prev_sign_ins_strg_rel_trst_ubid = document.get(question_strings[i]).stringValue();\n        }else if(i === 42){\n            order_and_prev_sign_ins_strg_rel_trst_auth_session = document.get(question_strings[i]).stringValue();\n        }else if(i === 43){\n            order_and_prev_sign_ins_vpn_sign_ins_old_pttrn_just = document.get(question_strings[i]).stringValue();\n        }else if(i === 44){\n            rels_section_check = document.get(question_strings[i]).stringValue();\n        }else if(i === 45){\n            cui_pattern_check = document.get(question_strings[i]).stringValue();\n        };\n    };\n};\nvar negative_score_reinstates = document.get(\"negative_score_reinstates\").intValue();\nvar positive_score_reinstates = document.get(\"positive_score_reinstates\").intValue();\nvar positive_score_cust_data = document.get(\"positive_score_cust_data\").intValue();\nvar negative_score_cust_data = document.get(\"negative_score_cust_data\").intValue();\nvar positive_score_biz_entity = document.get(\"positive_score_biz_entity\").intValue();\nvar negative_score_biz_entity = document.get(\"negative_score_biz_entity\").intValue();\nvar positive_score_order_details = document.get(\"positive_score_order_details\").intValue();\nvar negative_score_order_details = document.get(\"negative_score_order_details\").intValue();\nvar positive_score_payment_details = document.get(\"positive_score_payment_details\").intValue();\nvar negative_score_payment_details = document.get(\"negative_score_payment_details\").intValue();\nvar positive_score_gsi = document.get(\"positive_score_gsi\").intValue();\nvar negative_score_gsi = document.get(\"negative_score_gsi\").intValue();\nvar positive_score_related_customers = document.get(\"positive_score_related_customers\").intValue();\nvar negative_score_related_customers = document.get(\"negative_score_related_customers\").intValue();\n//==collect scores and parse them into integers==//\n\n//==arrays to keep flag count==//\nvar action_flag_hold = [];\nvar action_flag_sanitize = [];\nvar action_flag_fraud = [];\nvar action_flag_cancel = [];\n//==workflow run final score==//\nvar wf_run_score = \"\";\n\nfunction globalScores(){\n    var positives = [positive_score_reinstates, positive_score_cust_data, positive_score_biz_entity, positive_score_order_details, positive_score_payment_details, positive_score_gsi, positive_score_related_customers ];\n    var negatives = [negative_score_reinstates, negative_score_cust_data, negative_score_biz_entity, negative_score_order_details, negative_score_payment_details, negative_score_gsi, negative_score_related_customers ];\n\n    var global_positive = 0;\n    var global_negative = 0;\n\n    for(i=0; i < positives.length; i++){\n        if(i === 0) {\n            global_positive = positives[i]\n        }else{\n            global_positive += positives[i]\n        };\n    };\n\n    for(j=0; j < negatives.length; j++){\n        if(j === 0){\n            global_negative = negatives[j]\n        }else{\n            global_negative += negatives[j]\n        };\n    };\n\n    wf_run_score = global_negative + global_positive\n}\nglobalScores();\n\nfunction countActionFlags(){\n    if(is_cui_sales_managed === \"False\"){\n        action_flag_hold.push(\"is_cui_sales_managed\");\n    };\n    if(users_leg_attributes_leg_acc_unjust_pay_vel === \"true\"){\n        action_flag_hold.push(\"users_leg_attributes_leg_acc_unjust_pay_vel\");\n    };\n    if(account_type === \"vc_low_comp_oh\" || account_type === \"vc_unresolved_cb_sop_limit\" || account_type === \"vc_bd_sop_limit_strg_rel\"){\n        action_flag_hold.push(\"account_type\");\n    }else if(account_type === \"dormant_account\"){\n        action_flag_sanitize.push(\"account_type\");\n    }else if(account_type === \"acc_already_sanitize\"){\n        action_flag_cancel.push(\"account_type\");\n    };\n    if(describe_x_org === \"ato_vc\"){\n        action_flag_sanitize.push(\"describe_x_org\");\n    }else if(describe_x_org === \"vc_frd_rels\"){\n        action_flag_hold.push(\"describe_x_org\");\n    }else if(describe_x_org === \"ongoing_fraud_mo\"){\n        action_flag_fraud.push(\"describe_x_org\")\n    };\n    if(order_and_prev_sign_ins_ip_fp_frd_pttrn === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_ip_fp_frd_pttrn\");\n    }; \n    if(order_and_prev_sign_ins_ip_fp_neg_frd_san_rel === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_ip_fp_neg_frd_san_rel\");\n    };\n    if(order_and_prev_sign_ins_browser_degradation === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_browser_degradation\");\n    };\n    if(order_and_prev_sign_ins_unjust_credentials_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_credentials_change\");\n    };\n    if(order_and_prev_sign_ins_unjust_geo_loc_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_geo_loc_change\");\n    };\n    if(order_and_prev_sign_ins_unjust_vpn_sign_ins === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_unjust_vpn_sign_ins\");\n    };\n    if(order_and_prev_sign_ins_pw_change === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_pw_change\");\n    };\n    if(order_and_prev_sign_ins_tz_do_not_corr_ip === \"true\"){\n        action_flag_sanitize.push(\"order_and_prev_sign_ins_tz_do_not_corr_ip\");\n    };\n    if(is_shipping_address_verf === \"unjust_mult_addrss_pttrn\" || is_shipping_address_verf === \"unverf_sa\" || is_shipping_address_verf === \"reshipper_address\" || is_shipping_address_verf === \"packstation_dhl_hermes\"){\n        action_flag_hold.push(\"is_shipping_address_verf\");\n    }else if(is_shipping_address_verf === \"frd_sani_rel_sa\"){\n        action_flag_sanitize.push(\"is_shipping_address_verf\");\n    };\n    if(item_type === \"high_value\" || item_type === \"high_risk\" || item_type === \"medium_risk\"){\n        action_flag_hold.push(\"item_type\");\n    };\n    if(cui_order_pattern_unjust_ordr_pttrn === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_ordr_pttrn\")\n    };\n    if(cui_order_pattern_unjust_order_vel === \"true\"){\n        action_flag_hold.push(\"cui_order_pattern_unjust_order_vel\")    \n    };\n    if(cch_call_outcome_order_details === \"cch_request_cancel\"){\n        action_flag_cancel.push(\"cch_call_outcome_order_details\");\n    }else if(cch_call_outcome_order_details === \"cch_did_not_authorize\" ){\n        action_flag_sanitize.push(\"cch_call_outcome_order_details\");\n    };\n    if(cch_verify === \"cc_diff_names_on_token\" || cch_verify === \"unverified_card\"){\n        action_flag_hold.push(\"cch_verify\");\n    };\n    if(payment_evolved_reason === \"weak_pay_rel\" || payment_evolved_reason === \"payment_velocity\" || payment_evolved_reason === \"no_result_of_cch_on_iv\" || payment_evolved_reason === \"unverf_billing_address\" || payment_evolved_reason === \"stolen_payment_used\"){\n        action_flag_hold.push(\"payment_evolved_reason\");\n    };\n    if(rels_section_check === \"strg_negative_ordr_em_pttrn\" || rels_section_check === \"mult_nc_w_diff_em_pttrn\" || rels_section_check === \"weak_rels_same_ach\" || rels_section_check === \"strg_fraud_rels\"){\n        action_flag_hold.push(\"rels_section_check\")\n    };\n    if(cui_pattern_check === \"yes_same_fraud\"){\n        action_flag_fraud.push(\"cui_pattern_check\");\n    }else if(cui_pattern_check === \"yes_same_ato_pttrn\"){\n        action_flag_sanitize.push(\"cui_pattern_check\")\n    };\n\n    if(fraud_mo_check_order_details === \"ato_dormant_acc\" || fraud_mo_check_order_details === \"bstc_mo\" || fraud_mo_check_order_details === \"spoofing_mo\" || fraud_mo_check_order_details === \"fake_biz_mo\" || fraud_mo_check_order_details === \"unverf_order_em\" || fraud_mo_check_order_details === \"shipping_charges\" || fraud_mo_check_order_details === \"ongoing_ato_mo\"){\n        action_flag_sanitize.push(\"fraud_mo_check_order_details\");\n    }else if(fraud_mo_check_order_details === \"leaked_cc\" || fraud_mo_check_order_details === \"id_theft\" || fraud_mo_check_order_details === \"known_frd_ato_mo\" || fraud_mo_check_order_details === \"vc_going_bad\" || fraud_mo_check_order_details === \"rfo_mo\" || fraud_mo_check_order_details === \"sleeper_mo\" || fraud_mo_check_order_details === \"drop_ship_mo\" || fraud_mo_check_order_details === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_order_details\");\n    };\n    if(fraud_mo_check_payment === \"dormant_with_ato_pd\" || fraud_mo_check_payment === \"bstc_mo\" || fraud_mo_check_payment === \"spoofing_mo\" || fraud_mo_check_payment === \"fake_biz_mo\" || fraud_mo_check_payment === \"unverf_order_em\" || fraud_mo_check_payment === \"shipping_charges\" || fraud_mo_check_payment === \"ongoing_ato_mo\"){\n        action_flag_sanitize.push(\"fraud_mo_check_payment\");\n    }else if(fraud_mo_check_payment === \"leaked_cc\" || fraud_mo_check_payment === \"id_theft\" || fraud_mo_check_payment === \"known_frd_ato_mo\" || fraud_mo_check_payment === \"vc_going_bad\" || fraud_mo_check_payment === \"rfo_mo\" || fraud_mo_check_payment === \"sleeper_mo\" || fraud_mo_check_payment === \"drop_ship_mo\" || fraud_mo_check_payment === \"triangulation_mo\"){\n        action_flag_fraud.push(\"fraud_mo_check_payment\");\n    };\n    action_flag_hold = action_flag_hold.length.toString() + \" Hold Attributes\";\n    action_flag_sanitize = action_flag_sanitize.length.toString() + \" Sanitize Attributes\";\n    action_flag_fraud = action_flag_fraud.length.toString() + \" Fraud Attributes\";\n    action_flag_cancel = action_flag_cancel.length.toString() + \" Cancel Attributes\";\n};\ncountActionFlags();\n\nvar retVal = ionSystem.newEmptyStruct();\nretVal.put(\"workflow_score\").newInt(wf_run_score);\nretVal.put(\"hold_attributes\").newString(action_flag_hold);\nretVal.put(\"sanitize_attributes\").newString(action_flag_sanitize);\nretVal.put(\"fraud_attributes\").newString(action_flag_fraud);\nretVal.put(\"cancel_attributes\").newString(action_flag_cancel);\nretVal;]]>
+</bpmn:script>
+</bpmn:scriptTask>
+</bpmn:process>
+<bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">
+<bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">
+<bpmndi:BPMNShape id=\"_BPMNShape_StartEvent_2\" bpmnElement=\"StartEvent_1\">
+<dc:Bounds x=\"-397\" y=\"102\" width=\"36\" height=\"36\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"-424\" y=\"138\" width=\"90\" height=\"20\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1tsayt0_di\" bpmnElement=\"SequenceFlow_1tsayt0\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"-361\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"-262\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"-356\" y=\"99\" width=\"90\" height=\"13\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"EndEvent_1g9mwtu_di\" bpmnElement=\"EndEvent_1g9mwtu\">
+<dc:Bounds x=\"2091\" y=\"102\" width=\"36\" height=\"36\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"2064\" y=\"141\" width=\"90\" height=\"13\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0e2hkto_di\" bpmnElement=\"SequenceFlow_0e2hkto\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"-162\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"-122\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"-122\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"-88\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"-152\" y=\"114\" width=\"90\" height=\"13\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_0c3eekk_di\" bpmnElement=\"Task_1gctu4n\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"-262\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_06edxo2_di\" bpmnElement=\"SequenceFlow_06edxo2\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"676\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"717\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"651.5\" y=\"99\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"BusinessRuleTask_1af6sbd_di\" bpmnElement=\"Task_1dmainm\" bioc:stroke=\"Green\" bioc:fill=\"#66FF99\">
+<dc:Bounds x=\"576\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"ExclusiveGateway_1cgldyg_di\" bpmnElement=\"ExclusiveGateway_1cgldyg\" isMarkerVisible=\"true\">
+<dc:Bounds x=\"717.2309236947791\" y=\"95\" width=\"50\" height=\"50\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"800\" y=\"114\" width=\"71\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0704hs3_di\" bpmnElement=\"SequenceFlow_0704hs3\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"742\" y=\"95\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"742\" y=\"-99\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"747\" y=\"-8\" width=\"20\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1a12imr_di\" bpmnElement=\"SequenceFlow_1a12imr\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"742\" y=\"145\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"742\" y=\"320\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"748\" y=\"227\" width=\"19\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_0sbemiv_di\" bpmnElement=\"Task_1r4aqeg\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"1564\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1o12zk7_di\" bpmnElement=\"SequenceFlow_1o12zk7\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1664\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1850\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1712\" y=\"99\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"CallActivity_1e4s8zb_di\" bpmnElement=\"Task_16m6xag\" bioc:stroke=\"Blue\" bioc:fill=\"#87CEFA\">
+<dc:Bounds x=\"692\" y=\"-179\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"CallActivity_05mua2p_di\" bpmnElement=\"Task_00pfjqd\" bioc:stroke=\"Blue\" bioc:fill=\"#87CEFA\">
+<dc:Bounds x=\"692\" y=\"320\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1h4idlk_di\" bpmnElement=\"SequenceFlow_1h4idlk\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1950\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2018\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2018\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"2091\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1988\" y=\"114\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_1ce1xfr_di\" bpmnElement=\"Task_1wnb1i8\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"1850\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0r9txlf_di\" bpmnElement=\"SequenceFlow_0r9txlf\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"12\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"78\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"0\" y=\"99\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_0fl5hls_di\" bpmnElement=\"Task_0pisfoj\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"-88\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1b90bnt_di\" bpmnElement=\"SequenceFlow_1b90bnt\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"178\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"242\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"165\" y=\"99\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"ScriptTask_0phca30_di\" bpmnElement=\"Task_1k2pqep\" bioc:stroke=\"Purple\" bioc:fill=\"#CC99FF\">
+<dc:Bounds x=\"78\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1hyogdo_di\" bpmnElement=\"SequenceFlow_1hyogdo\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"342\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"386\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"386\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"434\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"401\" y=\"114\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"BusinessRuleTask_16w5vtz_di\" bpmnElement=\"Task_17c0864\" bioc:stroke=\"Green\" bioc:fill=\"#66FF99\">
+<dc:Bounds x=\"242\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"ExclusiveGateway_0cckjlz_di\" bpmnElement=\"ExclusiveGateway_0cckjlz\" isMarkerVisible=\"true\">
+<dc:Bounds x=\"434\" y=\"95\" width=\"50\" height=\"50\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"422\" y=\"62\" width=\"73\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1eed6ab_di\" bpmnElement=\"SequenceFlow_1eed6ab\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"484\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"528\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"528\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"576\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"515\" y=\"125\" width=\"27\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"ScriptTask_0potd43_di\" bpmnElement=\"Task_0q7z02g\" bioc:stroke=\"Purple\" bioc:fill=\"#CC99FF\">
+<dc:Bounds x=\"1375\" y=\"-179\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0av6nqu_di\" bpmnElement=\"SequenceFlow_0av6nqu\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"459\" y=\"145\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"459\" y=\"472\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1684\" y=\"472\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1684\" y=\"298\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1638\" y=\"298\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1638\" y=\"160\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1329.3294232649073\" y=\"488\" width=\"22\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"ScriptTask_05kiowe_di\" bpmnElement=\"ScriptTask_05kiowe\" bioc:stroke=\"Purple\" bioc:fill=\"#CC99FF\">
+<dc:Bounds x=\"1375\" y=\"320\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1boqx09_di\" bpmnElement=\"SequenceFlow_1boqx09\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1475\" y=\"-139\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1564\" y=\"-139\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1475\" y=\"-160\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1j4lu9l_di\" bpmnElement=\"SequenceFlow_1j4lu9l\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1475\" y=\"360\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1564\" y=\"360\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1475\" y=\"339\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0mtsw13_di\" bpmnElement=\"SequenceFlow_0mtsw13\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1614\" y=\"320\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1614\" y=\"160\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1584\" y=\"234\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1b9em6s_di\" bpmnElement=\"SequenceFlow_1b9em6s\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"792\" y=\"-139\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"888\" y=\"-139\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"795\" y=\"-160\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_02z1p4c_di\" bpmnElement=\"SequenceFlow_02z1p4c\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"792\" y=\"360\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"888\" y=\"360\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"795\" y=\"339\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"BusinessRuleTask_190hm2p_di\" bpmnElement=\"Task_088r8ml\" bioc:stroke=\"Green\" bioc:fill=\"#66FF99\">
+<dc:Bounds x=\"1087\" y=\"320\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"BusinessRuleTask_0k2gcac_di\" bpmnElement=\"Task_1i2cxpj\" bioc:stroke=\"Green\" bioc:fill=\"#66FF99\">
+<dc:Bounds x=\"1087\" y=\"-179\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"ExclusiveGateway_1pb7uqx_di\" bpmnElement=\"ExclusiveGateway_1pb7uqx\" isMarkerVisible=\"true\">
+<dc:Bounds x=\"1240\" y=\"-164\" width=\"50\" height=\"50\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1238\" y=\"-195\" width=\"53\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0kewf66_di\" bpmnElement=\"SequenceFlow_0kewf66\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1187\" y=\"-139\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1240\" y=\"-139\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1169\" y=\"-160\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"ExclusiveGateway_1619qeg_di\" bpmnElement=\"ExclusiveGateway_1619qeg\" isMarkerVisible=\"true\">
+<dc:Bounds x=\"1240\" y=\"335\" width=\"50\" height=\"50\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1239\" y=\"389\" width=\"53\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0m6bo2t_di\" bpmnElement=\"SequenceFlow_0m6bo2t\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1187\" y=\"360\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1240\" y=\"360\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1169\" y=\"339\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0aedhwk_di\" bpmnElement=\"SequenceFlow_0aedhwk\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1290\" y=\"360\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1375\" y=\"360\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1322\" y=\"339\" width=\"22\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1bi690q_di\" bpmnElement=\"SequenceFlow_1bi690q\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1290\" y=\"-139\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1375\" y=\"-139\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1322\" y=\"-160\" width=\"22\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_04zq0qu_di\" bpmnElement=\"SequenceFlow_04zq0qu\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1265\" y=\"-114\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1265\" y=\"107\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1564\" y=\"107\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1267\" y=\"-9\" width=\"27\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_179aptv_di\" bpmnElement=\"SequenceFlow_179aptv\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1265\" y=\"335\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1265\" y=\"135\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1564\" y=\"135\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1267\" y=\"229\" width=\"27\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0beetmh_di\" bpmnElement=\"SequenceFlow_0beetmh\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1614\" y=\"-99\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1614\" y=\"80\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1584\" y=\"-15\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_1valngs_di\" bpmnElement=\"Task_0s2jb98\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"1564\" y=\"-179\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"UserTask_1a84kc3_di\" bpmnElement=\"Task_1q3pgwl\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"1564\" y=\"320\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_07dyub7_di\" bpmnElement=\"SequenceFlow_07dyub7\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"988\" y=\"-139\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1087\" y=\"-139\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1037.5\" y=\"-160\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"ScriptTask_1v3m94o_di\" bpmnElement=\"Task_1btrhu0\" bioc:stroke=\"Purple\" bioc:fill=\"#CC99FF\">
+<dc:Bounds x=\"888\" y=\"-179\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_01wys7g_di\" bpmnElement=\"SequenceFlow_01wys7g\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"988\" y=\"360\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1087\" y=\"360\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1037.5\" y=\"339\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"ScriptTask_0tfa694_di\" bpmnElement=\"Task_0zv7ldi\" bioc:stroke=\"Purple\" bioc:fill=\"#CC99FF\">
+<dc:Bounds x=\"888\" y=\"320\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+</bpmndi:BPMNPlane>
+</bpmndi:BPMNDiagram>
+</bpmn:definitions>

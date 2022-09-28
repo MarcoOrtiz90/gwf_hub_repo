@@ -45,9 +45,9 @@ def autoAnswerAudit():
     print(dataFrame)
     print(frequencyFrame)
 
-    dataFrame.to_excel('C:/Users/mttrejos/Desktop/Amazon/gwf_hub_repo/gwf_hub/payload_builder/aa_audit_b2b.xlsx', index=False)
+    dataFrame.to_excel('C:/Users/mttrejos/Desktop/Amazon/gwf_hub_repo/gwf_hub/payload_builder/aa_audit_bri.xlsx', index=False)
 
-    frequencyFrame.to_excel('C:/Users/mttrejos/Desktop/Amazon/gwf_hub_repo/gwf_hub/payload_builder/aa_frequency_b2b.xlsx', index=False)
+    frequencyFrame.to_excel('C:/Users/mttrejos/Desktop/Amazon/gwf_hub_repo/gwf_hub/payload_builder/aa_frequency_bri.xlsx', index=False)
 
 
 

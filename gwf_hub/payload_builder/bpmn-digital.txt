@@ -1,0 +1,496 @@
+"<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+\n<bpmn:definitions xmlns:bpmn=\"http://www.omg.org/spec/BPMN/20100524/MODEL\" xmlns:bioc=\"http://bpmn.io/schema/bpmn/biocolor/1.0\" xmlns:bpmndi=\"http://www.omg.org/spec/BPMN/20100524/DI\" xmlns:camunda=\"http://camunda.org/schema/1.0/bpmn\" xmlns:dc=\"http://www.omg.org/spec/DD/20100524/DC\" xmlns:di=\"http://www.omg.org/spec/DD/20100524/DI\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" id=\"Definitions_024ijxk\" targetNamespace=\"http://bpmn.io/schema/bpmn\" exporter=\"Camunda Modeler\" exporterVersion=\"1.14.0\">
+<bpmn:process id=\"Process_1\" processType=\"None\" isClosed=\"false\" isExecutable=\"true\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties>
+<camunda:property name=\"status_component_title\" />
+<camunda:property name=\"master_blurb\" />
+<camunda:property name=\"bulk_email_button_label\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:ioSpecification>
+<bpmn:inputSet name=\"processInput\" />
+<bpmn:outputSet name=\"processOutput\" />
+</bpmn:ioSpecification>
+<bpmn:startEvent id=\"StartEvent_1\">
+<bpmn:outgoing>
+SequenceFlow_1tsayt0</bpmn:outgoing>
+</bpmn:startEvent>
+<bpmn:sequenceFlow id=\"SequenceFlow_1tsayt0\" sourceRef=\"StartEvent_1\" targetRef=\"Task_02xn2or\" />
+<bpmn:endEvent id=\"EndEvent_1g9mwtu\">
+<bpmn:incoming>
+SequenceFlow_0mze8ap</bpmn:incoming>
+</bpmn:endEvent>
+<bpmn:exclusiveGateway id=\"ExclusiveGateway_0pp65tu\" name=\"Workflow Route\">
+<bpmn:extensionElements>
+<camunda:inputOutput>
+<camunda:inputParameter name=\"workflow_route\" />
+</camunda:inputOutput>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0pcn5gn</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_052chj2</bpmn:outgoing>
+<bpmn:outgoing>
+SequenceFlow_0b6iqma</bpmn:outgoing>
+</bpmn:exclusiveGateway>
+<bpmn:sequenceFlow id=\"SequenceFlow_052chj2\" name=\"&#10;\" sourceRef=\"ExclusiveGateway_0pp65tu\" targetRef=\"Task_1k0k7iw\">
+<bpmn:documentation />
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+<![CDATA[\"nc\"]]>
+</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:sequenceFlow id=\"SequenceFlow_0b6iqma\" name=\"&#10;\" sourceRef=\"ExclusiveGateway_0pp65tu\" targetRef=\"Task_1qavdh9\">
+<bpmn:conditionExpression xsi:type=\"bpmn:tFormalExpression\" language=\"JavaScript\">
+<![CDATA[\"vc\"]]>
+</bpmn:conditionExpression>
+</bpmn:sequenceFlow>
+<bpmn:businessRuleTask id=\"Task_16b7jbz\" name=\"CUI Age DMN\" implementation=\"##unspecified\" camunda:decisionRef=\"Decision_0qznzdm\">
+<bpmn:incoming>
+SequenceFlow_0xyzzo2</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0pcn5gn</bpmn:outgoing>
+</bpmn:businessRuleTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_0xyzzo2\" sourceRef=\"Task_1wdh762\" targetRef=\"Task_16b7jbz\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_0pcn5gn\" sourceRef=\"Task_16b7jbz\" targetRef=\"ExclusiveGateway_0pp65tu\" />
+<bpmn:userTask id=\"Task_1wdh762\" name=\"NC/VC\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"### **Customer Age**&#10;***&#10;#### *Reinstate check step is complete*\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Verify customer account age. **NC** or **VC** account.*\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"status\" label=\"What is the customer&#39;s status? \" type=\"SELECT_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+<camunda:property name=\"options.VC customer.0\" value=\"status_vc\" />
+<camunda:property name=\"options.NC customer.1\" value=\"status_nc\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_13yxmb7</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0xyzzo2</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:callActivity id=\"Task_1k0k7iw\" name=\"NC\" calledElement=\"payment_risk_apay_in_nc\" camunda:calledElementBinding=\"version\" camunda:calledElementVersion=\"PROD\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_052chj2</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0c08oly</bpmn:outgoing>
+</bpmn:callActivity>
+<bpmn:callActivity id=\"Task_1qavdh9\" name=\"VC\" calledElement=\"payment_risk_apay_in_vc\" camunda:calledElementBinding=\"version\" camunda:calledElementVersion=\"PROD\">
+<bpmn:extensionElements>
+<camunda:inputOutput />
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0b6iqma</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_04e8chi</bpmn:outgoing>
+</bpmn:callActivity>
+<bpmn:sequenceFlow id=\"SequenceFlow_0c08oly\" sourceRef=\"Task_1k0k7iw\" targetRef=\"Task_1tf8c6q\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_04e8chi\" sourceRef=\"Task_1qavdh9\" targetRef=\"Task_1azg3fg\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_0mze8ap\" sourceRef=\"Task_1e5c536\" targetRef=\"EndEvent_1g9mwtu\" />
+<bpmn:userTask id=\"Task_1e5c536\" name=\"Workflow End\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"#### This is the end of the workflow\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Click continue to finish*\" type=\"formProperty\" />
+<camunda:formField id=\"type\" label=\"SUCCESS\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"\" label=\"Paramount::COMMON_Continue\" type=\"CONTINUE_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_04p91si</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0mze8ap</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:userTask id=\"Task_02xn2or\" name=\"Reinstates\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"### **APAY IN Investigation**&#10;***&#10;### *Reinstates Section*\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Perform an overall review of the account for past actions made*\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"previous_reinstate\" label=\"Was this customer reinstated in the last 90 days? (check cross-org too)\" type=\"SELECT_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+<camunda:property name=\"options.Yes in current stack.0\" value=\"yes_current_stack\" />
+<camunda:property name=\"options.Yes in another stack.1\" value=\"yes_other_stack\" />
+<camunda:property name=\"options.No.2\" value=\"no_prev_reinst\" />
+</camunda:properties>
+</camunda:formField>
+<camunda:formField id=\"reinstate_reason\" label=\"What is the reason of the reinstate?\" type=\"SELECT_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(prev_reinstate) === &#34;yes_current_stack&#34; || eval(prev_reinstate) === &#34;yes_other_stack&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"2\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+<camunda:property name=\"options.Document verification.0\" value=\"doc_verf\" />
+<camunda:property name=\"options.IV found.1\" value=\"iv_found\" />
+<camunda:property name=\"options.Unjustified enforcement.2\" value=\"unjust_enforcement\" />
+<camunda:property name=\"options.Bank verification.3\" value=\"bank_verf\" />
+<camunda:property name=\"options.CCH Authorized.4\" value=\"cch_authorized\" />
+<camunda:property name=\"options.Additional information provided.5\" value=\"add_info_provided\" />
+<camunda:property name=\"options.CB Resolved.6\" value=\"cb_resolved\" />
+<camunda:property name=\"options.RC Relations.7\" value=\"rc_relations\" />
+<camunda:property name=\"options.Other.8\" value=\"other_reason\" />
+<camunda:property name=\"options.Unable to justify reinstate.9\" value=\"unable_to_justify\" />
+<camunda:property name=\"options.Cross Org reinstate.10\" value=\"x_org_reinst\" />
+<camunda:property name=\"options.Debt repayment.11\" value=\"debt_repayment\" />
+</camunda:properties>
+</camunda:formField>
+<camunda:formField id=\"cui_same_payment\" label=\"Is CUI coming back with same payment method?\" type=\"YES_NO_QUESTION\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(prev_reinstate) === &#34;yes_current_stack&#34; || eval(prev_reinstate) === &#34;yes_other_stack&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"3\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+<camunda:formField id=\"is_pay_verf\" label=\"If this payment was the reason of enforcement, is that verified?\" type=\"YES_NO_QUESTION\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"conditionalShowExpression\" value=\"eval(cui_same_paymentcui_same_payment) === &#34;True&#34;\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"4\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1tsayt0</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_13yxmb7</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_13yxmb7\" sourceRef=\"Task_02xn2or\" targetRef=\"Task_1wdh762\" />
+<bpmn:userTask id=\"Task_1i2r1mo\" name=\"Additional Annotations\" implementation=\"##unspecified\">
+<bpmn:extensionElements>
+<camunda:formData>
+<camunda:formField id=\"diagState\" label=\"### **Additional Annotations**&#10;***&#10;#### *Workflow sections are complete*\" type=\"formProperty\" />
+<camunda:formField id=\"instructions\" label=\"#### *Add additional annotations if required*\" type=\"formProperty\" />
+<camunda:formField id=\"uiEvents\" label=\"uiEvents\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"uiRenderingConfig\" label=\"summary_widgets\" type=\"formProperty\" />
+<camunda:formField id=\"messageFields\" label=\"messageFields\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"reversible\" label=\"true\" type=\"formProperty\" />
+<camunda:formField id=\"workflowTags\" label=\"workflowTags\" type=\"formProperty\">
+<camunda:properties />
+</camunda:formField>
+<camunda:formField id=\"add_annot\" label=\"Would you like to add additional annotations?\" type=\"STRING\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"1\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+<camunda:validation>
+<camunda:constraint name=\"maxBoundary\" config=\"250\" />
+<camunda:constraint name=\"maxBoundaryInvalid\" config=\"Max character amount reached\" />
+<camunda:constraint name=\"optional\" config=\"true\" />
+</camunda:validation>
+</camunda:formField>
+<camunda:formField id=\"\" label=\"Paramount::COMMON_Continue\" type=\"CONTINUE_BUTTON\">
+<camunda:properties>
+<camunda:property name=\"autoInsertBlurb\" value=\"false\" />
+<camunda:property name=\"toggle\" value=\"false\" />
+<camunda:property name=\"ordering\" value=\"2\" />
+<camunda:property name=\"isbulkBlurbButtonShown\" value=\"true\" />
+<camunda:property name=\"isDefaultValueEnabled\" value=\"false\" />
+<camunda:property name=\"optionsType\" value=\"manual\" />
+<camunda:property name=\"arguments.fieldGroup\" value=\"default-group\" />
+<camunda:property name=\"arguments.userTextInputEnabled\" value=\"false\" />
+</camunda:properties>
+</camunda:formField>
+</camunda:formData>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0k1e7ny</bpmn:incoming>
+<bpmn:incoming>
+SequenceFlow_0sza4cd</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_1prlk29</bpmn:outgoing>
+</bpmn:userTask>
+<bpmn:sequenceFlow id=\"SequenceFlow_1prlk29\" sourceRef=\"Task_1i2r1mo\" targetRef=\"Task_0zz261i\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_04p91si\" sourceRef=\"Task_0zz261i\" targetRef=\"Task_1e5c536\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_0k1e7ny\" sourceRef=\"Task_1tf8c6q\" targetRef=\"Task_1i2r1mo\" />
+<bpmn:sequenceFlow id=\"SequenceFlow_0sza4cd\" sourceRef=\"Task_1azg3fg\" targetRef=\"Task_1i2r1mo\" />
+<bpmn:scriptTask id=\"Task_1tf8c6q\" name=\"Output Payload Build NC\">
+<bpmn:extensionElements>
+<camunda:properties>
+<camunda:property name=\"subType\" value=\"dev-task\" />
+</camunda:properties>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_0c08oly</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0k1e7ny</bpmn:outgoing>
+</bpmn:scriptTask>
+<bpmn:scriptTask id=\"Task_1azg3fg\" name=\"Output Payload Build VC\">
+<bpmn:extensionElements>
+<camunda:properties>
+<camunda:property name=\"subType\" value=\"dev-task\" />
+</camunda:properties>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_04e8chi</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_0sza4cd</bpmn:outgoing>
+</bpmn:scriptTask>
+<bpmn:callActivity id=\"Task_0zz261i\" name=\"Payload Export\" calledElement=\"workflow_answers_export_apay_in\" camunda:calledElementBinding=\"version\" camunda:calledElementVersion=\"PROD\">
+<bpmn:extensionElements>
+<camunda:in source=\"stage\" target=\"stage\" />
+<camunda:in source=\"region\" target=\"region\" />
+<camunda:in source=\"external_id\" target=\"external_id\" />
+<camunda:in source=\"diag_run_id\" target=\"run_id\" />
+<camunda:in source=\"diagnostic_name\" target=\"diagnostic_name\" />
+<camunda:in source=\"outputPayload\" target=\"outputPayload\" />
+<camunda:inputOutput>
+<camunda:inputParameter name=\"stage\">
+string</camunda:inputParameter>
+<camunda:inputParameter name=\"region\">
+string</camunda:inputParameter>
+<camunda:inputParameter name=\"external_id\">
+string</camunda:inputParameter>
+<camunda:inputParameter name=\"run_id\">
+string</camunda:inputParameter>
+<camunda:inputParameter name=\"diagnostic_name\">
+string</camunda:inputParameter>
+<camunda:inputParameter name=\"outputPayload\">
+struct</camunda:inputParameter>
+</camunda:inputOutput>
+</bpmn:extensionElements>
+<bpmn:incoming>
+SequenceFlow_1prlk29</bpmn:incoming>
+<bpmn:outgoing>
+SequenceFlow_04p91si</bpmn:outgoing>
+</bpmn:callActivity>
+</bpmn:process>
+<bpmndi:BPMNDiagram id=\"BPMNDiagram_1\">
+<bpmndi:BPMNPlane id=\"BPMNPlane_1\" bpmnElement=\"Process_1\">
+<bpmndi:BPMNShape id=\"_BPMNShape_StartEvent_2\" bpmnElement=\"StartEvent_1\">
+<dc:Bounds x=\"173\" y=\"102\" width=\"36\" height=\"36\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1tsayt0_di\" bpmnElement=\"SequenceFlow_1tsayt0\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"209\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"274\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"196.5\" y=\"98.5\" width=\"90\" height=\"13\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"EndEvent_1g9mwtu_di\" bpmnElement=\"EndEvent_1g9mwtu\">
+<dc:Bounds x=\"1533\" y=\"102\" width=\"36\" height=\"36\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1506\" y=\"141\" width=\"90\" height=\"13\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"ExclusiveGateway_0pp65tu_di\" bpmnElement=\"ExclusiveGateway_0pp65tu\" isMarkerVisible=\"true\">
+<dc:Bounds x=\"795\" y=\"95\" width=\"50\" height=\"50\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"849\" y=\"114\" width=\"81\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_052chj2_di\" bpmnElement=\"SequenceFlow_052chj2\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"820\" y=\"95\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"820\" y=\"-61\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"836\" y=\"11\" width=\"0\" height=\"24\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0b6iqma_di\" bpmnElement=\"SequenceFlow_0b6iqma\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"820\" y=\"145\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"820\" y=\"288\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"836\" y=\"211\" width=\"0\" height=\"24\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"BusinessRuleTask_1ml0jaf_di\" bpmnElement=\"Task_16b7jbz\" bioc:stroke=\"Green\" bioc:fill=\"#66FF99\">
+<dc:Bounds x=\"619\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0xyzzo2_di\" bpmnElement=\"SequenceFlow_0xyzzo2\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"548\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"619\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"583.5\" y=\"99\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0pcn5gn_di\" bpmnElement=\"SequenceFlow_0pcn5gn\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"719\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"795\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"757\" y=\"99\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_1ffolbi_di\" bpmnElement=\"Task_1wdh762\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"448\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"CallActivity_0ntxwh7_di\" bpmnElement=\"Task_1k0k7iw\" bioc:stroke=\"Blue\" bioc:fill=\"#87CEFA\">
+<dc:Bounds x=\"770\" y=\"-141\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"CallActivity_1neskw3_di\" bpmnElement=\"Task_1qavdh9\" bioc:stroke=\"Blue\" bioc:fill=\"#87CEFA\">
+<dc:Bounds x=\"770\" y=\"288\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0c08oly_di\" bpmnElement=\"SequenceFlow_0c08oly\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"870\" y=\"-101\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"923\" y=\"-101\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"922\" y=\"-35\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"851.5\" y=\"-122\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_04e8chi_di\" bpmnElement=\"SequenceFlow_04e8chi\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"870\" y=\"328\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"922\" y=\"328\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"922\" y=\"266\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"851\" y=\"307\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0mze8ap_di\" bpmnElement=\"SequenceFlow_0mze8ap\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1476\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1533\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1460\" y=\"99\" width=\"90\" height=\"13\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_1dsvklt_di\" bpmnElement=\"Task_1e5c536\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"1376\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"UserTask_0gfbn6v_di\" bpmnElement=\"Task_02xn2or\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"274\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_13yxmb7_di\" bpmnElement=\"SequenceFlow_13yxmb7\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"374\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"448\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"411\" y=\"99\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"UserTask_0igqtsr_di\" bpmnElement=\"Task_1i2r1mo\" bioc:stroke=\"Red\" bioc:fill=\"#FF9999\">
+<dc:Bounds x=\"1011\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNEdge id=\"SequenceFlow_1prlk29_di\" bpmnElement=\"SequenceFlow_1prlk29\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1111\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1191\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1106\" y=\"99\" width=\"90\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_04p91si_di\" bpmnElement=\"SequenceFlow_04p91si\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"1291\" y=\"120\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1376\" y=\"120\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"1333.5\" y=\"99\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0k1e7ny_di\" bpmnElement=\"SequenceFlow_0k1e7ny\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"922\" y=\"45\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"923\" y=\"107\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1011\" y=\"107\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"922.5\" y=\"55\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNEdge id=\"SequenceFlow_0sza4cd_di\" bpmnElement=\"SequenceFlow_0sza4cd\">
+<di:waypoint xsi:type=\"dc:Point\" x=\"922\" y=\"186\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"922\" y=\"139\" />
+<di:waypoint xsi:type=\"dc:Point\" x=\"1011\" y=\"139\" />
+<bpmndi:BPMNLabel>
+<dc:Bounds x=\"937\" y=\"156.5\" width=\"0\" height=\"12\" />
+</bpmndi:BPMNLabel>
+</bpmndi:BPMNEdge>
+<bpmndi:BPMNShape id=\"ScriptTask_0dpe1tq_di\" bpmnElement=\"Task_1tf8c6q\" bioc:stroke=\"Purple\" bioc:fill=\"#CC99FF\">
+<dc:Bounds x=\"872\" y=\"-35\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"ScriptTask_0lhphs5_di\" bpmnElement=\"Task_1azg3fg\" bioc:stroke=\"Purple\" bioc:fill=\"#CC99FF\">
+<dc:Bounds x=\"872\" y=\"186\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+<bpmndi:BPMNShape id=\"CallActivity_0m352kh_di\" bpmnElement=\"Task_0zz261i\" bioc:stroke=\"Blue\" bioc:fill=\"#87CEFA\">
+<dc:Bounds x=\"1191\" y=\"80\" width=\"100\" height=\"80\" />
+</bpmndi:BPMNShape>
+</bpmndi:BPMNPlane>
+</bpmndi:BPMNDiagram>
+</bpmn:definitions>
